@@ -7,12 +7,11 @@ const useNavbarStyle = makeStyles(theme => ({
         alignItems: 'center',
         width: '100%',
         background : theme.palette.secondary.light,
-        height : '6rem'
+        height : '6rem',
     },
     logo : {
         width : '5.5rem',
         height :'4.7rem',
-        // margin : '.3rem'
     },
     //button
     navItem : {
@@ -25,7 +24,7 @@ const useNavbarStyle = makeStyles(theme => ({
             minWidth : '100%',
             minHeight : '100%',
             color : 'rgba(0, 0, 0, .6)',
-        }
+        },
     },
     
 }));

@@ -1,6 +1,5 @@
 import React from 'react';
 import { useButtonStyle } from '../assets/styles/index.styles';
-
 type ButtonPropsT = {
     label ?: string,
     className ?: string,

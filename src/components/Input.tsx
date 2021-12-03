@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, CSSProperties } from 'react';
 import { useInputStyle } from '../assets/styles/index.styles';
 import { motion, Variants } from 'framer-motion';
 
@@ -6,7 +6,9 @@ type InputProps = {
     label :string,
     onChange : (e : React.ChangeEvent<HTMLInputElement>) => void
     id ?: string
-    name: string
+    name: string,
+    labelStyle ?: CSSProperties,
+    inputStyle ?: CSSProperties
 }
 
 const labelVariants : Variants = {
@@ -31,9 +33,9 @@ const underLineVariants : Variants = {
     }
 }
 
-export const Input = ({label, onChange, id, name} : InputProps) => {
+export const Input = ({ label, onChange, id, name, labelStyle, inputStyle } : InputProps) => {
     const classes = useInputStyle();
-    const inputRef = useRef<HTMLInputElement>(null)
+    const inputRef = useRef<HTMLInputElement>(null);
     const [ focus, setFocus ] = useState<boolean>(false);
 
     const handleFocus = () => {
@@ -41,12 +43,12 @@ export const Input = ({label, onChange, id, name} : InputProps) => {
             setFocus(true);
             inputRef.current.focus();
         }
-    } 
+    };
         
     const handleBlur = (e : React.FocusEvent<HTMLInputElement>) => {
         const target = e.target as HTMLInputElement;
-        !target.value && setFocus(false)
-    }
+        !target.value && setFocus(false);
+    };
         
     return(
         <motion.div
@@ -59,6 +61,7 @@ export const Input = ({label, onChange, id, name} : InputProps) => {
                 variants = { labelVariants } 
                 htmlFor = { id } 
                 className = { classes.label }
+                style = { labelStyle }
             > 
                 { label } 
             </motion.label>
@@ -69,12 +72,14 @@ export const Input = ({label, onChange, id, name} : InputProps) => {
                 name = { name } 
                 onChange = { onChange }
                 onBlur = { handleBlur }  
+                style = { inputStyle }
             />
             <motion.span
                 transition = {{ease  : 'linear', duration : .2}}    
                 variants = { underLineVariants } 
                 className = { classes.underline }
-            ></motion.span>
+            >
+            </motion.span>
         </motion.div>
     )
 }

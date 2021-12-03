@@ -16,3 +16,10 @@ export const SIGN_DEFAULT_VALUE : SignDataTypes = {
     email : '',
     password : ''
 }
+
+export type User = {
+    avatar : string,
+    firstName : string,
+    lastName : string,
+    id ?: string
+}
