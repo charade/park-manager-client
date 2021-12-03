@@ -13,13 +13,14 @@ const useUserCardStyle = makeStyles(theme =>({
         position : 'relative',
         display : 'flex',
         justifyContent : 'center',
+        flexDirection : 'column',
         alignItems : 'center',
-        width : '98%',
+        width : '100%',
         height : '100%',
         boxShadow : '0 0 .3rem rgba(0, 0, 0, .6)',
-        borderRadius : '1rem',
         overflow: 'hidden',
-        background : theme.palette.primary.main
+        background : theme.palette.primary.main,
+        paddingTop :'.7rem'
     },
     cardHeader : {
         background : theme.palette.secondary.light,
@@ -33,15 +34,30 @@ const useUserCardStyle = makeStyles(theme =>({
         display : 'flex',
         flexDirection :'column',
         alignItems : 'center',
-        height : '90%'
-
+        height : '80%',
     },
     userName : {
         fontSize : '2rem',
         fontFamily : theme.typography.fontFamily,
         color : theme.palette.secondary.light
+    },
+    btn : {
+        color : theme.palette.secondary.light,
+        border :'none',
+        background :'rgba(0, 0, 0, .12)',
+        fontSize :'1.6rem',
+        marginTop :'1.5rem',
+        fontWeight : 300,
+        justifyContent : 'center',
+        width : '100%',
+        '& > *' : {
+            margin :'.5rem'
+        }
+    },
+    btnIcon : {
+        minWidth : '2.5rem',
+        minHeight :'2.5rem',
     }
-
 }))
 
 export default useUserCardStyle;
