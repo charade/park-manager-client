@@ -13,7 +13,7 @@ import useMainContainerStyle from './MainContainer.styles';
 import useSearchFieldStyle from './SearchField.styles';
 import useUserCardStyle from './UserCard.styles';
 import useAvarStyle from './Avatar.styles';
-import usePlacesStyle from './Places.styles';
+import usePlacesTableStyle from './PlacesTable.styles';
 import useDividerStyle from './Divider.styles';
 import useModalStyle from './Modal.styles';
 import useSubmitBtnStyle from './SubmitBtn.styles';
@@ -34,7 +34,7 @@ export {
     useSearchFieldStyle,
     useUserCardStyle,
     useAvarStyle,
-    usePlacesStyle,
+    usePlacesTableStyle,
     useDividerStyle,
     useModalStyle,
     useSubmitBtnStyle

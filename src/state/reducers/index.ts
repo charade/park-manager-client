@@ -1,3 +1,4 @@
-import { userReducer } from './users';
+import userReducer  from './users';
+import placesReducer from './places';
 
-export { userReducer }
+export { userReducer, placesReducer }
