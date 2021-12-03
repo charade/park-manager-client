@@ -13,7 +13,7 @@ const useLoginFormStyle = makeStyles(theme => ({
         '& > *' : {
             fontFamily : theme.typography.fontFamily,
             margin : '1.5rem',
-            color  :'white'
+            color  : theme.palette.secondary.light
         },
         background : theme.palette.primary.main,
     },

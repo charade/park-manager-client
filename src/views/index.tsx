@@ -1,3 +1,4 @@
-import { LoginView } from './LoginView';
+import LoginView  from './LoginView';
+import Home from './Home';
 
-export { LoginView }
+export { LoginView , Home}

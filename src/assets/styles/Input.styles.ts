@@ -8,7 +8,7 @@ const useInputStyle = makeStyles(theme => ({
         fontFamily : theme.typography.fontFamily,
         background  : 'inherit',
         '& > *' : {
-            color: 'white'
+            color: theme.palette.secondary.light
         }
     },
     label : {

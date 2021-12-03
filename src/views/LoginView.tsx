@@ -1,7 +1,7 @@
 import { useLoginViewStyle } from '../assets/styles/index.styles';
 import { LoginForm } from '../components/LoginForm';
 
-export const LoginView = () => {
+const LoginView = () => {
     const classes = useLoginViewStyle();
 
     return(
@@ -9,4 +9,5 @@ export const LoginView = () => {
             <LoginForm />
         </div>
     )
-}
+};
+export default LoginView;
