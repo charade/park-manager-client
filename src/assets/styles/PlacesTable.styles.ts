@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 
-const usePlacesStyle = makeStyles(theme => ({
+const usePlacesTableStyle = makeStyles(theme => ({
     container : {
         display : 'flex',
         flexDirection : 'column',
@@ -9,4 +9,4 @@ const usePlacesStyle = makeStyles(theme => ({
     }
 }));
 
-export default usePlacesStyle;
+export default usePlacesTableStyle;

@@ -59,7 +59,7 @@ export const Input = ({
                 { label } 
             </motion.label>
             <input
-                data-helperText = { helperText }
+                data-helpertext = { helperText }
                 value = { value }
                 required = { required } 
                 ref = { inputRef } 

@@ -6,7 +6,7 @@ export type UserActionType = {
     payload : User | null
 };
 
-export const userReducer = (state : User | null = null, action: UserActionType) => {
+const userReducer = (state : User | null = null, action: UserActionType) => {
     switch(action.type){
         case UserAction.LOAD_DATA : 
             state = Object.assign({}, action.payload);
@@ -15,3 +15,5 @@ export const userReducer = (state : User | null = null, action: UserActionType) 
         default : return state
     };
 }
+
+export default userReducer;

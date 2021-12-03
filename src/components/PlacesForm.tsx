@@ -4,19 +4,25 @@ import { Input } from './Input';
 import { Button } from './Button';
 import { useModalStyle, useSubmitBtnStyle } from '../assets/styles/index.styles';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Places, PLACES_DEFAULT_VALUE } from '../types/places';
+import { CreatePlace, PLACES_DEFAULT_VALUE } from '../types/places';
 import { variants } from '../assets/utils';
+import { bindActionCreators } from 'redux';
+import { useDispatch } from 'react-redux';
+import { placesActionCreators } from '../state/actions-creators';
+import { places, status } from '../services';
 
-type PlaceFormPropsT = {
+type PlacesFormPropsT = {
     open : boolean
     setOpen : (open : boolean) => void
 }
 
-export const PlaceForm = ({ open, setOpen } : PlaceFormPropsT)=> {
+export const PlacesForm = ({ open, setOpen } : PlacesFormPropsT)=> {
+    const [ place, setPlace ] = useState<CreatePlace>(PLACES_DEFAULT_VALUE);
+    const [ error, setError ] = useState<boolean>(false);
+    const dispatch = useDispatch();
+    const { addPlace } = bindActionCreators(placesActionCreators, dispatch);
     const classes = useModalStyle();
     const buttonClasses = useSubmitBtnStyle();
-    const [ place, setPlace ] = useState<Places>(PLACES_DEFAULT_VALUE);
-    const [ error, setError ] = useState<boolean>(false);
     //helper text for input error
     const helperText = useMemo(() => `You should provide a number`, []);
 
@@ -24,6 +30,7 @@ export const PlaceForm = ({ open, setOpen } : PlaceFormPropsT)=> {
         if(!e.currentTarget.contains(e.relatedTarget))
             setOpen(false);
     };
+
     const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
         const target = e.target as HTMLInputElement;
 
@@ -31,8 +38,19 @@ export const PlaceForm = ({ open, setOpen } : PlaceFormPropsT)=> {
             setError(true);
             return;
         };
-        setError(false)
+        setError(false);
         setPlace({ ...place, [target.name] : target.value });
+    };
+
+    const handleSubmit = async(e : React.SyntheticEvent) => {
+        e.preventDefault();
+        const { floor, placeNumber } = place ;
+        if(!error && floor && placeNumber){
+            const response = await places.create({floor : Number(floor), placeNumber : Number(placeNumber)});
+            if(response && response.status === status.CREATED ){
+                addPlace(response.data);
+            }
+        }
     };
 
     return(
@@ -50,14 +68,13 @@ export const PlaceForm = ({ open, setOpen } : PlaceFormPropsT)=> {
                         initial = 'close'
                     >
                         <Form 
-                            onSubmit = { () => null }  
+                            onSubmit = { handleSubmit }  
                             onBlur = { handleClose } 
                             caption = 'Add a new place'
                             error = { error }
                             helperText = { helperText }
                         >
                             <Input
-                                value = { place.floor } 
                                 label = 'floor' 
                                 name = 'floor' 
                                 onChange = { handleChange } 
@@ -65,7 +82,6 @@ export const PlaceForm = ({ open, setOpen } : PlaceFormPropsT)=> {
                                 required
                             />
                             <Input
-                                value = { place.placeNumber } 
                                 label = 'place number' 
                                 name = 'placeNumber' 
                                 onChange = { handleChange } 

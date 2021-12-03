@@ -10,8 +10,8 @@ const useNavbarStyle = makeStyles(theme => ({
         height : '6rem',
     },
     logo : {
-        width : '5.5rem',
-        height :'4.7rem',
+        width : '4.8rem',
+        height :'4rem',
     },
     //button
     navItem : {

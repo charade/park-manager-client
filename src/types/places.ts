@@ -1,12 +1,18 @@
-export type Places = {
+export type CreatePlace = {
     placeNumber : number | undefined
     floor : number | undefined,
-    id ?: string,
-    userId ?: string,
-    availablity ?: boolean
 }
 
-export const PLACES_DEFAULT_VALUE : Places = {
+export type Places = CreatePlace & {
+    id : string,
+    available : boolean,
+    occupancyTime : number,
+    createdAt : string,
+    updatedAt :string,
+    userId : string
+}
+
+export const PLACES_DEFAULT_VALUE : CreatePlace = {
     placeNumber : undefined,
     floor : undefined,
 }

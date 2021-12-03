@@ -2,11 +2,11 @@ import { useMainContainerStyle } from '../assets/styles/index.styles';
 import { Navbar } from './NavBar';
 import { useMediaQuery } from '@mui/material';
 import { UserCard } from './UserCard';
-import { Places } from './Places';
+import { PlacesTable } from './PlacesTable';
 import { Divider } from './Divider';
 import { Button } from './Button';
 import AddIcon from '@mui/icons-material/Add';
-import { PlaceForm } from './PlaceForm';
+import { PlacesForm } from './PlacesForm';
 import { useState } from 'react';
 
 export const MainContainer = () => {
@@ -28,8 +28,8 @@ export const MainContainer = () => {
                 iconPosition = 'after' 
                 onClick = { handleOpenPlaceForm }
             />
-            <PlaceForm open = { openPlaceForm } setOpen = { setOpenPlaceForm } />
-            <Places />
+            <PlacesForm open = { openPlaceForm } setOpen = { setOpenPlaceForm } />
+            <PlacesTable />
         </div>
     )
 }

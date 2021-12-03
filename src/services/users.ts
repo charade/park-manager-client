@@ -1,4 +1,4 @@
-import request from './config';
+import { request } from './config';
 import { SignDataTypes, LoginT } from '../types/user';
 
 const users =  {
