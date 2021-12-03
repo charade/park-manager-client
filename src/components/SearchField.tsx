@@ -1,22 +1,13 @@
 import { useSearchFieldStyle } from '../assets/styles/index.styles';
 import { Input } from './Input';
-import { motion, Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { variants } from '../assets/utils';
 
 type SearchFieldProps = {
     open : boolean,
     setOpen : (open : boolean) => void,
     children : React.ReactNode
 };
-
-const variants : Variants = {
-    animate : open => ({
-        width : open ? '100%' : '4.8rem',
-        transition : {
-            ease : "linear",
-            duration : .1
-        }
-    })
-}
 
 export const SearchField = ({ open, setOpen, children } : SearchFieldProps) => {
     const classes = useSearchFieldStyle();
@@ -35,7 +26,7 @@ export const SearchField = ({ open, setOpen, children } : SearchFieldProps) => {
             onFocus = { handleOpen }
             onBlur = { handleClose }
             tabIndex = { 0 }
-            variants = { variants } 
+            variants = { variants.searchField } 
             animate = 'animate' 
             custom = { open } 
             className = { classes.container }

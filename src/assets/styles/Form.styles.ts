@@ -7,7 +7,7 @@ const useFormStyle = makeStyles(theme =>({
         alignItems : 'center',
         width : '25rem',
         borderRadius : '.8rem',
-        minHeight : '40rem',
+        minHeight : '20rem',
         padding : '1.5rem 0',
         boxShadow : '0 0 .4rem rgba(0, 0, 0, .8)',
         '& > *' : {

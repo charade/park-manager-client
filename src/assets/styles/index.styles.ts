@@ -2,6 +2,7 @@ import useLoginViewStyle from './LoginView.styles';
 import useFormStyle from './Form.styles';
 import useLoginFormStyle from './LoginForm.styles';
 import useInputStyle from './Input.styles';
+import useHelperStyle from './Helper.styles';
 import useButtonStyle from './Button.styles';
 import useLandingStyle from './Landing.styles';
 import useHomeStyle from './Home.styles';
@@ -22,6 +23,7 @@ export {
     useFormStyle,
     useLoginFormStyle,
     useInputStyle,
+    useHelperStyle,
     useButtonStyle,
     useLandingStyle,
     useHomeStyle,
