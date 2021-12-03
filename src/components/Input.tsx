@@ -8,7 +8,8 @@ type InputProps = {
     id ?: string
     name: string,
     labelStyle ?: CSSProperties,
-    inputStyle ?: CSSProperties
+    inputStyle ?: CSSProperties,
+    required ?: boolean
 }
 
 const labelVariants : Variants = {
@@ -33,7 +34,7 @@ const underLineVariants : Variants = {
     }
 }
 
-export const Input = ({ label, onChange, id, name, labelStyle, inputStyle } : InputProps) => {
+export const Input = ({ label, onChange, id, name, labelStyle, inputStyle, required } : InputProps) => {
     const classes = useInputStyle();
     const inputRef = useRef<HTMLInputElement>(null);
     const [ focus, setFocus ] = useState<boolean>(false);
@@ -65,7 +66,8 @@ export const Input = ({ label, onChange, id, name, labelStyle, inputStyle } : In
             > 
                 { label } 
             </motion.label>
-            <input 
+            <input
+                required = { required } 
                 ref = { inputRef } 
                 className = { classes.inputField } 
                 id = { id} 

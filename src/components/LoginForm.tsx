@@ -1,16 +1,18 @@
-import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
+import { AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 import React, { useState } from 'react';
-import { useLoginFormStyle } from '../assets/styles/index.styles';
+import { useLoginFormStyle, useSubmitBtnStyle } from '../assets/styles/index.styles';
 import { Input } from './Input';
 import { Button } from './Button';
 import { SignDataTypes, SIGN_DEFAULT_VALUE  } from '../types/user';
 import { users, status } from '../services';
 import { useNavigate } from 'react-router-dom';
+import { Form } from './Form';
 
 export const LoginForm = () => {
     const [data, setData] = useState<SignDataTypes>(SIGN_DEFAULT_VALUE);
     const [ step, setStep ] = useState<number>(0)
     const classes = useLoginFormStyle();
+    const buttonClasses = useSubmitBtnStyle();
     const navigate = useNavigate();
 
     const handleSwitchStep = () => setStep(step ? 0 : 1);
@@ -30,21 +32,19 @@ export const LoginForm = () => {
                 const auth = response.data;
                 localStorage.setItem('auth', JSON.stringify(auth))
                 navigate(`/home`);
-        };
+            };
 
+        }
         //check wether step is register and every data are truthy
         if(step && Object.values(data).every((value) => value)){
-            const response = await users.register(data);
+            // const response = await users.register(data);
             
-            }
         }
-
     }
     
     return(
         <AnimateSharedLayout>
-            <motion.form layout onSubmit = { handleSubmit } className = { classes.container }>
-                <h2 className = { classes.title }> { step ? 'Sign up' : 'Sign in' } </h2>
+            <Form  onSubmit = { handleSubmit } caption = { step ? 'Sign up' : 'Sign in' } >
                 {/* animate in/ out extra data for sign up */}
                 <AnimatePresence>
                     {step && 
@@ -58,7 +58,7 @@ export const LoginForm = () => {
                 
                 <Input onChange = { handleChange } name = 'email' label = 'email'/>
                 <Input onChange = { handleChange } name = 'password' label = 'password'/>
-                <Button type = 'submit' className = {classes.submitBtn} label = 'Submit' />
+                <Button type = 'submit' className = {buttonClasses.button} label = 'Submit'/>
                 <div className = { classes.footer }>
                     <span> { step ? 'You already have an account ' : " You don't have an account" } </span>
                     <span 
@@ -69,7 +69,7 @@ export const LoginForm = () => {
                         { step ? 'sign in' : 'sign up' } 
                     </span>
                 </div>
-            </motion.form>
+            </Form>
         </AnimateSharedLayout>
     )
 }
