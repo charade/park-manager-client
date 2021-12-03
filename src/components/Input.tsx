@@ -1,6 +1,7 @@
 import React, { useState, useRef, CSSProperties } from 'react';
 import { useInputStyle } from '../assets/styles/index.styles';
-import { motion, Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { variants } from '../assets/utils';
 
 type InputProps = {
     label :string,
@@ -10,31 +11,22 @@ type InputProps = {
     labelStyle ?: CSSProperties,
     inputStyle ?: CSSProperties,
     required ?: boolean
+    value ?: string | number,
+    helperText ?: string
 }
 
-const labelVariants : Variants = {
-    focus : {
-        top : '-1rem',
-        opacity : .5
-    },
-    blur : {
-        top : '1rem',
-        opacity : 1
-    }
-}
+export const Input = ({
+    value,
+    label,
+    onChange,
+    id,
+    name,
+    labelStyle,
+    inputStyle,
+    required,
+    helperText
+    } : InputProps) => {
 
-const underLineVariants : Variants = {
-    focus : {
-        width : '100%',
-        opacity : 1
-    },
-    blur : {
-        width : '0',
-        opacity : 0
-    }
-}
-
-export const Input = ({ label, onChange, id, name, labelStyle, inputStyle, required } : InputProps) => {
     const classes = useInputStyle();
     const inputRef = useRef<HTMLInputElement>(null);
     const [ focus, setFocus ] = useState<boolean>(false);
@@ -59,7 +51,7 @@ export const Input = ({ label, onChange, id, name, labelStyle, inputStyle, requi
             onClick = { handleFocus }
         >
             <motion.label
-                variants = { labelVariants } 
+                variants = { variants.inputLabel } 
                 htmlFor = { id } 
                 className = { classes.label }
                 style = { labelStyle }
@@ -67,6 +59,8 @@ export const Input = ({ label, onChange, id, name, labelStyle, inputStyle, requi
                 { label } 
             </motion.label>
             <input
+                data-helperText = { helperText }
+                value = { value }
                 required = { required } 
                 ref = { inputRef } 
                 className = { classes.inputField } 
@@ -78,7 +72,7 @@ export const Input = ({ label, onChange, id, name, labelStyle, inputStyle, requi
             />
             <motion.span
                 transition = {{ease  : 'linear', duration : .2}}    
-                variants = { underLineVariants } 
+                variants = { variants.inputUnderLine } 
                 className = { classes.underline }
             >
             </motion.span>

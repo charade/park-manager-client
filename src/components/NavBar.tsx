@@ -7,10 +7,10 @@ import AppsIcon from '@mui/icons-material/Apps';
 import GroupsIcon from '@mui/icons-material/Groups';
 import { SearchField } from './SearchField';
 import { motion } from 'framer-motion';
+
 export const Navbar = () => {
     const [ openSearchField, setOpenSearchField ] = useState<boolean>(false);
     const classes = useNavbarStyle();
-
 
     return(
         <motion.nav layout className = { classes.paper }>

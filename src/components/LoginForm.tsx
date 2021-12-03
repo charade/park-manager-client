@@ -34,11 +34,10 @@ export const LoginForm = () => {
                 navigate(`/home`);
             };
 
-        }
+        };
         //check wether step is register and every data are truthy
         if(step && Object.values(data).every((value) => value)){
             // const response = await users.register(data);
-            
         }
     }
     
