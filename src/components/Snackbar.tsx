@@ -6,11 +6,11 @@ import { Severity, SnackbarIcon } from './SnackbarIcon';
 import CloseIcon from '@mui/icons-material/Close';
 import { Button } from './Button';
 
-export type SnackBarT = Severity & {
+export type SnackbarType = Severity & {
     message : string | undefined
 }
 
-type SnackbarProps = SnackBarT & {
+type SnackbarProps = SnackbarType & {
     open : boolean,
     setOpen : (open : boolean) => void
 };
@@ -26,13 +26,14 @@ export const Snackbar = ({ message, open, setOpen, severity } : SnackbarProps ) 
     const handleClose = useCallback(() => setOpen(false),[setOpen])
 
     return(
-        <AnimatePresence exitBeforeEnter>
+        <AnimatePresence>
             {open &&
                 <motion.div  
                     variants = { variants.snackbar } 
                     className = { classes.snackbar }
                     animate = { open ? 'open' : 'close' }
                     initial = 'close'
+                    exit = 'close'
                 >
                     <SnackbarIcon 
                         severity = { severity } 

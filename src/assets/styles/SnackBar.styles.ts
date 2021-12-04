@@ -2,8 +2,9 @@ import { makeStyles } from '@material-ui/core';
 
 const useSnackbarStyle = makeStyles(theme => ({
     snackbar : {
+        zIndex : 5,
         position : 'fixed',
-        top : '5rem',
+        top : '3rem',
         right : '.5rem',
         display : 'flex',
         justifyContent : 'space-around',
@@ -11,11 +12,12 @@ const useSnackbarStyle = makeStyles(theme => ({
         minWidth : '25rem',
         fontFamily : theme.typography.fontFamily,
         fontSize : '1.4rem',
-        background : theme.palette.primary.main,
+        background : 'rgba(0, 0, 0, .8)',
         borderRadius : '.5rem',
         hieght :'2.5rem',
         height : '4rem',
         color: '#fff',
+        backdropFilter : 'blur(.3rem) grayscale(50%)'
     },
     icon : {
         minWidth : '3rem',
