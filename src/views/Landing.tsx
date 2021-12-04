@@ -1,36 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useLandingStyle } from '../assets/styles/index.styles';
-import { motion, Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Logo } from '../components/Logo';
+import { variants } from '../assets/utils'
 
-//page animation
-const landingVariants : Variants = {
-    open : {
-        width : '100%',
-        opacity :1
-    },
-    close : {
-        width : '0',
-        opacity : 0,
-        transition : {
-            delay : .38
-        }
-    }
-};
-//logo animation
-const logoVariants: Variants = {
-    open : {
-        y : 0,
-        opacity : 1,
-        transition : {
-            type : 'spring',
-        }
-    },
-    close : {
-        opacity : 0,
-        y : '-15rem',
-    }
-}
 
 export const Landing = () => {
     const [ ready, setReady ] = useState<Boolean>(false);
@@ -43,14 +16,14 @@ export const Landing = () => {
     return(
         <motion.div 
             initial = { false }
-            variants = { landingVariants }
+            variants = { variants.landing }
             animate = { ready ? 'close' : 'open' }
             exit = 'close'
             className = { classes.root }
         >
             <Logo
                 initial = 'close'
-                variants = { logoVariants }
+                variants = { variants.logo }
                 animate = { ready ? 'close' : 'open' }
             />
         </motion.div>

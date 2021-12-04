@@ -12,7 +12,10 @@ const Home = () => {
     const { loadPlaces } = bindActionCreators(placesActionCreators, dispatch);
     const classes = useHomeStyle();
 
-    useEffect(() => void loadUser() && loadPlaces(), []);
+    useEffect(() => {
+        loadUser();
+        loadPlaces()
+    },[]);
     
     return(
         <div className = { classes.root }>

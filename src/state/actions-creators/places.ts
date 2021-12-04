@@ -4,9 +4,9 @@ import { PlacesActionType } from "../reducers/places";
 import { Dispatch } from "redux";
 import { places } from '../../services';
 
-export const loadPlaces = async() => {
-    const requestedPlaces  = await places.getAll();
-    return (dispatch : Dispatch<PlacesActionType>) => {
+export const loadPlaces = () => {
+    return async(dispatch : Dispatch<PlacesActionType>) => {
+        const requestedPlaces  = await places.getAll();
         dispatch({
             type : PlacesAction.LOAD_PLACES,
             payload : requestedPlaces.data
