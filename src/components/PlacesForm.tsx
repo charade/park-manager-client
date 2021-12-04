@@ -4,13 +4,13 @@ import { Input } from './Input';
 import { Button } from './Button';
 import { useSubmitBtnStyle } from '../assets/styles/index.styles';
 import { motion } from 'framer-motion';
-import { CreatePlace, PLACES_DEFAULT_VALUE } from '../types/places';
+import { CreatePlace, PLACES_DEFAULT_VALUE } from '../utils/types/places';
 import { variants } from '../assets/utils';
 import { bindActionCreators } from 'redux';
 import { useDispatch } from 'react-redux';
 import { placesActionCreators } from '../state/actions-creators';
 import { places, status } from '../services';
-import { useNotification, useCloseOnBlur } from '../hooks';
+import { useNotification, useCloseOnBlur, useToggle } from '../hooks';
 import { Snackbar } from './Snackbar';
 import { Modal } from './Modal';
 
@@ -21,7 +21,7 @@ type PlacesFormPropsT = {
 
 export const PlacesForm = ({ open, setOpen } : PlacesFormPropsT)=> {
     const [ place, setPlace ] = useState<CreatePlace>(PLACES_DEFAULT_VALUE);
-    const [ error, setError ] = useState<boolean>(false);
+    const  error = useToggle();
     const dispatch = useDispatch();
     const { addPlace } = bindActionCreators(placesActionCreators, dispatch);
     const buttonClasses = useSubmitBtnStyle();
@@ -35,10 +35,12 @@ export const PlacesForm = ({ open, setOpen } : PlacesFormPropsT)=> {
         const { target } = e
 
         if(isNaN(Number(target.value))){
-            setError(true);
+            //set error to true
+            error.toggle();
             return;
         };
-        setError(false);
+        //if bad entry was corrected allow to unmount helper
+        error.isTrue && error.toggle()
         setPlace({ ...place, [target.name] : target.value });
     };
 
@@ -47,7 +49,7 @@ export const PlacesForm = ({ open, setOpen } : PlacesFormPropsT)=> {
         const floor = Number(place.floor);
         const placeNumber = Number(place.placeNumber);
 
-        if(!error && floor && placeNumber){
+        if(!error.isTrue && floor && placeNumber){
 
             const response = await places.create({floor, placeNumber}).catch(err => {
                 const message = err.response.data.description;
@@ -75,7 +77,7 @@ export const PlacesForm = ({ open, setOpen } : PlacesFormPropsT)=> {
                     onSubmit = { handleSubmit }  
                     onBlur = { handleClose } 
                     caption = 'Add a new place'
-                    error = { error }
+                    error = { error.isTrue }
                     helperText = { helperText }
                 >
                     <Input

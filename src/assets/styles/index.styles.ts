@@ -10,7 +10,7 @@ import useMainStyle from './Main.styles';
 import useLogoStyle from './Logo.styles';
 import useNavbarStyle from './Navbar.styles';
 import useMainContainerStyle from './MainContainer.styles';
-import useSearchFieldStyle from './SearchField.styles';
+import useSelectStyle from './Select.styles';
 import useUserCardStyle from './UserCard.styles';
 import useAvarStyle from './Avatar.styles';
 import usePlacesTableStyle from './PlacesTable.styles';
@@ -35,7 +35,7 @@ export {
     useLogoStyle,
     useNavbarStyle,
     useMainContainerStyle,
-    useSearchFieldStyle,
+    useSelectStyle,
     useUserCardStyle,
     useAvarStyle,
     usePlacesTableStyle,

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useLoginFormStyle, useSubmitBtnStyle } from '../assets/styles/index.styles';
 import { Input } from './Input';
 import { Button } from './Button';
-import { SignDataTypes, SIGN_DEFAULT_VALUE  } from '../types/user';
+import { SignDataTypes, SIGN_DEFAULT_VALUE  } from '../utils/types/user';
 import { users, status } from '../services';
 import { useNavigate } from 'react-router-dom';
 import { Form } from './Form';

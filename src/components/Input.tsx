@@ -12,7 +12,8 @@ type InputProps = {
     inputStyle ?: CSSProperties,
     required ?: boolean
     value ?: string | number,
-    helperText ?: string
+    helperText ?: string,
+    underline ?: boolean
 }
 
 export const Input = ({
@@ -24,58 +25,62 @@ export const Input = ({
     labelStyle,
     inputStyle,
     required,
-    helperText
+    helperText,
+    underline = true
     } : InputProps) => {
 
     const classes = useInputStyle();
     const inputRef = useRef<HTMLInputElement>(null);
-    const [ focus, setFocus ] = useState<boolean>(false);
+    const [ focused, setFocused ] = useState<boolean>(false);
 
     const handleFocus = () => {
         if(inputRef.current){
-            setFocus(true);
+            setFocused(true);
             inputRef.current.focus();
         }
     };
         
     const handleBlur = (e : React.FocusEvent<HTMLInputElement>) => {
         const target = e.target as HTMLInputElement;
-        !target.value && setFocus(false);
+        !target.value && setFocused(false);
     };
         
     return(
         <motion.div
-            layout 
-            animate = { focus ? "focus" : "blur" }
-            className = { classes.fieldContainer }
-            onClick = { handleFocus }
+        layout 
+        tabIndex = { 0 }
+        animate = { focused ? "focus" : "blur" }
+        className = { classes.fieldContainer }
+        onFocus = { handleFocus }
         >
             <motion.label
-                variants = { variants.inputLabel } 
-                htmlFor = { id } 
-                className = { classes.label }
-                style = { labelStyle }
+            variants = { variants.inputLabel } 
+            htmlFor = { id } 
+            className = { classes.label }
+            style = { labelStyle }
             > 
                 { label } 
             </motion.label>
             <input
-                data-helpertext = { helperText }
-                value = { value }
-                required = { required } 
-                ref = { inputRef } 
-                className = { classes.inputField } 
-                id = { id} 
-                name = { name } 
-                onChange = { onChange }
-                onBlur = { handleBlur }  
-                style = { inputStyle }
+            data-helpertext = { helperText }
+            value = { value }
+            required = { required } 
+            ref = { inputRef } 
+            className = { classes.inputField } 
+            id = { id} 
+            name = { name } 
+            onChange = { onChange }
+            onBlur = { handleBlur }  
+            style = { inputStyle }
             />
-            <motion.span
+            {underline &&
+                <motion.span
                 transition = {{ease  : 'linear', duration : .2}}    
                 variants = { variants.inputUnderLine } 
                 className = { classes.underline }
-            >
-            </motion.span>
+                >
+                </motion.span>
+            }
         </motion.div>
     )
 }

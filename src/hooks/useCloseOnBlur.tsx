@@ -1,7 +1,12 @@
-const useCloseOnBlur = (setOpen : (open : boolean) => void) => {
+
+type BlurFunction = (open : boolean) => void ;
+
+const useCloseOnBlur = (setOpen : BlurFunction) => {
+
     return (e : React.FocusEvent) => {
-        if(!e.currentTarget.contains(e.relatedTarget))
+        if(!e.currentTarget.contains(e.relatedTarget)){
             setOpen(false);
+        }
     };
 }
 

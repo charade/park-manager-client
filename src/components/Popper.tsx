@@ -13,10 +13,10 @@ type PopupProps = {
 export const Popper = ({ children, open, setOpen } : PopupProps) => {
     const classes = usePopperStyle();
     const ref = useRef<HTMLDivElement>(null);
+    const handleClose = useCloseOnBlur(setOpen);
 
     useEffect(() => void ref.current?.focus(),[open]);
 
-    const handleClose = useCloseOnBlur(setOpen);
 
     return(
         <AnimatePresence>
