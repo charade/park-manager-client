@@ -17,6 +17,7 @@ import usePlacesTableStyle from './PlacesTable.styles';
 import useDividerStyle from './Divider.styles';
 import useModalStyle from './Modal.styles';
 import useSubmitBtnStyle from './SubmitBtn.styles';
+import useSnackbarStyle from './SnackBar.styles';
 
 export {
     useLoginViewStyle,
@@ -37,5 +38,6 @@ export {
     usePlacesTableStyle,
     useDividerStyle,
     useModalStyle,
-    useSubmitBtnStyle
+    useSubmitBtnStyle,
+    useSnackbarStyle
 };
