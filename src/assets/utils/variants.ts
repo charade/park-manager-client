@@ -1,3 +1,4 @@
+import { Opacity } from "@mui/icons-material";
 import { Variants } from "framer-motion";
 
 export const inputLabel : Variants = {
@@ -42,4 +43,17 @@ export const searchField : Variants = {
             duration : .1
         }
     })
+}
+export const snackbar : Variants = {
+    open : {
+        x : 0,
+        opacity : 1,
+        transition : {
+            type : 'spring'
+        }
+    },
+    close : {
+        x : '10rem',
+        opacity : 0
+    }
 }
