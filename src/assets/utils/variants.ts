@@ -49,11 +49,15 @@ export const snackbar : Variants = {
         x : 0,
         opacity : 1,
         transition : {
-            type : 'spring'
+            type : 'spring',
+            damping : 20
         }
     },
     close : {
-        x : '10rem',
-        opacity : 0
+        x : '20rem',
+        opacity : 0,
+        transition : {
+            duration  : .5
+        }
     }
 }

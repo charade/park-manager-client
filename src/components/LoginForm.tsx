@@ -7,13 +7,13 @@ import { SignDataTypes, SIGN_DEFAULT_VALUE  } from '../types/user';
 import { users, status } from '../services';
 import { useNavigate } from 'react-router-dom';
 import { Form } from './Form';
-import { Snackbar, SnackBarT } from './Snackbar';
+import { Snackbar } from './Snackbar';
+import { useNotification } from '../hooks';
 
 export const LoginForm = () => {
     const [data, setData] = useState<SignDataTypes>(SIGN_DEFAULT_VALUE);
     const [ step, setStep ] = useState<number>(0);
-    const [ notification, setNotification ] = useState<SnackBarT>();
-    const [ openSnackbar, setOpenSnackbar ] = useState<boolean>(false);
+    const notification = useNotification();
     const classes = useLoginFormStyle();
     const buttonClasses = useSubmitBtnStyle();
     const navigate = useNavigate();
@@ -22,33 +22,41 @@ export const LoginForm = () => {
 
     const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
         const target = e.target as HTMLInputElement;
-        setData({...data, [target.name] : target.value})
+        setData({...data, [target.name] : target.value});
     };
 
     const handleSubmit = async(e : React.SyntheticEvent) => {
         e.preventDefault();
-
         //login step
         if(!step && data.email && data.password){
             const { email, password } = data;
             const response = await users.login({email, password}).catch(error => {
                 //error handling
                 const message = error.response.data.description;
-                setNotification({ severity : "error", message })
-                setOpenSnackbar(true)
+                notification.set({ severity : "error", message });
+                notification.setOpen(true);
             })
             if(response && response.status === status.SUCCESS){
                 const auth = response.data;
-                localStorage.setItem('auth', JSON.stringify(auth))
+                localStorage.setItem('auth', JSON.stringify(auth));
                 navigate(`/home`);
             };
-
         };
         //sign up step
         if(step && Object.values(data).every((value) => value)){
-            // const response = await users.register(data);
-        }
-    }
+            const response = await users.register(data).catch(err => {
+                //error handling
+                const message = err.response.data.description;
+                notification.set({ severity : "error", message });
+            });
+            //success notification & redirect to login
+            if(response && response.status === status.CREATED){
+                notification.set({ severity : "info", message : 'You can connect to your account, enjoy !' });
+                setStep(0);
+            };
+            notification.setOpen(true);
+        };
+    };
     
     return(
         <AnimateSharedLayout>
@@ -79,10 +87,10 @@ export const LoginForm = () => {
                 </div>
             </Form>
             <Snackbar 
-                open = { openSnackbar }
-                setOpen = { setOpenSnackbar } 
-                message = { notification?.message }
-                severity = { notification?.severity }
+                open = { notification.open }
+                setOpen = { notification.setOpen } 
+                message = { notification.value?.message }
+                severity = { notification.value?.severity}
             />
         </AnimateSharedLayout>
     )
