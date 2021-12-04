@@ -2,10 +2,12 @@ import { makeStyles } from "@material-ui/core";
 
 const useNavbarStyle = makeStyles(theme => ({
     paper : {
+        position :'fixed',
+        zIndex : 7,
+        width : '100%',
         display : 'flex',
         justifyContent : 'space-around',
         alignItems: 'center',
-        width: '100%',
         background : theme.palette.secondary.light,
         height : '6rem',
     },

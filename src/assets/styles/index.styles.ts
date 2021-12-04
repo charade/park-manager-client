@@ -18,6 +18,7 @@ import useDividerStyle from './Divider.styles';
 import useModalStyle from './Modal.styles';
 import useSubmitBtnStyle from './SubmitBtn.styles';
 import useSnackbarStyle from './SnackBar.styles';
+import useCheckboxStyle from './Checkbox.styles';
 
 export {
     useLoginViewStyle,
@@ -39,5 +40,6 @@ export {
     useDividerStyle,
     useModalStyle,
     useSubmitBtnStyle,
-    useSnackbarStyle
+    useSnackbarStyle,
+    useCheckboxStyle
 };

@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core';
 
 const useSnackbarStyle = makeStyles(theme => ({
     snackbar : {
-        zIndex : 5,
+        zIndex : 9,
         position : 'fixed',
         top : '3rem',
         right : '.5rem',

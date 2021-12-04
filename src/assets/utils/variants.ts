@@ -1,4 +1,3 @@
-import { Opacity } from "@mui/icons-material";
 import { Variants } from "framer-motion";
 
 export const inputLabel : Variants = {

@@ -1,6 +1,7 @@
 import { usePlacesTableStyle } from '../assets/styles/index.styles';
 import { useSelector } from 'react-redux';
 import { ReducerRootStateType } from '../state';
+import { Checkbox } from './Checkbox';
 
 export const PlacesTable = () => {
     const classes = usePlacesTableStyle();
@@ -22,10 +23,10 @@ export const PlacesTable = () => {
                     <tbody>
                         { places.map((place, i )=> {
                             return(
-                                <tr key = { `place-${place.id}-row`} className = { `${classes.row }`}>
+                                <tr key = { `place-${place.id}-row-${i}`} className = { `${classes.row }`}>
                                     <td className = { classes.cell }><span>{ place.placeNumber }</span></td>
                                     <td className = { classes.cell }><span>{ place.floor }</span></td>
-                                    <td className = { classes.cell }><span>{ '-' }</span></td>
+                                    <td className = { classes.cell }><Checkbox /></td>
                                 </tr>
                             )
                         })}
