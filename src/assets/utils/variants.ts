@@ -60,4 +60,30 @@ export const snackbar : Variants = {
             duration  : .5
         }
     }
-}
+};
+export const landing : Variants = {
+    open : {
+        width : '100%',
+        opacity :1
+    },
+    close : {
+        width : '0',
+        opacity : 0,
+        transition : {
+            delay : .38
+        }
+    }
+};
+export const logo: Variants = {
+    open : {
+        y : 0,
+        opacity : 1,
+        transition : {
+            type : 'spring',
+        }
+    },
+    close : {
+        opacity : 0,
+        y : '-15rem',
+    }
+};
