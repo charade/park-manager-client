@@ -1,11 +1,11 @@
 import { useState } from "react";
 
 const useToggle = () => {
-    const [ clicked, set ] = useState<boolean>(false);
+    const [ isTrue, set ] = useState<boolean>(false);
 
-    const click: () => void = () => set(!clicked);
+    const toggle: () => void = () => set(!isTrue);
 
-    return [ clicked, click ]
+    return { isTrue, toggle } 
 };
 
 export default useToggle;

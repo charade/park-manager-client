@@ -6,7 +6,7 @@ import { Checkbox } from './Checkbox';
 export const PlacesTable = () => {
     const classes = usePlacesTableStyle();
     const places = useSelector((store : ReducerRootStateType) => store.places);
-    console.log(places)
+    
     return(
         <div className = { classes.container }>
             <table className = { classes.table } aria-label = 'table-header'>
@@ -26,7 +26,7 @@ export const PlacesTable = () => {
                                 <tr key = { `place-${place.id}-row-${i}`} className = { `${classes.row }`}>
                                     <td className = { classes.cell }><span>{ place.placeNumber }</span></td>
                                     <td className = { classes.cell }><span>{ place.floor }</span></td>
-                                    <td className = { classes.cell }><Checkbox /></td>
+                                    <td className = { classes.cell }><Checkbox id = { place.id }/></td>
                                 </tr>
                             )
                         })}

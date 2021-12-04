@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core';
+
 const useCheckboxStyle = makeStyles({
     container : {
         height : '100%',
@@ -14,6 +15,7 @@ const useCheckboxStyle = makeStyles({
         height : '1.7rem',
         borderRadius : '.4rem',
         border : '1px solid lightgrey',
+        cursor : 'pointer'
     },
     inputCheck : {
         position :'absolute',

@@ -19,6 +19,8 @@ import useModalStyle from './Modal.styles';
 import useSubmitBtnStyle from './SubmitBtn.styles';
 import useSnackbarStyle from './SnackBar.styles';
 import useCheckboxStyle from './Checkbox.styles';
+import useAppsMenu from './AppsMenu.style';
+import usePopperStyle from './Popup.styles';
 
 export {
     useLoginViewStyle,
@@ -41,5 +43,7 @@ export {
     useModalStyle,
     useSubmitBtnStyle,
     useSnackbarStyle,
-    useCheckboxStyle
+    useCheckboxStyle,
+    useAppsMenu,
+    usePopperStyle
 };

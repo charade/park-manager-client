@@ -86,3 +86,13 @@ export const logo: Variants = {
         y : '-15rem',
     }
 };
+export const popper : Variants = {
+    open : {
+        height : '8rem',
+        opacity : 1,
+    },
+    close : {
+        height : 0,
+        opacity : 0
+    }
+}
