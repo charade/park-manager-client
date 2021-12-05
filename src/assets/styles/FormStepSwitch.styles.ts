@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 
-const useLoginFormStyle = makeStyles(theme => ({
+const useFormStepSwitchStyle = makeStyles(theme => ({
     footer : {
         display : 'flex',
         flexDirection : 'column',
@@ -9,9 +9,9 @@ const useLoginFormStyle = makeStyles(theme => ({
     },
     stepSwitch : {
         textDecoration : 'underline',
-        color : theme.palette.primary.light,
+        color : 'rgb(157, 203, 234)',
         cursor : 'pointer'
     }
 }));
 
-export default useLoginFormStyle;
+export default useFormStepSwitchStyle;

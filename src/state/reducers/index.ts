@@ -1,4 +1,4 @@
 import userReducer  from './users';
 import placesReducer from './places';
-
-export { userReducer, placesReducer};
+import formReducer from './form';
+export { userReducer, placesReducer, formReducer};
