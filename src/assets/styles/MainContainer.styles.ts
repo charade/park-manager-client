@@ -22,7 +22,7 @@ const useMainContainerStyle = makeStyles(theme => ({
        fontSize :'1.7rem',
        cursor : 'pointer',
        '&:hover' : {
-           background : 'rgba(128, 179, 244, .3)'
+           background : theme.palette.primary.light
        },
        //icon
        '& > *' : {

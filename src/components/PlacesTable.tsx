@@ -6,6 +6,7 @@ import { sortByCreationDate } from '../utils/functions';
 
 export const PlacesTable = () => {
     const classes = usePlacesTableStyle();
+
     const places = useSelector((store : ReducerRootStateType) => store.places);
     
     return(

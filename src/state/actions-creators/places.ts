@@ -13,7 +13,6 @@ export const loadPlaces = () => {
         })
     };
 };
-
 export const addPlace = (place : Places) => {
     return (dispatch : Dispatch<PlacesActionType>) => {
         dispatch({
@@ -22,12 +21,20 @@ export const addPlace = (place : Places) => {
         })
     };
 };
-
 export const removePlace = (id : string) => {
     return (dispatch : Dispatch<PlacesActionType>) => {
         dispatch({
             type : PlacesAction.REMOVE_PLACE,
             payload : id
+        })
+    }
+};
+export const filterByFloor = (floor: number) => {
+    return async(dispatch : Dispatch<PlacesActionType>) => {
+        const response = await places.filterByFloor(floor);
+        dispatch({
+            type : PlacesAction.FILTERBYFLOOR,
+            payload : response.data
         })
     }
 }

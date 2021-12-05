@@ -36,7 +36,7 @@ export const placeForm : Variants = {
 };
 export const select : Variants = {
     animate : open => ({
-        width : open ? '8rem' : '4.8rem',
+        width : open ? '12rem' : '4.8rem',
         border : open ? '1px solid rgba(0, 0, 0, .3)' : 'none',
         transition : {
             ease : "linear",
@@ -95,5 +95,16 @@ export const popper : Variants = {
     close : {
         height : 0,
         opacity : 0
+    }
+};
+export const selectFloors : Variants = {
+    open : {
+        opacity : 1
+    },
+    close : {
+        opacity : 0,
+        transition : {
+            duration : .5
+        }
     }
 }
