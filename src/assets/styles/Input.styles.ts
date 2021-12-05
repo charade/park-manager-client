@@ -7,16 +7,13 @@ const useInputStyle = makeStyles(theme => ({
         height : '3.5rem',
         fontFamily : theme.typography.fontFamily,
         background  : 'inherit',
-        '& > *' : {
-            color: theme.palette.secondary.light
-        }
     },
     label : {
         position :'absolute',
         fontSize : '1.4rem',
         width : '100%',
         height :'70%',
-
+        color :'rgba(255, 255, 255, .7)'
     },
     inputField : {
         width : '100%',
@@ -26,6 +23,7 @@ const useInputStyle = makeStyles(theme => ({
         border : 'none',
         borderBottom : '1px solid rgba(0, 0, 0, .3)',
         background  : 'inherit',
+        color : '#fff'
     },
     underline : {
         height : '2px',

@@ -1,6 +1,6 @@
 import useLoginViewStyle from './LoginView.styles';
 import useFormStyle from './Form.styles';
-import useLoginFormStyle from './LoginForm.styles';
+import useStepSwitchFormStyle from './FormStepSwitch.styles';
 import useInputStyle from './Input.styles';
 import useHelperStyle from './Helper.styles';
 import useButtonStyle from './Button.styles';
@@ -26,7 +26,7 @@ import useSelectFloorsStyle from './SelectFloors.styles';
 export {
     useLoginViewStyle,
     useFormStyle,
-    useLoginFormStyle,
+    useStepSwitchFormStyle,
     useInputStyle,
     useHelperStyle,
     useButtonStyle,

@@ -1,6 +1,6 @@
 import { AnimatePresence, AnimateSharedLayout } from 'framer-motion';
-import React, { useState } from 'react';
-import { useLoginFormStyle, useSubmitBtnStyle } from '../assets/styles/index.styles';
+import React, { useState, useMemo } from 'react';
+import { useSubmitBtnStyle } from '../assets/styles/index.styles';
 import { Input } from './Input';
 import { Button } from './Button';
 import { SignDataTypes, SIGN_DEFAULT_VALUE  } from '../utils/types/user';
@@ -9,26 +9,44 @@ import { useNavigate } from 'react-router-dom';
 import { Form } from './Form';
 import { Snackbar } from './Snackbar';
 import { useNotification } from '../hooks';
+import { FormStepSwitch } from './FormStepSwitch';
+import { bindActionCreators } from 'redux';
+import { formActionCreators } from '../state/actions-creators';
+import { useDispatch, useSelector } from 'react-redux';
+import { ReducerRootStateType } from '../state';
+import { formStep, userRole } from '../utils/contants';
 
+/**
+ *  3 step from : 0 is login, 1 is sign up, 2 is create company account
+ *  submit the same form fields form signup and register company
+ */
 export const LoginForm = () => {
     const [data, setData] = useState<SignDataTypes>(SIGN_DEFAULT_VALUE);
-    const [ step, setStep ] = useState<number>(0);
     const notification = useNotification();
-    const classes = useLoginFormStyle();
     const buttonClasses = useSubmitBtnStyle();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const { setFormStep } = bindActionCreators(formActionCreators, dispatch);
+    const step = useSelector((store : ReducerRootStateType) => store.form);
 
-    const handleSwitchStep = () => setStep(step ? 0 : 1);
+    const title = useMemo(() => {
+        switch(step){
+            case formStep.LOGIN : return 'Login';
+            case formStep.SIGN_UP: return 'Sign up';
+            case formStep.REGISTER : return 'Register';
+        }
+    }, [step]);
 
     const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
         const target = e.target as HTMLInputElement;
         setData({...data, [target.name] : target.value});
     };
-
     const handleSubmit = async(e : React.SyntheticEvent) => {
         e.preventDefault();
-        //login step
-        if(!step && data.email && data.password){
+        /**
+         *  Login step
+         */
+        if((step === formStep.LOGIN) && data.email && data.password){
             const { email, password } = data;
             const response = await users.login({email, password}).catch(error => {
                 //error handling
@@ -42,55 +60,54 @@ export const LoginForm = () => {
                 navigate(`/home`);
             };
         };
-        //sign up step
+        /**
+         * sign up or register on non aleady regitered company
+         * sign step === 1, register step === 2, on login step === 0
+         */
         if(step && Object.values(data).every((value) => value)){
-            const response = await users.register(data).catch(err => {
+            const user = {...data};
+            //if company did not exist yet so signin up user is admin
+            if(step === formStep.REGISTER){
+                user.role = userRole.ADMIN
+            };
+            const response = await users.register(user).catch(err => {
                 //error handling
                 const message = err.response.data.description;
                 notification.set({ severity : "error", message });
             });
             //success notification & redirect to login
-            if(response && response.status === status.CREATED){
-                notification.set({ severity : "info", message : 'You can connect to your account, enjoy !' });
-                setStep(0);
+            if(response && response.status === status.SUCCESS){
+                setFormStep(formStep.LOGIN);
+                notification.set({ severity : "info", message : 'You can connect to your account, enjoy !'});
             };
             notification.setOpen(true);
+            console.log(user)
         };
     };
     
     return(
         <AnimateSharedLayout>
-            <Form  onSubmit = { handleSubmit } caption = { step ? 'Sign up' : 'Sign in' } >
+            <Form  onSubmit = { handleSubmit } caption = { title } >
                 {/* animate in/ out extra data for sign up */}
                 <AnimatePresence>
                     {step && 
                         <> 
-                            <Input onChange = { handleChange } name = 'firstName' label = 'first name'/>
-                            <Input onChange = { handleChange } name = 'lastName' label = 'last name'/>
-                            <Input onChange = { handleChange } name = 'companyName' label = 'company name'/>
+                        <Input onChange = { handleChange } name = 'firstName' label = 'first name' required/>
+                        <Input onChange = { handleChange } name = 'lastName' label = 'last name' required/>
+                        <Input onChange = { handleChange } name = 'companyName' label = 'company name' required/>
                         </> 
                         }
                 </AnimatePresence>
-                
-                <Input onChange = { handleChange } name = 'email' label = 'email'/>
-                <Input onChange = { handleChange } name = 'password' label = 'password'/>
+                <Input onChange = { handleChange } name = 'email' label = 'email' required/>
+                <Input onChange = { handleChange } name = 'password' label = 'password' required/>
                 <Button type = 'submit' className = {buttonClasses.button} label = 'Submit'/>
-                <div className = { classes.footer }>
-                    <span> { step ? 'You already have an account ' : " You don't have an account" } </span>
-                    <span 
-                        role = 'button'
-                        onClick = { handleSwitchStep }
-                        className = { classes.stepSwitch }
-                    > 
-                        { step ? 'sign in' : 'sign up' } 
-                    </span>
-                </div>
+                <FormStepSwitch/>
             </Form>
             <Snackbar 
-                open = { notification.open }
-                setOpen = { notification.setOpen } 
-                message = { notification.value?.message }
-                severity = { notification.value?.severity}
+            open = { notification.open }
+            setOpen = { notification.setOpen } 
+            message = { notification.value?.message }
+            severity = { notification.value?.severity}
             />
         </AnimateSharedLayout>
     )

@@ -39,7 +39,8 @@ export const Form = ({
             ${className}`} 
             onSubmit = { onSubmit }
         >
-            <h2 className = { classes.caption }> { caption } </h2>
+            <motion.h2 animate = {{opacity: [.5, 1]}}  className = { classes.caption }> { caption } </motion.h2>
+
             <Helper message = { helperText as string } when = { error }/>
             { children }
         </motion.form>

@@ -12,14 +12,14 @@ const useFormStyle = makeStyles(theme =>({
         boxShadow : '0 0 .4rem rgba(0, 0, 0, .8)',
         '& > *' : {
             fontFamily : theme.typography.fontFamily,
-            margin : '1.5rem',
+            margin : '1rem',
             color  : theme.palette.secondary.light
         },
         background : theme.palette.primary.main,
     },
     caption : {
         fontSize : '1.8rem',
-        marginBottom : '4rem',
+        marginBottom : '1rem',
     }
 }));
 
