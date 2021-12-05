@@ -5,7 +5,6 @@ import { Button } from './Button';
 import SearchIcon from '@mui/icons-material/Search';
 import GroupsIcon from '@mui/icons-material/Groups';
 import ExploreIcon from '@mui/icons-material/Explore';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { Select } from './Select';
 import { motion } from 'framer-motion';
 import { Popper } from './Popper';
@@ -22,10 +21,7 @@ export const Navbar = () => {
                 <Logo className = { classes.logo } />
 
                 <Select open = { openSelect } setOpen = { setOpenSelect }>
-                    <Button 
-                    className = {classes.navItem } 
-                    icon = { openSelect ? <ArrowDropDownIcon/> : <SearchIcon /> } 
-                    />
+                    <Button className = {classes.navItem } icon = { <SearchIcon /> } />
                 </Select>
 
                 <Button 

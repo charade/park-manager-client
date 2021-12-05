@@ -14,7 +14,7 @@ export const Theme = ({ children } : ThemeProps) => {
         palette : {
             primary : {
                 main : 'rgb(64, 85, 136)',
-                light : 'rgb(157, 203, 234)',
+                light : 'rgba(128, 179, 244, .3)',
             },
             secondary : {
                 main : 'rgb(243, 242, 239)',
