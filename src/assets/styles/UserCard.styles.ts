@@ -7,7 +7,7 @@ const useUserCardStyle = makeStyles(theme =>({
         justifyContent :'center',
         width : '100%',
         height : '30%',
-        margin : '3rem 0',
+        margin : '6rem 0',
     },
     card : {
         position : 'relative',
@@ -20,7 +20,7 @@ const useUserCardStyle = makeStyles(theme =>({
         boxShadow : '0 0 .3rem rgba(0, 0, 0, .6)',
         overflow: 'hidden',
         background : theme.palette.primary.main,
-        paddingTop :'.7rem'
+        paddingTop :'.7rem',
     },
     cardHeader : {
         background : theme.palette.secondary.light,

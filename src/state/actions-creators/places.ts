@@ -1,4 +1,4 @@
-import { Places } from "../../types/places";
+import { Places } from "../../utils/types/places";
 import { PlacesAction } from "../actions";
 import { PlacesActionType } from "../reducers/places";
 import { Dispatch } from "redux";
@@ -16,11 +16,18 @@ export const loadPlaces = () => {
 
 export const addPlace = (place : Places) => {
     return (dispatch : Dispatch<PlacesActionType>) => {
-        console.log(19, place)
         dispatch({
             type : PlacesAction.LOAD_PLACES,
             payload : place
         })
-        console.log(23, place)
     };
 };
+
+export const removePlace = (id : string) => {
+    return (dispatch : Dispatch<PlacesActionType>) => {
+        dispatch({
+            type : PlacesAction.REMOVE_PLACE,
+            payload : id
+        })
+    }
+}

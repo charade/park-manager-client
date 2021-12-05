@@ -11,11 +11,25 @@ type ButtonPropsT = {
     onClick ?: () => void,
 };
 
-export const Button = ({ label, className, icon, type, iconPosition, onClick } : ButtonPropsT) => {
+export const Button = ({
+    label,
+    className,
+    icon,
+    type,
+    iconPosition,
+    onClick,
+    
+} : ButtonPropsT) => {
+    
     const classes = useButtonStyle();
 
     return(
-        <motion.button layout  className = { `${classes.button} ${ className}` } type = { type } onClick = { onClick }>
+        <motion.button 
+        layout  
+        className = { `${classes.button} ${ className}` } 
+        type = { type } 
+        onClick = { onClick }
+        >
             { iconPosition === 'before' && icon }
             { label }
             { !label && icon }

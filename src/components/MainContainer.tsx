@@ -7,14 +7,12 @@ import { Divider } from './Divider';
 import { Button } from './Button';
 import AddIcon from '@mui/icons-material/Add';
 import { PlacesForm } from './PlacesForm';
-import { useState } from 'react';
+import { useToggle } from '../hooks';
 
 export const MainContainer = () => {
-    const [ openPlaceForm, setOpenPlaceForm ] = useState<boolean>(false);
+    const openPlaceForm = useToggle();
     const classes = useMainContainerStyle();
 
-    const handleOpenPlaceForm = () => setOpenPlaceForm(true);
-        
     return(
         <div className = { classes.container }>
             <Navbar />
@@ -26,9 +24,9 @@ export const MainContainer = () => {
                 icon = { <AddIcon /> } 
                 label = 'add' 
                 iconPosition = 'after' 
-                onClick = { handleOpenPlaceForm }
+                onClick = { openPlaceForm.toggle }
             />
-            <PlacesForm open = { openPlaceForm } setOpen = { setOpenPlaceForm } />
+            <PlacesForm open = { openPlaceForm.isTrue } setOpen = { openPlaceForm.toggle } />
             <PlacesTable />
         </div>
     )

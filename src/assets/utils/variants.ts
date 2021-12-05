@@ -1,4 +1,3 @@
-import { Opacity } from "@mui/icons-material";
 import { Variants } from "framer-motion";
 
 export const inputLabel : Variants = {
@@ -35,9 +34,10 @@ export const placeForm : Variants = {
         y : 200
     }
 };
-export const searchField : Variants = {
+export const select : Variants = {
     animate : open => ({
-        width : open ? '100%' : '4.8rem',
+        width : open ? '8rem' : '4.8rem',
+        border : open ? '1px solid rgba(0, 0, 0, .3)' : 'none',
         transition : {
             ease : "linear",
             duration : .1
@@ -87,3 +87,13 @@ export const logo: Variants = {
         y : '-15rem',
     }
 };
+export const popper : Variants = {
+    open : {
+        height : '8rem',
+        opacity : 1,
+    },
+    close : {
+        height : 0,
+        opacity : 0
+    }
+}

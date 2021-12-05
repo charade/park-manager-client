@@ -1,5 +1,5 @@
 import { request } from './config';
-import { SignDataTypes, LoginT } from '../types/user';
+import { SignDataTypes, LoginT } from '../utils/types/user';
 
 const users =  {
     register : (data: SignDataTypes) => request.post('/users/register', data),
