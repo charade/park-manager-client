@@ -1,15 +1,28 @@
 import { useAvarStyle } from '../assets/styles/index.styles';
-import { ReducerRootStateType } from '../state';
-import { useSelector } from 'react-redux';
 
-export const Avatar = () => {
-    const classes = useAvarStyle();
-    const user = useSelector((store : ReducerRootStateType) => store.user);
+interface StyleProp{
+    root ?:string,
+    img ?: string
+    placeholder ?: string
+}
+type AvatarProps = {
+    classes ?: StyleProp
+    src ?: string
+    placeholder ?: string
+    alt ?: string
+};
+
+export const Avatar = ({ classes, src, placeholder, alt } : AvatarProps) => {
+    const styled = useAvarStyle();
 
     return(
-        <div className = { classes.box }>
-            { user?.avatar ? <img src = { user.avatar } alt = { `${user.firstName}` }/> :
-                <h3 className = { classes.placehoder }> { user?.firstName.charAt(0) } </h3>
+        <div className = { `${styled.box} ${classes?.root}` }>
+            {src ? 
+            <img src = { src } alt = { alt } className = { `${styled.img} ${classes?.img }` }/> 
+            :
+            <h3 className = {classes?.placeholder || styled.placehoder }> 
+                { placeholder?.charAt(0) || '' } 
+            </h3>
             }
         </div>
     )

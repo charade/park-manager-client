@@ -1,6 +1,8 @@
 import { createTheme, ThemeProvider } from '@material-ui/core';
 import { useMemo } from 'react';
-
+/**
+ * lighterblue 'rgb(157, 203, 234)' 
+ */
 type ThemeProps = {
     children : React.ReactNode
 };

@@ -1,5 +1,5 @@
 import { request } from './config';
-import { CreatePlace } from '../utils/types/places';
+import { CreatePlace } from '../utils/dataTypes/places';
 
 const places = {
     create : (place : CreatePlace) => request.post('/places/auth', place),

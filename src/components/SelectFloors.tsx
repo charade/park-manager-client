@@ -14,6 +14,7 @@ export const SelectFloor = () => {
     const [ floors, setFloors ] = useState<number[]>([]);
     const dispatch = useDispatch();
     const { filterByFloor } = bindActionCreators(placesActionCreators, dispatch);
+    const { loadPlaces } = bindActionCreators(placesActionCreators, dispatch);
     const classes = useSelectFloorsStyle();
 
     //save floor real time for admin user when creating a place
@@ -56,6 +57,9 @@ export const SelectFloor = () => {
             initial = 'close'
             className = { classes.container }
             >
+                { floors.length && 
+                <li className = { classes.item } onClick = { loadPlaces }>all</li> 
+                }
                 {floors.sort((a, b) => a! - b!).map((floor, i) => {
                     return(
                         <li 

@@ -1,5 +1,5 @@
 import { UserAction } from "../actions";
-import { User } from "../../utils/types/user";
+import { User } from "../../utils/dataTypes/user";
 
 export type UserActionType = {
     type : string,

@@ -1,4 +1,5 @@
 import { userRole } from "../contants";
+
 export type LoginT = {
     email: string,
     password : string
@@ -6,7 +7,7 @@ export type LoginT = {
 export type SignDataTypes = LoginT & {
     companyName : string,
     firstName : string,
-    lastName : string
+    lastName : string,
     role ?: string
 };
 export const SIGN_DEFAULT_VALUE : SignDataTypes = {
@@ -22,4 +23,5 @@ export type User = {
     firstName : string,
     lastName : string,
     id ?: string
+    role : string,
 }

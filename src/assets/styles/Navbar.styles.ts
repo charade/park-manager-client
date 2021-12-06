@@ -6,6 +6,7 @@ const useNavbarStyle = makeStyles(theme => ({
         position :'fixed',
         height : '6rem',
         width :'100%',
+        boxShadow :'0 0 .3rem rgba(0, 0, 0, .4)'
     },
     paper : {
         width : '100%',

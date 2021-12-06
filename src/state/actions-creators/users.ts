@@ -1,4 +1,4 @@
-import { User } from "../../utils/types/user";
+import { User } from "../../utils/dataTypes/user";
 import { UserAction } from "../actions";
 import { UserActionType } from '../reducers/users';
 import { Dispatch } from "react";

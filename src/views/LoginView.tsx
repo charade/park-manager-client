@@ -13,7 +13,11 @@ const LoginView = () => {
     const step = useSelector((store : ReducerRootStateType) => store.form);
     const { setFormStep } = bindActionCreators(formActionCreators, dispatch);
 
-    useEffect(() => localStorage.removeItem('auth'),[]);
+    useEffect(() =>{
+        localStorage.removeItem('auth');
+        localStorage.removeItem('floors');
+    } ,[]);
+    
     //set form step to register user without company regitered yet
     const handleSwitchStep = () => setFormStep(formStep.REGISTER);
 

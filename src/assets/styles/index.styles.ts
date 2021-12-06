@@ -22,6 +22,7 @@ import useCheckboxStyle from './Checkbox.styles';
 import useAppsMenu from './AppsMenu.style';
 import usePopperStyle from './Popup.styles';
 import useSelectFloorsStyle from './SelectFloors.styles';
+import useSidebarStyle from './Sidebar.style';
 
 export {
     useLoginViewStyle,
@@ -47,5 +48,6 @@ export {
     useCheckboxStyle,
     useAppsMenu,
     usePopperStyle,
-    useSelectFloorsStyle
+    useSelectFloorsStyle,
+    useSidebarStyle
 };
