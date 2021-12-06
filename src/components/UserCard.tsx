@@ -29,9 +29,7 @@ export const UserCard = () => {
                 </div>
                 <Button 
                     className = { classes.btn }
-                    label = 'update' 
                     icon = {<KeyboardArrowDownIcon className = { classes.btnIcon }/>} 
-                    iconPosition = 'after'
                     onClick = { handleToggleOpen }
                 />
             </div>

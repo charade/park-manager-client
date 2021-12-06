@@ -108,31 +108,50 @@ export const selectFloors : Variants = {
         }
     }
 };
-export const drawer : Variants = {
+export const sidebar : Variants = {
     open : {
-        width : '150rem',
+        width : '100%',
         opacity : 1,
         transition : {
-            when : "beforeChildren",
-            type : 'spring',
-            staggerChildren : .5,
-            damping : 18
+            damping : 18,
+            duration : .1
         }
     },
     close : {
-        width : 0,
+        width : '0',
         opacity : 0,
         transition : {
             when : 'afterChildren',
-            staggerChildren : -.5,
+            damping : 20,
+            delay: .2
+        }
+    }
+};
+export const sidebarToolbar : Variants = {
+    open : {
+        transition : {
+            type : 'spring',
+            staggerChildren : .3,
+            damping : 18,
+            delayChildren : .3
+        }
+    },
+    close : {
+        transition : {
+            when : 'afterChildren',
+            staggerChildren : -.1,
             damping : 20
         }
     }
-}
-export const drawerItem :  Variants = {
+};
+export const sidebarItem :  Variants = {
     open : {
         x : 0,
-        opacity : 1
+        opacity : 1,
+        transition : {
+            duration : .4,
+            type : 'spring'
+        }
     },
     close : {
         x : 100,

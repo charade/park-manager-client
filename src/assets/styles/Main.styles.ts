@@ -5,6 +5,9 @@ const useMainStyle = makeStyles(theme => ({
         height : '100%',
         display : 'flex',
         background: theme.palette.secondary.main,
+        [theme.breakpoints.up('sm')] : {
+            justifyContent: 'space-between'
+        }
     }
 }));
 
