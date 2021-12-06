@@ -11,7 +11,11 @@ const usePlacesTableStyle = makeStyles(theme => ({
         fontFamily : theme.typography.fontFamily,
         color : '#fff',
         background : theme.palette.primary.main,
-        fontSize :'1.4rem'
+        fontSize :'1.4rem',
+        [theme.breakpoints.up('sm')] : {
+            width : '90%',
+            margin :'2rem 1.5rem'
+        }
     },
     table : {
         borderCollapse : 'collapse',

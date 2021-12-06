@@ -9,17 +9,25 @@ const useNavbarStyle = makeStyles(theme => ({
         boxShadow :'0 0 .3rem rgba(0, 0, 0, .4)'
     },
     paper : {
-        width : '100%',
-        height :'100%',
         position : 'relative',
         display : 'flex',
-        justifyContent : 'space-around',
+        justifyContent : 'flex-end',
+        paddingRight : '3rem',
         alignItems: 'center',
+        width : '100%',
+        height :'100%',
         background : theme.palette.secondary.light,
+        [theme.breakpoints.up('sm')] :{
+            justifyContent: 'center'
+        }
     },
     logo : {
         width : '4.8rem',
         height :'4rem',
+        position : 'absolute',
+        top : '50%',
+        left :'.3rem',
+        transform :'translateY(-50%)'
     },
     //button
     navItem : {
@@ -27,10 +35,13 @@ const useNavbarStyle = makeStyles(theme => ({
         height :'4rem',
         border : 'none',
         background : theme.palette.secondary.light,
+        '&:first-child' : {
+            flex :2
+        },
         //button icon
         '& > *' : {
-            minWidth : '100%',
-            minHeight : '100%',
+            minWidth : '70%',
+            minHeight : '70%',
             color : 'rgba(0, 0, 0, .6)',
         },
     },

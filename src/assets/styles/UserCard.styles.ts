@@ -8,6 +8,13 @@ const useUserCardStyle = makeStyles(theme =>({
         width : '100%',
         height : '30%',
         margin : '6rem 0',
+        [theme.breakpoints.up('sm')] :{
+            width : '40rem',
+            height :'100%',
+            margin :0,
+            alignItems : 'flex-start',
+            padding :'10rem 1rem'
+        },
     },
     card : {
         position : 'relative',
@@ -21,6 +28,11 @@ const useUserCardStyle = makeStyles(theme =>({
         overflow: 'hidden',
         background : theme.palette.primary.main,
         paddingTop :'.7rem',
+        [theme.breakpoints.up('sm')] :{
+            height : '20rem',
+            borderRadius :'1rem',
+
+        }
     },
     cardHeader : {
         background : theme.palette.secondary.light,

@@ -1,13 +1,20 @@
-import { userReducer, placesReducer, formReducer, colleaguesReducer } from './reducers';
 import { applyMiddleware, createStore, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
+import {
+    userReducer,
+    placesReducer,
+    formReducer,
+    colleaguesReducer,
+    sidebarReducer 
+} from './reducers';
 
 const reducer = combineReducers({
     user : userReducer,
     places : placesReducer,
     form : formReducer,
-    colleagues : colleaguesReducer
-})
+    colleagues : colleaguesReducer,
+    sidebar : sidebarReducer
+});
 
 export const store = createStore(reducer, applyMiddleware(thunk));
 
