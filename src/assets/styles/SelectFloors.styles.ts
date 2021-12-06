@@ -15,6 +15,9 @@ const useSelectFloorsStyle = makeStyles(theme =>({
         display : 'flex',
         flexDirection :'column',
         padding : '1rem',
+        '& > *' : {
+            margin : '.8rem 0'
+        }
     },
     item:{
         width :'100%',

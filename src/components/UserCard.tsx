@@ -18,7 +18,11 @@ export const UserCard = () => {
             <div className = { classes.card }>
                 <div className = { classes.cardHeader }></div>
                 <div className = { classes.cardContent }>
-                    <Avatar />
+                    <Avatar 
+                    placeholder = { user?.firstName }
+                    src = { user?.avatar }
+                    alt = { `${user?.firstName}-${user?.lastName}` }
+                    />
                     <h2 className = { classes.userName }> 
                         { `${user?.firstName} ${ user?.lastName }` } 
                     </h2>

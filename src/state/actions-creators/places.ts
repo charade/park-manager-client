@@ -1,4 +1,4 @@
-import { Places } from "../../utils/types/places";
+import { Places } from "../../utils/dataTypes/places";
 import { PlacesAction } from "../actions";
 import { PlacesActionType } from "../reducers/places";
 import { Dispatch } from "redux";

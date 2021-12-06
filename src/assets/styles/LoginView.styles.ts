@@ -14,7 +14,7 @@ const useLoginViewStyle = makeStyles(theme => ({
         top : '90%',
         left: '50%',
         transform : 'translateX(-50%)',
-        color : theme.palette.primary.main/* 'rgb(157, 203, 234)' */,
+        color : theme.palette.primary.main,
         fontSize : '1.5rem',
         textDecoration : 'underline',
         cursor : 'pointer',

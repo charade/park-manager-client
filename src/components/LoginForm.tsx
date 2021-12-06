@@ -3,7 +3,7 @@ import React, { useState, useMemo } from 'react';
 import { useSubmitBtnStyle } from '../assets/styles/index.styles';
 import { Input } from './Input';
 import { Button } from './Button';
-import { SignDataTypes, SIGN_DEFAULT_VALUE  } from '../utils/types/user';
+import { SignDataTypes, SIGN_DEFAULT_VALUE  } from '../utils/dataTypes/user';
 import { users, status } from '../services';
 import { useNavigate } from 'react-router-dom';
 import { Form } from './Form';
@@ -76,7 +76,7 @@ export const LoginForm = () => {
                 notification.set({ severity : "error", message });
             });
             //success notification & redirect to login
-            if(response && response.status === status.SUCCESS){
+            if(response && response.status === status.CREATED){
                 setFormStep(formStep.LOGIN);
                 notification.set({ severity : "info", message : 'You can connect to your account, enjoy !'});
             };

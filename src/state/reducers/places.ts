@@ -1,4 +1,4 @@
-import { Places } from '../../utils/types/places';
+import { Places } from '../../utils/dataTypes/places';
 import { PlacesAction } from '../actions';
 
 interface Load{

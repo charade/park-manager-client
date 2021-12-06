@@ -107,4 +107,35 @@ export const selectFloors : Variants = {
             duration : .5
         }
     }
+};
+export const drawer : Variants = {
+    open : {
+        width : '150rem',
+        opacity : 1,
+        transition : {
+            when : "beforeChildren",
+            type : 'spring',
+            staggerChildren : .5,
+            damping : 18
+        }
+    },
+    close : {
+        width : 0,
+        opacity : 0,
+        transition : {
+            when : 'afterChildren',
+            staggerChildren : -.5,
+            damping : 20
+        }
+    }
+}
+export const drawerItem :  Variants = {
+    open : {
+        x : 0,
+        opacity : 1
+    },
+    close : {
+        x : 100,
+        opacity : 0
+    }
 }
