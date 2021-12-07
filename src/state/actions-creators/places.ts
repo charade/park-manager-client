@@ -1,4 +1,4 @@
-import { Places } from "../../utils/dataTypes/places";
+import { Place } from "../../utils/dataTypes/places";
 import { PlacesAction } from "../actions";
 import { PlacesActionType } from "../reducers/places";
 import { Dispatch } from "redux";
@@ -13,7 +13,7 @@ export const loadPlaces = () => {
         })
     };
 };
-export const addPlace = (place : Places) => {
+export const addPlace = (place : Place) => {
     return (dispatch : Dispatch<PlacesActionType>) => {
         dispatch({
             type : PlacesAction.LOAD_PLACES,

@@ -1,12 +1,12 @@
-import { Places } from '../dataTypes/places';
+import { Place } from '../dataTypes/places';
 import { userRole } from '../contants';
 
 
-export const sortByCreationDate = (arr : Places[]) => arr.sort((a, b) => {
-    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+export const sortByUpdateDate = (arr : Place[]) => arr.sort((a, b) => {
+    return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
 })
 
-export const getFloors = (arr : Places []) => Array.from(new Set(arr.map(place => place.floor)));
+export const getFloors = (arr : Place []) => Array.from(new Set(arr.map(place => place.floor)));
 
 export const switchPermissions = (role ?: string) =>{
     switch(role){

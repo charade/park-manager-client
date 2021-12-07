@@ -7,7 +7,7 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import ExploreIcon from '@mui/icons-material/Explore';
 import { Select } from './Select';
 import { motion } from 'framer-motion';
-import { Popper } from './Popper';
+import { Finder } from './Finder';
 import { useToggle } from '../hooks';
 import { bindActionCreators }  from 'redux';
 import { useDispatch } from 'react-redux';
@@ -19,22 +19,22 @@ import { ReducerRootStateType } from '../state';
 import { userRole } from '../utils/contants';
 
 export const Navbar = () => {
-    const [ popperAnchorEl, setPopperAnchorEl ] = useState<HTMLButtonElement | null>(null);
+    const [ finderAnchorEl, setFinderAnchorEl ] = useState<HTMLButtonElement | null>(null);
     const [ openSelect, setOpenSelect ] = useState<boolean>(false);
     const dispatch = useDispatch();
     const user = useSelector((store: ReducerRootStateType) => store.user);
     const { toggleSidebar } = bindActionCreators(sidebarActionCreators, dispatch);
-    const openPopper = useToggle();
+    const openFinder = useToggle();
     const classes = useNavbarStyle();
     const isScreenMobile = !useMediaQuery(device.sm);
     const isAdmin = useMemo(() => user?.role === userRole.ADMIN,[user]);
 
     const handleToggleSidebar = () => toggleSidebar(true);
 
-    const handleOpenPopper = (e : React.MouseEvent<HTMLButtonElement>) => {
+    const handleOpenFinder = (e : React.MouseEvent<HTMLButtonElement>) => {
         const target = e.target as HTMLButtonElement;
-        openPopper.toggle();
-        setPopperAnchorEl(target)
+        openFinder.toggle();
+        setFinderAnchorEl(target)
     };
 
     return(
@@ -49,7 +49,7 @@ export const Navbar = () => {
                 <Button 
                 className = {classes.navItem } 
                 icon = { <ExploreIcon /> } 
-                onClick = { handleOpenPopper } 
+                onClick = { handleOpenFinder } 
                 />
 
                 {isScreenMobile && isAdmin &&
@@ -59,16 +59,12 @@ export const Navbar = () => {
                 onClick = { handleToggleSidebar } 
                 />
                 }
-                <Popper 
-                anchorEl = { popperAnchorEl }
-                open = { openPopper.isTrue }
-                setOpen = { openPopper.toggle }
-                props = {{
-                    origin : { vertical : 'bottom', horizontal :'right' },
-                    transform : { vertical :'top', horizontal :'right' }
-                }}
-                />
             </motion.nav>
+            <Finder 
+                open = { openFinder.isTrue }
+                setOpen = { openFinder.toggle }
+                anchorEl = { finderAnchorEl }
+            />
         </div>
     )
 }
