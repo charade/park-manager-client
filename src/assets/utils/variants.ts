@@ -1,4 +1,5 @@
 import { Variants } from "framer-motion";
+import { userRole } from "../../utils/contants";
 
 export const inputLabel : Variants = {
     focus : {
@@ -113,6 +114,7 @@ export const sidebar : Variants = {
         width : '100%',
         opacity : 1,
         transition : {
+            when : 'afterChildren',
             damping : 18,
             duration : .1
         }
@@ -133,7 +135,6 @@ export const sidebarToolbar : Variants = {
             type : 'spring',
             staggerChildren : .3,
             damping : 18,
-            delayChildren : .3
         }
     },
     close : {
@@ -157,4 +158,10 @@ export const sidebarItem :  Variants = {
         x : 100,
         opacity : 0
     }
+};
+export const role : Variants = {
+    role : custom =>({
+        background : custom === userRole.PUBLIC ? 'rgba(157, 203, 234, .7)' : 'rgb(161, 229, 149, .7)'
+    }),
+    
 }

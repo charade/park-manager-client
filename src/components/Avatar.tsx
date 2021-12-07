@@ -4,7 +4,7 @@ interface StyleProp{
     root ?:string,
     img ?: string
     placeholder ?: string
-}
+};
 type AvatarProps = {
     classes ?: StyleProp
     src ?: string

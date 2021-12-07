@@ -2,6 +2,7 @@ import { makeStyles } from "@material-ui/core";
 
 const useMainContainerStyle = makeStyles(theme => ({
     container : {
+        position :'relative',
         display : 'flex',
         flexDirection : 'column',
         height :'100%',

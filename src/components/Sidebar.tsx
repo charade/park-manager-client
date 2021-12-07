@@ -1,33 +1,37 @@
-import React, { useEffect, useRef } from 'react';
-import { useSidebarStyle } from '../assets/styles/index.styles';
-import { variants } from '../assets/utils';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ReducerRootStateType } from '../state';
-import { colleaguesActionCreators, sidebarActionCreators } from '../state/actions-creators';
-import { Avatar } from './Avatar';
+import { motion } from 'framer-motion';
 import { useMediaQuery } from '@mui/material';
+import { useSidebarStyle } from '../assets/styles/index.styles';
+import { variants } from '../assets/utils';
+import { sidebarActionCreators } from '../state/actions-creators';
+import { Details } from './Details';
 import { device } from '../assets/utils/constants';
+import { User } from '../utils/dataTypes/user';
+import { SidebarItem } from './SidebarItem';
 
 export const Sidebar = () => {
+    const [ user, setUser ] = useState<User | null>(null);
+    //used for upadeting user permissions
+    const [ userIndex, setUserIndex ] = useState<number | undefined>(undefined);
+    const [ detailsAnchorEl, setDetailsAnchorEl ] = useState<HTMLLIElement | null>(null);
+    // const [openDetails, setOpenDetails] = useState<boolean>(false);
+    const [openDetails, setOpenDetails] = useState<boolean>(false);
     const classes = useSidebarStyle();
-    // const handleClose = useCloseOnBlur(setOpen);
     const dispatch = useDispatch();
-    const { loadColleagues } = bindActionCreators(colleaguesActionCreators, dispatch);
     const { toggleSidebar } = bindActionCreators(sidebarActionCreators, dispatch);
     const open = useSelector((store : ReducerRootStateType) => store.sidebar);
     const colleagues = useSelector((store : ReducerRootStateType) => store.colleagues);
-    const ref = useRef<HTMLUListElement>(null);
+    const listRef = useRef<HTMLUListElement>(null);
     const isScreenMobile = !useMediaQuery(device.sm);
 
     useEffect(() => {
         if(open){
-            ref.current?.focus()
+            listRef.current?.focus();
         }
     }, [open]);
-    
-    useEffect(() => void loadColleagues(), [loadColleagues]);
     /**
      * explicitly set side bar open to false
      */
@@ -35,47 +39,52 @@ export const Sidebar = () => {
         if(!e.currentTarget.contains(e.relatedTarget)){
             toggleSidebar(false)
         }
-    }
-    
+    };
+    const handleOpenDetails = (user : User, index : number) => {
+        return (e : React.MouseEvent<HTMLLIElement>) =>{
+            const target = e.target as HTMLLIElement;
+            setUser(user);
+            /**
+             * selected user index in stored colleagues array
+             */
+            setUserIndex(index)
+            setDetailsAnchorEl(target);
+            setOpenDetails(true);
+        } 
+    };
+
     return(
         <motion.div 
         className = { classes.backdrop }
-        animate = { isScreenMobile ? open ? 'open' : 'close' : 'open' }
+        animate = { isScreenMobile ? (open ? 'open' : 'close') : 'open' }
         variants = { variants.sidebar }
         initial = { false }
         >
             <motion.ul 
-            ref = { ref }
+            ref = { listRef }
             tabIndex = { 0 }
             onBlur = { handleClose }
             variants = { variants.sidebarToolbar }
-            animate = { isScreenMobile ? open ? 'open' : 'close' : 'open' }
+            animate = { isScreenMobile ? (open ? 'open' : 'close') : 'open' }
             className = { classes.drawer }
             >
-                { colleagues.map((user, i) => {
-                    return(
-                        <motion.li 
-                        key = { `colleague-${user.id}-${i}` }
-                        variants = { variants.sidebarItem } 
-                        className = { classes.item }
-                        >
-                            <Avatar 
-                            placeholder = { user.firstName }
-                            classes = {{
-                                root : classes.avatarRoot,
-                                placeholder : classes.avatarPlaceholder
-                            }} 
-                            src = { user.avatar }
-                            alt = { `${user.firstName}-${user.lastName}` }
-                            />
-                            
-                            <h3 className = { classes.userName }>
-                                { `${user.firstName} ${user.lastName}` } 
-                            </h3>
-                        </motion.li>
-                    )
-                })}
+            { colleagues.map((user, i) => {
+                return(
+                    <SidebarItem 
+                    user = { user } 
+                    onClick = { handleOpenDetails(user, i) } 
+                    key = { `colleague-${user.id}-${i}`}
+                    />
+                )
+            })}
             </motion.ul>
+            <Details 
+            open = { openDetails}
+            setOpen = { setOpenDetails}
+            user = { user }
+            userIndex = { userIndex }
+            anchorEl = { detailsAnchorEl }
+            />
         </motion.div>
     )
 };

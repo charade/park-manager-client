@@ -9,11 +9,9 @@ import { useDispatch } from 'react-redux';
 import { placesActionCreators } from '../state/actions-creators';
 import { useToggle } from '../hooks';
 import { CircularProgress } from '@mui/material';
-
 /**
  * Allow users to reserve a place
  */
-
 type CheckProps = {
     id : string
 };

@@ -15,13 +15,13 @@ export const Logo = ({ variants, animate, initial, className, exit } : LogoProps
 
     return(
         <motion.img 
-            className = { className || classes.img  }
-            variants = { variants }
-            initial = { initial }
-            animate = { animate}
-            exit = { exit }
-            src = { ParkingImg } 
-            alt = 'parking'
-    />
+        className = { className || classes.img  }
+        variants = { variants }
+        initial = { initial }
+        animate = { animate}
+        exit = { exit }
+        src = { ParkingImg } 
+        alt = 'parking'
+        />
     )
 }

@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import React, { useState, useMemo  } from 'react';
 import { useNavbarStyle } from '../assets/styles/index.styles';
 import { Logo } from './Logo';
 import { Button } from './Button';
@@ -19,18 +19,23 @@ import { ReducerRootStateType } from '../state';
 import { userRole } from '../utils/contants';
 
 export const Navbar = () => {
+    const [ popperAnchorEl, setPopperAnchorEl ] = useState<HTMLButtonElement | null>(null);
     const [ openSelect, setOpenSelect ] = useState<boolean>(false);
-    const classes = useNavbarStyle();
-    const openPopper = useToggle();
     const dispatch = useDispatch();
-    const isScreenMobile = !useMediaQuery(device.sm);
     const user = useSelector((store: ReducerRootStateType) => store.user);
+    const { toggleSidebar } = bindActionCreators(sidebarActionCreators, dispatch);
+    const openPopper = useToggle();
+    const classes = useNavbarStyle();
+    const isScreenMobile = !useMediaQuery(device.sm);
     const isAdmin = useMemo(() => user?.role === userRole.ADMIN,[user]);
 
-    console.log(user)
-    const { toggleSidebar } = bindActionCreators(sidebarActionCreators, dispatch);
+    const handleToggleSidebar = () => toggleSidebar(true);
 
-    const handleToggleSidebar = () => toggleSidebar();
+    const handleOpenPopper = (e : React.MouseEvent<HTMLButtonElement>) => {
+        const target = e.target as HTMLButtonElement;
+        openPopper.toggle();
+        setPopperAnchorEl(target)
+    };
 
     return(
         <div className = { classes.root }>
@@ -44,7 +49,7 @@ export const Navbar = () => {
                 <Button 
                 className = {classes.navItem } 
                 icon = { <ExploreIcon /> } 
-                onClick = {openPopper.toggle } 
+                onClick = { handleOpenPopper } 
                 />
 
                 {isScreenMobile && isAdmin &&
@@ -54,7 +59,15 @@ export const Navbar = () => {
                 onClick = { handleToggleSidebar } 
                 />
                 }
-                <Popper open = { openPopper.isTrue }setOpen = { openPopper.toggle }/>
+                <Popper 
+                anchorEl = { popperAnchorEl }
+                open = { openPopper.isTrue }
+                setOpen = { openPopper.toggle }
+                props = {{
+                    origin : { vertical : 'bottom', horizontal :'right' },
+                    transform : { vertical :'top', horizontal :'right' }
+                }}
+                />
             </motion.nav>
         </div>
     )

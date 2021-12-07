@@ -10,7 +10,7 @@ export const Divider = ({label,className } : PropsT) => {
 
     return(
         <div className = {`${classes.line } ${className }`}>
-            <h4 className = { classes.label }> {label } </h4>
+            <h4 className = { classes.label }> { label } </h4>
         </div>
     )
 }

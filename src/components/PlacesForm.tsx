@@ -50,7 +50,6 @@ export const PlacesForm = ({ open, setOpen } : PlacesFormPropsT)=> {
         const placeNumber = Number(place.placeNumber);
 
         if(!error.isTrue && floor && placeNumber){
-
             const response = await places.create({floor, placeNumber}).catch(err => {
                 const message = err.response.data.description;
                 notification.set({message, severity : 'error'});
