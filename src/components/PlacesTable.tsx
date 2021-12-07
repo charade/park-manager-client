@@ -8,7 +8,7 @@ import { Place } from '../utils/dataTypes/places';
 import { places } from '../services';
 import { useNotification } from '../hooks';
 import { Snackbar } from './Snackbar';
-import { placesActionCreators } from '../state/actions-creators';
+import { placesActionCreators, placeReservationActionCreators } from '../state/actions-creators';
 import { bindActionCreators } from 'redux';
 
 export const PlacesTable = () => {
@@ -17,13 +17,17 @@ export const PlacesTable = () => {
     const dispatch = useDispatch();
     const classes = usePlacesTableStyle();
     const { removePlace } = bindActionCreators(placesActionCreators, dispatch);
+    const { setReservation } = bindActionCreators(placeReservationActionCreators, dispatch);
     const success = useMemo(() => notification.value?.severity === 'success' || false,[notification]);
-    const [ selectedRow, setSelectedRow ] = useState<number | null>(null);
+    const [ selectedRow, setSelectedRow ] = useState<string>('');
 
-    const handleChange = (id : string, rowIndex : number) => async() => {
-        setSelectedRow(rowIndex);
+    const handleChange = (id : string) => async() => {
+        setSelectedRow(id);
+
         places.reserve({id})
-        .then(() => {
+        .then((response) => {
+            //upade finder
+            setReservation(response.data);
             notification.set({severity : 'success', message : 'Succesfully reserved'});
             notification.setOpen(true);
             //remove place from available ones
@@ -59,8 +63,8 @@ export const PlacesTable = () => {
                                         <Checkbox 
                                         id = { place.id }
                                         //only check selected row
-                                        success = { success && selectedRow === i } 
-                                        onChange = { handleChange(place.id, i) }/>
+                                        success = { success && selectedRow === place.id } 
+                                        onChange = { handleChange(place.id) }/>
                                     </td>
                                 </tr>
                             )
