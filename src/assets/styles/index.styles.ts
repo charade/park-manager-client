@@ -25,6 +25,7 @@ import useSelectFloorsStyle from './SelectFloors.styles';
 import useSidebarItemStyle from './SidebarItem.styles';
 import useSidebarStyle from './Sidebar.style';
 import useDetailsStyle from './Details.styles';
+import useFinderStyle from './Finder.styles';
 
 export {
     useLoginViewStyle,
@@ -54,4 +55,5 @@ export {
     useSidebarStyle,
     useDetailsStyle,
     useSidebarItemStyle,
+    useFinderStyle
 };

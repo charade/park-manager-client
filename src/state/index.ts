@@ -1,11 +1,13 @@
 import { applyMiddleware, createStore, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
+
 import {
     userReducer,
     placesReducer,
     formReducer,
     colleaguesReducer,
-    sidebarReducer 
+    sidebarReducer, 
+    placeReservationReducer 
 } from './reducers';
 
 const reducer = combineReducers({
@@ -13,7 +15,8 @@ const reducer = combineReducers({
     places : placesReducer,
     form : formReducer,
     colleagues : colleaguesReducer,
-    sidebar : sidebarReducer
+    sidebar : sidebarReducer,
+    reservedPlace : placeReservationReducer
 });
 
 export const store = createStore(reducer, applyMiddleware(thunk));

@@ -9,7 +9,7 @@ const users =  {
     register : (data: SignDataTypes) => request.post('/users/register', data),
     login : (data: LoginT) => request.post('/users/login', data),
     getColleagues: () => request.get('/users/auth/colleagues'),
-    updatePermissions :(data : ChangePermissions) => request.patch('/users/auth/permission', data)
+    updatePermissions :(data : ChangePermissions) => request.patch('/users/auth/permission', data),
 }
 
 export default users;

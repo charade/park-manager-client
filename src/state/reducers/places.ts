@@ -1,11 +1,11 @@
-import { Places } from '../../utils/dataTypes/places';
+import { Place } from '../../utils/dataTypes/places';
 import { PlacesAction } from '../actions';
 
 interface Load{
-    payload : Places[]
+    payload : Place[]
 };
 interface Add{
-    payload : Places
+    payload : Place
 };
 interface Remove{
     payload : string
@@ -13,11 +13,11 @@ interface Remove{
 
 export type PlacesActionType = (Load | Remove | Add) & { type : string };
 
-const placesReducer = (state : Places[] = [], action : PlacesActionType) => {
+const placesReducer = (state : Place[] = [], action : PlacesActionType) => {
     switch(action.type){
         case PlacesAction.LOAD_PLACES : 
         case PlacesAction.ADD_PLACE :
-            state = state.concat(action.payload as Places | Places[]);
+            state = state.concat(action.payload as Place | Place[]);
             return state;
 
         case PlacesAction.REMOVE_PLACE : 
@@ -25,9 +25,8 @@ const placesReducer = (state : Places[] = [], action : PlacesActionType) => {
             state = state.filter(place => place.id !== id);
             return state;
         case PlacesAction.FILTERBYFLOOR :
-            state = [...action.payload as Places[]] ;
+            state = [...action.payload as Place[]] ;
             return state;
-            
         default : return state;
     }
 };

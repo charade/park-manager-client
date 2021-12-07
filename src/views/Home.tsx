@@ -4,13 +4,19 @@ import { Landing } from './Landing';
 import { Main } from './Main';
 import { bindActionCreators } from 'redux';
 import { useDispatch } from 'react-redux';
-import { usersActionCreators, placesActionCreators, colleaguesActionCreators } from '../state/actions-creators';
+import {
+    usersActionCreators,
+    placesActionCreators,
+    colleaguesActionCreators,
+    placeReservationActionCreators
+ } from '../state/actions-creators';
 
 const Home = () => {
     const dispatch = useDispatch();
     const { loadUser } = bindActionCreators(usersActionCreators, dispatch);
     const { loadPlaces } = bindActionCreators(placesActionCreators, dispatch);
     const { loadColleagues } = bindActionCreators(colleaguesActionCreators, dispatch);
+    const { findPlace } = bindActionCreators(placeReservationActionCreators, dispatch);
 
     const classes = useHomeStyle();
 
@@ -18,6 +24,8 @@ const Home = () => {
         loadUser();
         loadPlaces();
         loadColleagues();
+        //where user parked
+        findPlace();
     },[]);
     
     return(
