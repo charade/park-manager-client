@@ -20,9 +20,11 @@ import useSubmitBtnStyle from './SubmitBtn.styles';
 import useSnackbarStyle from './SnackBar.styles';
 import useCheckboxStyle from './Checkbox.styles';
 import useAppsMenu from './AppsMenu.style';
-import usePopperStyle from './Popup.styles';
+import usePopperStyle from './Popper.styles';
 import useSelectFloorsStyle from './SelectFloors.styles';
+import useSidebarItemStyle from './SidebarItem.styles';
 import useSidebarStyle from './Sidebar.style';
+import useDetailsStyle from './Details.styles';
 
 export {
     useLoginViewStyle,
@@ -49,5 +51,7 @@ export {
     useAppsMenu,
     usePopperStyle,
     useSelectFloorsStyle,
-    useSidebarStyle
+    useSidebarStyle,
+    useDetailsStyle,
+    useSidebarItemStyle,
 };

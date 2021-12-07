@@ -14,7 +14,7 @@ type InputProps = {
     value ?: string | number,
     helperText ?: string,
     underline ?: boolean
-}
+};
 
 export const Input = ({
     value,

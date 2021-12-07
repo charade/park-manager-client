@@ -16,7 +16,6 @@ export const SelectFloor = () => {
     const { filterByFloor } = bindActionCreators(placesActionCreators, dispatch);
     const { loadPlaces } = bindActionCreators(placesActionCreators, dispatch);
     const classes = useSelectFloorsStyle();
-
     //save floor real time for admin user when creating a place
    useEffect(() => {
        const localFloors = localStorage.getItem('floors');

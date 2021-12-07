@@ -15,7 +15,6 @@ import { formActionCreators } from '../state/actions-creators';
 import { useDispatch, useSelector } from 'react-redux';
 import { ReducerRootStateType } from '../state';
 import { formStep, userRole } from '../utils/contants';
-
 /**
  *  3 step from : 0 is login, 1 is sign up, 2 is create company account
  *  submit the same form fields form signup and register company

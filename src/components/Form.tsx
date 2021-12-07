@@ -31,17 +31,22 @@ export const Form = ({
 
     return(
         <motion.form
-            layout 
-            ref = {formRef}
-            onBlur = { onBlur }
-            tabIndex = { 0 } 
-            className = { `${classes.container } 
-            ${className}`} 
-            onSubmit = { onSubmit }
+        layout 
+        ref = {formRef}
+        onBlur = { onBlur }
+        tabIndex = { 0 } 
+        className = { `${classes.container } ${className}`} 
+        onSubmit = { onSubmit }
         >
-            <motion.h2 animate = {{opacity: [.5, 1]}}  className = { classes.caption }> { caption } </motion.h2>
+            <motion.h2 
+            animate = {{opacity: [.5, 1]}}  
+            className = { classes.caption }
+            > 
+                { caption } 
+            </motion.h2>
 
             <Helper message = { helperText as string } when = { error }/>
+
             { children }
         </motion.form>
     )

@@ -4,6 +4,7 @@ export const formStep = {
     //company not registered YEt
     REGISTER : 2
 };
+
 export const userRole = {
     PUBLIC : 'public',
     ADMIN : 'admin'

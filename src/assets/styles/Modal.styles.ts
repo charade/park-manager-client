@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useModalStyle = makeStyles({
     backdrop : {
-        position : 'fixed',
+        position : 'absolute',
         zIndex : 4,
         display :'flex',
         justifyContent : 'center',

@@ -42,11 +42,11 @@ export const Select = ({ open, setOpen, children } : SelectProps) => {
         className = { classes.container }
         >
             { children }
-           {open &&
-                <>   
-                    <SelectFloor />
-                    <label className = { classes.caption }>Select a floor</label>
-                </> 
+            {open &&
+            <>   
+                <SelectFloor />
+                <label className = { classes.caption }>Select a floor</label>
+            </> 
             }   
         </motion.div>
     )

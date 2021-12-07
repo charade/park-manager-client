@@ -1,4 +1,3 @@
-import React from 'react';
 import { useButtonStyle } from '../assets/styles/index.styles';
 import { motion } from 'framer-motion';
 
@@ -8,7 +7,7 @@ type ButtonPropsT = {
     icon ?: React.ReactNode,
     type ?: "submit",
     iconPosition ?: "before" | "after",
-    onClick ?: () => void,
+    onClick ?: (e : React.MouseEvent<HTMLButtonElement>) => void,
 };
 
 export const Button = ({
@@ -18,7 +17,6 @@ export const Button = ({
     type,
     iconPosition,
     onClick,
-    
 } : ButtonPropsT) => {
     
     const classes = useButtonStyle();
