@@ -2,7 +2,7 @@ import { Popper } from "./Popper";
 import { useSelector, useDispatch } from 'react-redux';
 import { Checkbox } from "./Checkbox";
 import { ReducerRootStateType } from "../state";
-import { placeReservationActionCreators } from "../state/actions-creators";
+import { placeReservationActionCreators, placesActionCreators } from "../state/actions-creators";
 import { places } from "../services";
 import { bindActionCreators } from "redux";
 import { useFinderStyle } from '../assets/styles/index.styles';
@@ -17,14 +17,17 @@ export const Finder = ({ anchorEl, open, setOpen } : FinderProps ) => {
     const dispatch = useDispatch();
     const [requestSuccess, setRequestSuccess] = useState<boolean>(false);
     const { resetPlace } = bindActionCreators(placeReservationActionCreators, dispatch);
+    const { addPlace } = bindActionCreators(placesActionCreators, dispatch);
     const place = useSelector((store: ReducerRootStateType) => store.reservedPlace);
     const classes = useFinderStyle();
 
     const handleFreePlace = () => {
-        place && places.reset({id : place.id}).then(() => {
+        place && places.reset({id : place.id}).then((response) => {
             setRequestSuccess(true);
             resetPlace();
-        })
+            //reset place in availbale places table
+            addPlace(response.data);
+        });
     }
     
     return(

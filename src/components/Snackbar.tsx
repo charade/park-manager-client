@@ -14,7 +14,7 @@ type SnackbarProps = SnackbarType & {
     open : boolean,
     setOpen : (open : boolean) => void
 };
-export const Snackbar = ({ message, open, setOpen, severity } : SnackbarProps ) => {
+export const Snackbar = ({ message, open, setOpen, severity} : SnackbarProps ) => {
     const classes = useSnackbarStyle();
 
     //auto hide
@@ -23,7 +23,7 @@ export const Snackbar = ({ message, open, setOpen, severity } : SnackbarProps ) 
         return () => clearTimeout(t)
     },[setOpen, open]);
 
-    const handleClose = useCallback(() => setOpen(false),[setOpen])
+    const handleClose = useCallback(() => setOpen(false) ,[setOpen])
 
     return(
         <AnimatePresence>
