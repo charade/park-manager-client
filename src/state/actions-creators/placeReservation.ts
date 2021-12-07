@@ -1,15 +1,14 @@
 import { PlaceAction } from "../actions";
 import { ReservationActionType } from "../reducers/placeReservation";
 import { Dispatch } from "react";
-import { places } from "../../services";
+import { Place } from "../../utils/dataTypes/places";
 
-export const findPlace = () => {
+export const setReservation = (place : Place) => {
     return async(dispatch : Dispatch<ReservationActionType>) => {
         try{
-            const place = await places.find();
             dispatch({
                 type : PlaceAction.FIND,
-                payload : place.data
+                payload : place
             })
         }
         catch{

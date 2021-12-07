@@ -4,6 +4,7 @@ import { Landing } from './Landing';
 import { Main } from './Main';
 import { bindActionCreators } from 'redux';
 import { useDispatch } from 'react-redux';
+import { places } from '../services';
 import {
     usersActionCreators,
     placesActionCreators,
@@ -16,7 +17,7 @@ const Home = () => {
     const { loadUser } = bindActionCreators(usersActionCreators, dispatch);
     const { loadPlaces } = bindActionCreators(placesActionCreators, dispatch);
     const { loadColleagues } = bindActionCreators(colleaguesActionCreators, dispatch);
-    const { findPlace } = bindActionCreators(placeReservationActionCreators, dispatch);
+    const { setReservation } = bindActionCreators(placeReservationActionCreators, dispatch);
 
     const classes = useHomeStyle();
 
@@ -25,7 +26,11 @@ const Home = () => {
         loadPlaces();
         loadColleagues();
         //where user parked
-        findPlace();
+        const findMyCar = async() => {
+            const place = await places.find();
+            setReservation(place.data);
+        }
+        findMyCar();
     },[]);
     
     return(
