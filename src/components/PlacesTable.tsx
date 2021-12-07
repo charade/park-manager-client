@@ -31,7 +31,10 @@ export const PlacesTable = () => {
             notification.set({severity : 'success', message : 'Succesfully reserved'});
             notification.setOpen(true);
             //remove place from available ones
-            setTimeout(() => removePlace(id), 2000);
+            setTimeout(() => {
+                removePlace(id);
+                setSelectedRow('')
+            }, 2000);
         })
         .catch(err => {
             const message = err.response.data.description;
