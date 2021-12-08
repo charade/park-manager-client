@@ -7,10 +7,11 @@ import { useMediaQuery } from '@mui/material';
 import { useSidebarStyle } from '../assets/styles/index.styles';
 import { variants } from '../assets/utils';
 import { sidebarActionCreators } from '../state/actions-creators';
-import { Details } from './Details';
+import { DetailsPopper } from './DetailsPopper';
 import { device } from '../assets/utils/constants';
 import { User } from '../utils/dataTypes/user';
 import { SidebarItem } from './SidebarItem';
+import { DefaultMessage } from './DefaultMessage';
 
 export const Sidebar = () => {
     const [ user, setUser ] = useState<User | null>(null);
@@ -24,29 +25,26 @@ export const Sidebar = () => {
     const { toggleSidebar } = bindActionCreators(sidebarActionCreators, dispatch);
     const open = useSelector((store : ReducerRootStateType) => store.sidebar);
     const colleagues = useSelector((store : ReducerRootStateType) => store.colleagues);
-    const listRef = useRef<HTMLUListElement>(null);
+    const ref = useRef<HTMLDivElement>(null);
     const isScreenMobile = !useMediaQuery(device.sm);
-
+    
+    //side bar close on blur so we need to fucus it first
     useEffect(() => {
         if(open){
-            listRef.current?.focus();
+            ref.current?.focus();
         }
     }, [open]);
-    /**
-     * explicitly set side bar open to false
-     */
+    
     const handleClose = (e: React.FocusEvent) =>{
         if(!e.currentTarget.contains(e.relatedTarget)){
             toggleSidebar(false)
         }
     };
     const handleOpenDetails = (user : User, index : number) => {
-        return (e : React.MouseEvent<HTMLLIElement>) =>{
+        return (e : React.MouseEvent<HTMLDivElement>) =>{
             const target = e.target as HTMLLIElement;
             setUser(user);
-            /**
-             * selected user index in stored colleagues array
-             */
+            //selected user index in stored colleagues array
             setUserIndex(index)
             setDetailsAnchorEl(target);
             setOpenDetails(true);
@@ -60,25 +58,27 @@ export const Sidebar = () => {
         variants = { variants.sidebar }
         initial = { false }
         >
-            <motion.ul 
-            ref = { listRef }
+            <motion.div 
+            ref = { ref }
             tabIndex = { 0 }
             onBlur = { handleClose }
             variants = { variants.sidebarToolbar }
             animate = { isScreenMobile ? (open ? 'open' : 'close') : 'open' }
             className = { classes.drawer }
             >
-            { colleagues.map((user, i) => {
-                return(
-                    <SidebarItem 
-                    user = { user } 
-                    onClick = { handleOpenDetails(user, i) } 
-                    key = { `colleague-${user.id}-${i}`}
-                    />
-                )
-            })}
-            </motion.ul>
-            <Details 
+                <DefaultMessage when = { !colleagues.length } message = "Your collaborators will appear here"/>
+                
+                {colleagues && colleagues.map((user, i) => {
+                    return(
+                        <SidebarItem 
+                        user = { user } 
+                        onClick = { handleOpenDetails(user, i) } 
+                        key = { `colleague-${user.id}-${i}`}
+                        />
+                    )
+                })}
+            </motion.div>
+            <DetailsPopper 
             open = { openDetails}
             setOpen = { setOpenDetails}
             user = { user }

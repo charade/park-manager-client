@@ -161,7 +161,7 @@ export const sidebarItem :  Variants = {
 };
 export const role : Variants = {
     role : custom =>({
-        background : custom === userRole.PUBLIC ? 'rgba(157, 203, 234, .7)' : 'rgb(161, 229, 149, .7)'
+        background : custom === userRole.PUBLIC ? 'rgba(157, 203, 234, .7)' : 'rgb(161, 229, 149, .7)'  
     }),
     
-}
+};

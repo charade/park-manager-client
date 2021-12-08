@@ -3,17 +3,15 @@ import { bindActionCreators } from 'redux';
 import { useDispatch } from 'react-redux';
 import { useNotification } from "../hooks";
 import { colleaguesActionCreators } from '../state/actions-creators';
-import { motion } from 'framer-motion';
 import ChangeCircleIcon from '@mui/icons-material/ChangeCircle';
-import { useDetailsStyle } from '../assets/styles/index.styles';
 import { Popper } from './Popper';
-import { Avatar } from './Avatar';
 import { Button } from './Button';
-import { variants } from '../assets/utils';
 import { switchPermissions } from '../utils/functions';
 import { users } from '../services';
 import { Snackbar } from './Snackbar';
 import { User } from '../utils/dataTypes/user';
+import { DetailsContainer } from './DetailsContainer';
+import { useDetailsStyle } from '../assets/styles/index.styles';
 
 type DetailsProps = {
     user : User | null,
@@ -23,12 +21,12 @@ type DetailsProps = {
     userIndex ?: number
 }
 
-export const Details = ({ user, anchorEl, open, setOpen, userIndex} : DetailsProps) => {
-    const classes = useDetailsStyle();
+export const DetailsPopper = ({ user, anchorEl, open, setOpen, userIndex} : DetailsProps) => {
     const [role, setRole] = useState<string>('');
     const notification = useNotification();
     const dispatch = useDispatch();
     const { changePermissions } = bindActionCreators(colleaguesActionCreators, dispatch);
+    const classes = useDetailsStyle();
     
     useEffect(() => { user && setRole(user.role) },[user]);
 
@@ -56,40 +54,15 @@ export const Details = ({ user, anchorEl, open, setOpen, userIndex} : DetailsPro
             transform : { horizontal : 'right', vertical :'top' } 
         }}
         >
-            <div className = { classes.container }>
-                <div className = { classes.block }>
-                    <Avatar 
-                    src = { user?.avatar } 
-                    placeholder = { user?.firstName } 
-                    alt = {`${ user?.firstName } ${ user?.lastName }`}
-                    classes = {{ 
-                        root : classes.avatarRoot, 
-                        placeholder : classes.avatarPlaceHolder 
-                    }}
+            <DetailsContainer user = { user } role = {role}>
+                    <Button 
+                    onClick = { handleSwitchRole }
+                    className = { classes.editBtn } 
+                    label = {`Change permissions...` }
+                    iconPosition = 'before' 
+                    icon = { <ChangeCircleIcon /> }
                     />
-                    <div className = { classes.box }>
-                        <h2 className = { classes.userName }>
-                            {`${ user?.firstName } ${ user?.lastName }` }
-                        </h2>
-                        <span className = { classes.info }>{ user?.email }</span>
-                        <motion.span 
-                        variants = { variants.role } 
-                        animate = "role"
-                        custom = { role } 
-                        className = { classes.info }
-                        > 
-                            { role } 
-                        </motion.span>
-                    </div>
-                </div>
-                <Button 
-                onClick = { handleSwitchRole }
-                className = { classes.editBtn } 
-                label = {`Change permissions...` }
-                iconPosition = 'before' 
-                icon = { <ChangeCircleIcon /> }
-                />
-            </div>
+            </DetailsContainer>
             <Snackbar 
             message = { notification.value?.message }
             severity = { notification.value?.severity }

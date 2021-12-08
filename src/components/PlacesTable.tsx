@@ -10,6 +10,7 @@ import { useNotification } from '../hooks';
 import { Snackbar } from './Snackbar';
 import { placesActionCreators, placeReservationActionCreators } from '../state/actions-creators';
 import { bindActionCreators } from 'redux';
+import { DefaultMessage } from './DefaultMessage';
 
 export const PlacesTable = () => {
     const availablePlaces = useSelector((store : ReducerRootStateType) => store.places);
@@ -23,7 +24,6 @@ export const PlacesTable = () => {
 
     const handleChange = (id : string) => async() => {
         setSelectedRow(id);
-
         places.reserve({id})
         .then((response) => {
             //upade finder
@@ -55,25 +55,29 @@ export const PlacesTable = () => {
                 </thead>
             </table> 
             <div className = { classes.bodyContainer }>
-                <table className = { classes.table } aria-label = 'table-body'>
-                    <tbody>
-                        { sortByUpdateDate(availablePlaces).map((place : Place, i )=> {
-                            return(
-                                <tr key = { `place-${place.id}-row-${i}`} className = { `${classes.row }`}>
-                                    <td className = { classes.cell }><span>{ place.floor }</span></td>
-                                    <td className = { classes.cell }><span>{ place.placeNumber }</span></td>
-                                    <td className = { classes.cell }>
-                                        <Checkbox 
-                                        id = { place.id }
-                                        //only check selected row
-                                        success = { success && selectedRow === place.id } 
-                                        onChange = { handleChange(place.id) }/>
-                                    </td>
-                                </tr>
-                            )
-                        })}
-                    </tbody>
-                </table>
+
+                <DefaultMessage when = { !availablePlaces.length } message = "You need to add some parking places"/>
+                
+                {availablePlaces &&
+                    <table className = { classes.table } aria-label = 'table-body'>
+                        <tbody>
+                            { sortByUpdateDate(availablePlaces).map((place : Place, i )=> {
+                                return(
+                                    <tr key = { `place-${place.id}-row-${i}`} className = { `${classes.row }`}>
+                                        <td className = { classes.cell }><span>{ place.floor }</span></td>
+                                        <td className = { classes.cell }><span>{ place.placeNumber }</span></td>
+                                        <td className = { classes.cell }>
+                                            <Checkbox 
+                                            //only check selected row
+                                            success = { success && selectedRow === place.id } 
+                                            onChange = { handleChange(place.id) }/>
+                                        </td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                    </table>
+                }
             </div>
             <Snackbar 
                 message = { notification.value?.message }

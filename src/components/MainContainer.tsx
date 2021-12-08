@@ -12,6 +12,7 @@ import { PlacesTable } from './PlacesTable';
 import { Divider } from './Divider';
 import { Button } from './Button';
 import { PlacesForm } from './PlacesForm';
+import { Chart } from './Chart';
 
 export const MainContainer = () => {
     const openPlaceForm = useToggle();
@@ -23,7 +24,7 @@ export const MainContainer = () => {
     return(
         <div className = { classes.container }>
             {isScreenMobile && <UserCard />}
-
+            {!isScreenMobile && <Chart />}
             <Divider label = 'places' className = { classes.divider }/>
             {/* only admin users can add a place */}
             {isAdmin && 

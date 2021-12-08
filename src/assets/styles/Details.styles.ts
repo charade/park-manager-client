@@ -4,9 +4,10 @@ const useDetailsStyle = makeStyles(theme =>({
     container : {
         display : 'flex',
         flexDirection :'column',
-        minWidth :'35rem',
-        background :'#4A4A4A',
+        width :'100%',
+        height :'100%',
         color :'#fff',
+        background :'#4A4A4A',
     },
     block : {
         display :'flex',
@@ -47,7 +48,7 @@ const useDetailsStyle = makeStyles(theme =>({
         }
     },
     editBtn :{
-        margin :'3rem 1rem',
+        margin :'5rem 1rem',
         border : 'none',
         color : '#fff',
         background: 'inherit',

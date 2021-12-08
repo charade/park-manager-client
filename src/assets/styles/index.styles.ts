@@ -26,6 +26,8 @@ import useSidebarItemStyle from './SidebarItem.styles';
 import useSidebarStyle from './Sidebar.style';
 import useDetailsStyle from './Details.styles';
 import useFinderStyle from './Finder.styles';
+import useChartStyles from './Chart.styles';
+import useDefaultMsgStyle from './DefaultMsg.styles';
 
 export {
     useLoginViewStyle,
@@ -55,5 +57,7 @@ export {
     useSidebarStyle,
     useDetailsStyle,
     useSidebarItemStyle,
-    useFinderStyle
+    useFinderStyle,
+    useChartStyles,
+    useDefaultMsgStyle
 };

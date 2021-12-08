@@ -5,7 +5,6 @@ const usePlacesTableStyle = makeStyles(theme => ({
         display : 'flex',
         flexDirection : 'column',
         margin :'2rem 0',
-        height : '30rem',
         border: '1px solid rgba(0, 0, 0, .3)',
         width :'100%',
         fontFamily : theme.typography.fontFamily,
@@ -14,8 +13,9 @@ const usePlacesTableStyle = makeStyles(theme => ({
         fontSize :'1.4rem',
         [theme.breakpoints.up('sm')] : {
             width : '90%',
-            margin :'2rem 1.5rem'
-        }
+            margin :'2rem 2rem'
+        },
+        height : '36%'
     },
     table : {
         borderCollapse : 'collapse',
@@ -24,10 +24,10 @@ const usePlacesTableStyle = makeStyles(theme => ({
     },
     bodyContainer: {
         height : '100%',
-        overflow : 'scroll'
+        overflow : 'scroll',
     },
     row: {
-        height : '3.3rem',
+        height : '2.96rem',
         width : '100%',
         display :'flex',
         alignItems : 'center',
@@ -36,11 +36,9 @@ const usePlacesTableStyle = makeStyles(theme => ({
             background : 'rgba(0, 0, 0, .1)'
         }
     },
-
     headRow : {
         background : 'rgba(0, 0, 0, .37)',
     },
-
     cell : {
         borderBottom : '1px solid rgba(255, 255, 255, .5)',
         width : '30%',

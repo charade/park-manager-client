@@ -16,18 +16,7 @@ type InputProps = {
     underline ?: boolean
 };
 
-export const Input = ({
-    value,
-    label,
-    onChange,
-    id,
-    name,
-    labelStyle,
-    inputStyle,
-    required,
-    helperText,
-    underline = true
-    } : InputProps) => {
+export const Input = (props : InputProps) => {
 
     const classes = useInputStyle();
     const inputRef = useRef<HTMLInputElement>(null);
@@ -39,7 +28,6 @@ export const Input = ({
             inputRef.current.focus();
         }
     };
-        
     const handleBlur = (e : React.FocusEvent<HTMLInputElement>) => {
         const target = e.target as HTMLInputElement;
         !target.value && setFocused(false);
@@ -55,25 +43,25 @@ export const Input = ({
         >
             <motion.label
             variants = { variants.inputLabel } 
-            htmlFor = { id } 
+            htmlFor = { props.id } 
             className = { classes.label }
-            style = { labelStyle }
+            style = { props.labelStyle }
             > 
-                { label } 
+                { props.label } 
             </motion.label>
             <input
-            data-helpertext = { helperText }
-            value = { value }
-            required = { required } 
+            data-helpertext = { props.helperText }
+            value = { props.value }
+            required = { props.required } 
             ref = { inputRef } 
             className = { classes.inputField } 
-            id = { id} 
-            name = { name } 
-            onChange = { onChange }
+            id = { props.id} 
+            name = { props.name } 
+            onChange = { props.onChange }
             onBlur = { handleBlur }  
-            style = { inputStyle }
+            style = { props.inputStyle }
             />
-            {underline &&
+            {props.underline &&
                 <motion.span
                 transition = {{ease  : 'linear', duration : .2}}    
                 variants = { variants.inputUnderLine } 
