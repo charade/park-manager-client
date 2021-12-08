@@ -11,23 +11,33 @@ const useNavbarStyle = makeStyles(theme => ({
     paper : {
         position : 'relative',
         display : 'flex',
-        justifyContent : 'flex-end',
-        paddingRight : '3rem',
-        alignItems: 'center',
+        justifyContent : 'center',
         width : '100%',
         height :'100%',
         background : theme.palette.secondary.light,
         [theme.breakpoints.up('sm')] :{
             justifyContent: 'center'
+        },
+    },
+    box :{
+        display : 'flex',
+        justifyContent :'space-around',
+        flex: 2,
+        alignItems :'center',
+        '&:first-child' :{
+            justifyContent :'space-between',
+            paddingLeft: '1rem'
+        },
+        '&:last-child':{
+            flexDirection :'column',
+            alignItems :'flex-end',
+            paddingRight :'1rem',
+            flex: 1
         }
     },
     logo : {
         width : '4.8rem',
         height :'4rem',
-        position : 'absolute',
-        top : '50%',
-        left :'.3rem',
-        transform :'translateY(-50%)'
     },
     //button
     navItem : {

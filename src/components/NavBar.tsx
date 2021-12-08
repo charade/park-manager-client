@@ -1,10 +1,12 @@
 import React, { useState, useMemo  } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useNavbarStyle } from '../assets/styles/index.styles';
 import { Logo } from './Logo';
 import { Button } from './Button';
 import SearchIcon from '@mui/icons-material/Search';
 import GroupsIcon from '@mui/icons-material/Groups';
 import ExploreIcon from '@mui/icons-material/Explore';
+import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import { Select } from './Select';
 import { motion } from 'framer-motion';
 import { Finder } from './Finder';
@@ -24,6 +26,7 @@ export const Navbar = () => {
     const dispatch = useDispatch();
     const user = useSelector((store: ReducerRootStateType) => store.user);
     const { toggleSidebar } = bindActionCreators(sidebarActionCreators, dispatch);
+    const navigate = useNavigate();
     const openFinder = useToggle();
     const classes = useNavbarStyle();
     const isScreenMobile = !useMediaQuery(device.sm);
@@ -36,29 +39,42 @@ export const Navbar = () => {
         openFinder.toggle();
         setFinderAnchorEl(target)
     };
+    const handleLogOut = () => navigate('/');
 
     return(
         <div className = { classes.root }>
             <motion.nav layout className = { classes.paper }>
-                <Logo className = { classes.logo } />
 
-                <Select open = { openSelect } setOpen = { setOpenSelect }>
-                    <Button className = {classes.navItem } icon = { <SearchIcon /> } />
-                </Select>
+                <div className = { classes.box }>
+                    <Logo className = { classes.logo } />
+                    <Select open = { openSelect } setOpen = { setOpenSelect }>
+                        <Button className = {classes.navItem } icon = { <SearchIcon /> } />
+                    </Select>
+                </div>
 
+                <div className = { classes.box }>
+                    <Button 
+                    className = {classes.navItem } 
+                    icon = { <ExploreIcon /> } 
+                    onClick = { handleOpenFinder } 
+                    />
+                    {isScreenMobile && isAdmin &&
+                        <Button 
+                        className = {classes.navItem } 
+                        icon = { <GroupsIcon /> } 
+                        onClick = { handleToggleSidebar } 
+                        />
+                    }
+                </div>
+
+                <div className = { classes.box }>
                 <Button 
+                layout = { false }
                 className = {classes.navItem } 
-                icon = { <ExploreIcon /> } 
-                onClick = { handleOpenFinder } 
+                icon = { <PowerSettingsNewIcon /> } 
+                onClick = { handleLogOut } 
                 />
-
-                {isScreenMobile && isAdmin &&
-                <Button 
-                className = {classes.navItem } 
-                icon = { <GroupsIcon /> } 
-                onClick = { handleToggleSidebar } 
-                />
-                }
+                </div>
             </motion.nav>
             <Finder 
                 open = { openFinder.isTrue }

@@ -12,7 +12,7 @@ type FormPropsT  = {
     error ?:boolean,
     helperText ?:string,
     ref ?: Element
-}
+};
 export const Form = ({
     children,
     onSubmit,

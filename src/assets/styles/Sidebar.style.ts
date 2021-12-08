@@ -22,14 +22,12 @@ const useSidebarStyle = makeStyles(theme => ({
         flexDirection : 'column',
         width : '20rem',
         height : '100%',
-        padding: '3rem .6rem',
         listStyle : 'none',
         background : '#fff',
         boxShadow :'0 0 .6rem rgba(0, 0, 0, .4)',
         overflowY : 'scroll',
         [theme.breakpoints.up('sm')] :{
             width : '100%',
-            padding: ' 5rem .5rem'
         }
        
     },

@@ -8,30 +8,24 @@ type ButtonPropsT = {
     type ?: "submit",
     iconPosition ?: "before" | "after",
     onClick ?: (e : React.MouseEvent<HTMLButtonElement>) => void,
+    layout ?:boolean
 };
 
-export const Button = ({
-    label,
-    className,
-    icon,
-    type,
-    iconPosition,
-    onClick,
-} : ButtonPropsT) => {
+export const Button = (props :ButtonPropsT) => {
     
     const classes = useButtonStyle();
 
     return(
         <motion.button 
-        layout  
-        className = { `${classes.button} ${ className}` } 
-        type = { type } 
-        onClick = { onClick }
+        layout = { props.layout }
+        className = { `${classes.button} ${ props.className}` } 
+        type = { props.type } 
+        onClick = { props.onClick }
         >
-            { iconPosition === 'before' && icon }
-            { label }
-            { !label && icon }
-            { iconPosition === 'after' && icon }
+            { props.iconPosition === 'before' && props.icon }
+            { props.label }
+            { !props.label && props.icon }
+            { props.iconPosition === 'after' && props.icon }
         </motion.button>
     )
 }

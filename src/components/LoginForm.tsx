@@ -42,9 +42,7 @@ export const LoginForm = () => {
     };
     const handleSubmit = async(e : React.SyntheticEvent) => {
         e.preventDefault();
-        /**
-         *  Login step
-         */
+        //Login step
         if((step === formStep.LOGIN) && data.email && data.password){
             const { email, password } = data;
             const response = await users.login({email, password}).catch(error => {
@@ -59,10 +57,7 @@ export const LoginForm = () => {
                 navigate(`/home`);
             };
         };
-        /**
-         * sign up or register on non aleady regitered company
-         * sign step === 1, register step === 2, on login step === 0
-         */
+        //sign up step
         if(step && Object.values(data).every((value) => value)){
             const user = {...data};
             //if company did not exist yet so signin up user is admin
@@ -70,7 +65,6 @@ export const LoginForm = () => {
                 user.role = userRole.ADMIN
             };
             const response = await users.register(user).catch(err => {
-                //error handling
                 const message = err.response.data.description;
                 notification.set({ severity : "error", message });
             });
@@ -87,7 +81,6 @@ export const LoginForm = () => {
     return(
         <AnimateSharedLayout>
             <Form  onSubmit = { handleSubmit } caption = { title } >
-                {/* animate in/ out extra data for sign up */}
                 <AnimatePresence>
                     {step && 
                         <> 

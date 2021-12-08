@@ -28,9 +28,9 @@ export const UserCard = () => {
                     </h2>
                 </div>
                 <Button 
-                    className = { classes.btn }
-                    icon = {<KeyboardArrowDownIcon className = { classes.btnIcon }/>} 
-                    onClick = { handleToggleOpen }
+                className = { classes.btn }
+                icon = {<KeyboardArrowDownIcon className = { classes.btnIcon }/>} 
+                onClick = { handleToggleOpen }
                 />
             </div>
         </div>

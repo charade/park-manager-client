@@ -10,7 +10,10 @@ const useMainContainerStyle = makeStyles(theme => ({
     },
     divider : {
         width : '100%',
-        margin : '2rem 0'
+        margin : '2rem 0',
+        [theme.breakpoints.up('sm')]: {
+            width : '85%'
+        }
     },
     btn : {
        maxWidth : '7rem',

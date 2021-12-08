@@ -43,7 +43,7 @@ export const Popper = ({ children, open, setOpen, props, anchorEl, classes } : P
         onClose = { () => setOpen(false) }
         transitionDuration = { .5 }
         classes = {{ 
-            paper : classes?.paper , 
+            paper : `${classes?.paper} ${styled.paper}` , 
             root : `${styled.root} ${classes?.root}` 
         }}
         >

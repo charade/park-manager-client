@@ -8,15 +8,14 @@ import { Button } from './Button';
 
 export type SnackbarType = Severity & {
     message : string | undefined
-}
-
+};
 type SnackbarProps = SnackbarType & {
     open : boolean,
     setOpen : (open : boolean) => void
 };
+
 export const Snackbar = ({ message, open, setOpen, severity} : SnackbarProps ) => {
     const classes = useSnackbarStyle();
-
     //auto hide
     useEffect(() => {
         const t = setTimeout(() => setOpen(false), 4000)
@@ -29,21 +28,21 @@ export const Snackbar = ({ message, open, setOpen, severity} : SnackbarProps ) =
         <AnimatePresence>
             {open &&
                 <motion.div  
-                    variants = { variants.snackbar } 
-                    className = { classes.snackbar }
-                    animate = { open ? 'open' : 'close' }
-                    initial = 'close'
-                    exit = 'close'
+                variants = { variants.snackbar } 
+                className = { classes.snackbar }
+                animate = { open ? 'open' : 'close' }
+                initial = 'close'
+                exit = 'close'
                 >
                     <SnackbarIcon 
-                        severity = { severity } 
-                        className = { classes.icon } 
+                    severity = { severity } 
+                    className = { classes.icon } 
                     />
                     { message }
                     <Button 
-                        className = { classes.closeBtn } 
-                        icon = { <CloseIcon /> } 
-                        onClick = { handleClose }
+                    className = { classes.closeBtn } 
+                    icon = { <CloseIcon /> } 
+                    onClick = { handleClose }
                     />
                 </motion.div>
             }
