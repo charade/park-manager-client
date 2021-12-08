@@ -4,20 +4,15 @@ export type LoginT = {
     email: string,
     password : string
 };
-export type SignDataTypes = LoginT & {
-    companyName : string,
+interface PersonalData{
     firstName : string,
-    lastName : string,
+    lastName :string
+};
+export type SignDataTypes = LoginT & PersonalData & {
+    companyName : string,
     role ?: string,
 };
-export const SIGN_DEFAULT_VALUE : SignDataTypes = {
-    firstName : '',
-    lastName :'',
-    companyName : '',
-    email : '',
-    password : '',
-    role : userRole.PUBLIC
-};
+
 export type User = {
     avatar : string,
     firstName : string,
@@ -26,3 +21,26 @@ export type User = {
     role : string,
     email : string
 }
+
+export type UpdateUserTypes = LoginT & PersonalData & {
+    avatar : string
+};
+
+//*************************** Default values ****************************************** */
+export const SIGN_DEFAULT_VALUE : SignDataTypes = {
+    firstName : '',
+    lastName :'',
+    companyName : '',
+    email : '',
+    password : '',
+    role : userRole.PUBLIC
+};
+
+export const UPDATE_USER_DEFAULT_VALUES: UpdateUserTypes = {
+    firstName : '',
+    lastName :'',
+    avatar :'',
+    password :'',
+    email :''
+}
+

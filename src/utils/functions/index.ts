@@ -4,7 +4,7 @@ import { userRole } from '../contants';
 
 export const sortByUpdateDate = (arr : Place[]) => arr.sort((a, b) => {
     return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
-})
+});
 
 export const getFloors = (arr : Place []) => Array.from(new Set(arr.map(place => place.floor)));
 

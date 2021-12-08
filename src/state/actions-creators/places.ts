@@ -16,7 +16,7 @@ export const loadPlaces = () => {
 export const addPlace = (place : Place) => {
     return (dispatch : Dispatch<PlacesActionType>) => {
         dispatch({
-            type : PlacesAction.LOAD_PLACES,
+            type : PlacesAction.ADD_PLACE,
             payload : place
         })
     };
@@ -37,4 +37,4 @@ export const filterByFloor = (floor: number) => {
             payload : response.data
         })
     }
-}
+};

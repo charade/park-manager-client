@@ -40,8 +40,9 @@ export const Sidebar = () => {
             toggleSidebar(false)
         }
     };
+
     const handleOpenDetails = (user : User, index : number) => {
-        return (e : React.MouseEvent<HTMLDivElement>) =>{
+        return (e : React.MouseEvent<HTMLLIElement>) =>{
             const target = e.target as HTMLLIElement;
             setUser(user);
             //selected user index in stored colleagues array
@@ -52,13 +53,13 @@ export const Sidebar = () => {
     };
 
     return(
-        <motion.div 
+        <motion.div    /* backdrop */
         className = { classes.backdrop }
         animate = { isScreenMobile ? (open ? 'open' : 'close') : 'open' }
         variants = { variants.sidebar }
         initial = { false }
         >
-            <motion.div 
+            <motion.div   /* drawer */
             ref = { ref }
             tabIndex = { 0 }
             onBlur = { handleClose }
@@ -67,16 +68,19 @@ export const Sidebar = () => {
             className = { classes.drawer }
             >
                 <DefaultMessage when = { !colleagues.length } message = "Your collaborators will appear here"/>
-                
-                {colleagues && colleagues.map((user, i) => {
-                    return(
-                        <SidebarItem 
-                        user = { user } 
-                        onClick = { handleOpenDetails(user, i) } 
-                        key = { `colleague-${user.id}-${i}`}
-                        />
-                    )
-                })}
+               {colleagues.length && 
+                    <ul className = { classes.list }>
+                        {colleagues.map((user, i) => {
+                            return(
+                                <SidebarItem 
+                                user = { user } 
+                                onClick = { handleOpenDetails(user, i) } 
+                                key = { `colleague-${user.id}-${i}`}
+                                />
+                            )
+                        })}
+                    </ul> 
+                }
             </motion.div>
             <DetailsPopper 
             open = { openDetails}

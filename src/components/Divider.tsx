@@ -5,7 +5,7 @@ type PropsT = {
     className ?: string
 }
 
-export const Divider = ({label,className } : PropsT) => {
+export const Divider = ({label,className} : PropsT) => {
     const classes = useDividerStyle();
 
     return(

@@ -16,8 +16,10 @@ export type PlacesActionType = (Load | Remove | Add) & { type : string };
 const placesReducer = (state : Place[] = [], action : PlacesActionType) => {
     switch(action.type){
         case PlacesAction.LOAD_PLACES : 
+            state = action.payload as Place[];
+            return state;
         case PlacesAction.ADD_PLACE :
-            state = state.concat(action.payload as Place | Place[]);
+            state = state.concat(action.payload as Place);
             return state;
 
         case PlacesAction.REMOVE_PLACE : 

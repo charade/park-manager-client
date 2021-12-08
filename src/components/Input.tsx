@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { variants } from '../assets/utils';
 
 type InputProps = {
-    label :string,
+    label ?: string,
     onChange : (e : React.ChangeEvent<HTMLInputElement>) => void
     id ?: string
     name: string,
@@ -13,7 +13,7 @@ type InputProps = {
     required ?: boolean
     value ?: string | number,
     helperText ?: string,
-    underline ?: boolean
+    underline ?: boolean,
 };
 
 export const Input = (props : InputProps) => {

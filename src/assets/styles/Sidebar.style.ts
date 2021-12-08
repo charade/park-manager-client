@@ -14,7 +14,7 @@ const useSidebarStyle = makeStyles(theme => ({
         overflow : 'hidden',
         [theme.breakpoints.up('sm')] :{
             position :'static',
-            width : '40rem !important',
+            width : '42rem !important',
         },
     },
     drawer : {
@@ -31,6 +31,14 @@ const useSidebarStyle = makeStyles(theme => ({
         }
        
     },
+    list : {
+        height : '100%',
+        width : '100%',
+        padding :'1rem .5rem',
+        [theme.breakpoints.up('sm')] : {
+            paddingTop : '7rem'
+        }
+    }
    
 }));
 

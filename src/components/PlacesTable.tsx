@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ReducerRootStateType } from '../state';
 import { Checkbox } from './Checkbox';
 import { sortByUpdateDate } from '../utils/functions';
-import { Place } from '../utils/dataTypes/places';
 import { places } from '../services';
 import { useNotification } from '../hooks';
 import { Snackbar } from './Snackbar';
@@ -58,10 +57,10 @@ export const PlacesTable = () => {
 
                 <DefaultMessage when = { !availablePlaces.length } message = "You need to add some parking places"/>
                 
-                {availablePlaces &&
+                {availablePlaces.length &&
                     <table className = { classes.table } aria-label = 'table-body'>
                         <tbody>
-                            { sortByUpdateDate(availablePlaces).map((place : Place, i )=> {
+                            { sortByUpdateDate(availablePlaces).map((place, i )=> {
                                 return(
                                     <tr key = { `place-${place.id}-row-${i}`} className = { `${classes.row }`}>
                                         <td className = { classes.cell }><span>{ place.floor }</span></td>

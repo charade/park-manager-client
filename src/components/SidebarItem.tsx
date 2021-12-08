@@ -6,13 +6,13 @@ import { useSidebarItemStyle } from '../assets/styles/index.styles';
 
 type SideBarItemProps = {
     user : User
-    onClick : (e : React.MouseEvent<HTMLDivElement>) => void
+    onClick : (e : React.MouseEvent<HTMLLIElement>) => void
 };
 export const SidebarItem = ({ user, onClick } : SideBarItemProps) => {
     const classes = useSidebarItemStyle();
 
     return(
-        <motion.div 
+        <motion.li 
         variants = { variants.sidebarItem } 
         className = { classes.box }
         onClick = { onClick }
@@ -29,6 +29,6 @@ export const SidebarItem = ({ user, onClick } : SideBarItemProps) => {
             <h3 className = { classes.userName }>
                 { `${user.firstName} ${user.lastName}` } 
             </h3>
-        </motion.div>
+        </motion.li>
     )
 }

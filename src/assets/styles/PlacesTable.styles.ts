@@ -13,7 +13,6 @@ const usePlacesTableStyle = makeStyles(theme => ({
         fontSize :'1.4rem',
         [theme.breakpoints.up('sm')] : {
             width : '90%',
-            margin :'2rem 2rem'
         },
         height : '36%'
     },
