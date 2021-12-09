@@ -17,7 +17,7 @@ export const DetailsContainer = ({ user, role, children } : DetailsProps) => {
         <div className = { classes.container }>
                 <div className = { classes.block }>
                     <Avatar 
-                    src = { user?.avatar } 
+                    src = { user?.avatar ? `data:image/png;base64,${user.avatar}` : '' } 
                     placeholder = { user?.firstName } 
                     alt = {`${ user?.firstName } ${ user?.lastName }`}
                     classes = {{ 

@@ -6,15 +6,16 @@ const useUserCardStyle = makeStyles(theme =>({
         alignItems : 'center',
         justifyContent :'center',
         width : '100%',
-        height : '30%',
         margin : '6rem 0',
         [theme.breakpoints.up('sm')] :{
-            width : '40rem',
-            height :'100%',
             margin :0,
             alignItems : 'flex-start',
-            padding :'10rem 1rem'
+            padding :'15rem .5rem',
+            width :'47%'
         },
+        [theme.breakpoints.up('md')] : {
+            paddingTop : '10rem'
+        }
     },
     card : {
         position : 'relative',
@@ -23,19 +24,15 @@ const useUserCardStyle = makeStyles(theme =>({
         flexDirection : 'column',
         alignItems : 'center',
         width : '100%',
-        height : '100%',
-        boxShadow : '0 0 .3rem rgba(0, 0, 0, .6)',
-        overflow: 'hidden',
-        background : theme.palette.primary.main,
+        background : theme.palette.secondary.light,
+        maringTop: '2rem',
         paddingTop :'.7rem',
         [theme.breakpoints.up('sm')] :{
-            height : '20rem',
             borderRadius :'1rem',
+        },
 
-        }
     },
     cardHeader : {
-        background : theme.palette.secondary.light,
         position : 'absolute',
         width : '100%',
         height : '5rem',
@@ -46,15 +43,22 @@ const useUserCardStyle = makeStyles(theme =>({
         display : 'flex',
         flexDirection :'column',
         alignItems : 'center',
-        height : '80%',
+        minHeight : '80%',
+        width :'100%',
+        //target hidden form to update user
+        "& > *:nth-child(3)" : {
+            width : '100%',
+        }
+
     },
     userName : {
         fontSize : '2rem',
         fontFamily : theme.typography.fontFamily,
-        color : theme.palette.secondary.light
+        color : 'rgba(0, 0, 0, .7)',
+        alignSelf: 'center',
     },
     btn : {
-        color : theme.palette.secondary.light,
+        color : 'rgba(0, 0, 0, .7)',
         border :'none',
         background :'rgba(0, 0, 0, .12)',
         fontSize :'1.6rem',
@@ -70,6 +74,6 @@ const useUserCardStyle = makeStyles(theme =>({
         minWidth : '2.5rem',
         minHeight :'2.5rem',
     }
-}))
+}));
 
 export default useUserCardStyle;

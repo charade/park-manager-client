@@ -1,4 +1,5 @@
 import { useAvarStyle } from '../assets/styles/index.styles';
+import { motion } from "framer-motion";
 
 interface StyleProp{
     root ?:string,
@@ -9,14 +10,15 @@ type AvatarProps = {
     classes ?: StyleProp
     src ?: string
     placeholder ?: string
-    alt ?: string
+    alt ?: string,
+    layout ?: boolean
 };
 
-export const Avatar = ({ classes, src, placeholder, alt } : AvatarProps) => {
+export const Avatar = ({ classes, src, placeholder, alt, layout = false } : AvatarProps) => {
     const styled = useAvarStyle();
 
     return(
-        <div className = { `${styled.box} ${classes?.root}` }>
+        <motion.div layout = { layout } className = { `${styled.box} ${classes?.root}` }>
             {src ? 
             <img src = { src } alt = { alt } className = { `${styled.img} ${classes?.img }` }/> 
             :
@@ -24,6 +26,6 @@ export const Avatar = ({ classes, src, placeholder, alt } : AvatarProps) => {
                 { placeholder?.charAt(0) || '' } 
             </h3>
             }
-        </div>
+        </motion.div>
     )
 }

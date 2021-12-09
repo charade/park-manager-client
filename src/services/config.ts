@@ -7,8 +7,7 @@ export const request = axios.create({
 request.interceptors.request.use(config => {
     const auth = localStorage.getItem('auth');
     if(auth){
-        const authToken  = JSON.parse(auth).auth;
-        config.headers = Object.assign(config.headers || {}, {Authorization : `Bearer ${authToken}`})
+        config.headers = Object.assign(config.headers || {}, {Authorization : `Bearer ${auth}`})
     };
     return config;
 });

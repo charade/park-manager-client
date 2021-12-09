@@ -5,7 +5,7 @@ const useSnackbarStyle = makeStyles(theme => ({
         zIndex : 14,
         position : 'fixed',
         bottom : '10rem',
-        right : '.5rem',
+        left : '.5rem',
         display : 'flex',
         justifyContent : 'space-around',
         alignItems : 'center',

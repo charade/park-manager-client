@@ -55,7 +55,7 @@ export const snackbar : Variants = {
         }
     },
     close : {
-        x : '20rem',
+        x : '-20rem',
         opacity : 0,
         transition : {
             duration  : .5

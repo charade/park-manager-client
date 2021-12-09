@@ -19,7 +19,7 @@ type PlacesFormPropsT = {
     setOpen : (open : boolean) => void
 }
 
-export const PlacesForm = ({ open, setOpen } : PlacesFormPropsT)=> {
+export const PlacesForm = ({ open, setOpen} : PlacesFormPropsT)=> {
     const [ place, setPlace ] = useState<CreatePlace>(PLACES_DEFAULT_VALUE);
     const  error = useToggle();
     const dispatch = useDispatch();

@@ -1,38 +1,52 @@
-import { useState } from 'react';
 import { useUserCardStyle } from '../assets/styles/index.styles';
 import { Avatar } from './Avatar';
 import { useSelector } from 'react-redux';
 import { ReducerRootStateType } from '../state';
 import { Button } from './Button';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { UpdateUser } from './UpdateUser';
+import { AnimateSharedLayout, motion } from 'framer-motion';
+import { useToggle } from '../hooks';
 
 export const UserCard = () => {
     const classes = useUserCardStyle();
     const user = useSelector((store : ReducerRootStateType) => store.user);
-    const [ openUpdates, setOpenUpdates ] = useState<boolean>(false);
+    const openUpdates= useToggle();
 
-    const handleToggleOpen = () => setOpenUpdates(!openUpdates);
+    const handleToggleOpen = () => openUpdates.toggle();
 
     return(
-        <div className = { classes.container }>
-            <div className = { classes.card }>
-                <div className = { classes.cardHeader }></div>
-                <div className = { classes.cardContent }>
-                    <Avatar 
-                    placeholder = { user?.firstName }
-                    src = { user?.avatar }
-                    alt = { `${user?.firstName}-${user?.lastName}` }
+        <AnimateSharedLayout>
+            <motion.div className = { classes.container }>
+                <motion.div layout className = { classes.card }>
+                    <motion.div layout className = { classes.cardHeader }></motion.div>
+                    <motion.div layout className = { classes.cardContent }>
+                        <Avatar
+                        layout 
+                        placeholder = { user?.firstName }
+                        src = { user?.avatar ? `data:image/png;base64,${user?.avatar}` : '' }
+                        alt = { `${user?.firstName}-${user?.lastName}` }
+                        />
+                        <motion.h2 className = { classes.userName }> 
+                            { `${user?.firstName} ${ user?.lastName }` } 
+                        </motion.h2>
+                        <UpdateUser open = { openUpdates.isTrue }/>
+                    </motion.div>
+
+                    <Button 
+                    layout 
+                    className = { classes.btn }
+                    onClick = { handleToggleOpen }
+                    icon = {
+                        openUpdates.isTrue ?
+                        <KeyboardArrowUpIcon className = { classes.btnIcon } />: 
+                        <KeyboardArrowDownIcon className = { classes.btnIcon }/> 
+                    } 
                     />
-                    <h2 className = { classes.userName }> 
-                        { `${user?.firstName} ${ user?.lastName }` } 
-                    </h2>
-                </div>
-                <Button 
-                className = { classes.btn }
-                icon = {<KeyboardArrowDownIcon className = { classes.btnIcon }/>} 
-                onClick = { handleToggleOpen }
-                />
-            </div>
-        </div>
+
+                </motion.div>
+            </motion.div>
+        </AnimateSharedLayout>
     )
 }

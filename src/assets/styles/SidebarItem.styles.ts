@@ -12,14 +12,15 @@ const useSidebarItemStyle = makeStyles(theme => ({
         '&:hover': {
             background : 'rgba(157, 203, 234, .4)'
         },
+        color :'#fff'
     },
     avatarRoot : {
-        width : '5.5rem',
-        height : '5.5rem ',
+        width : '4.5rem !important',
+        height : '4.5rem !important ',
         background : 'rgba(0, 0, 0, .4)',
         [theme.breakpoints.up('sm')] : {
-            width : '6rem',
-            height : '6rem'
+            width : '7rem',
+            height : '7rem'
         }
     },
     avatarPlaceholder : {
@@ -27,11 +28,7 @@ const useSidebarItemStyle = makeStyles(theme => ({
     },
     userName: {
         fontSize :'1.3rem',
-        color : theme.palette.primary.main,
-        margin: '.7rem',
-        [theme.breakpoints.up('sm')] : {
-            fontSize : '1.6rem'
-        }
+        marginLeft: '.7rem',
     }
 }));
 

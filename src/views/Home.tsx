@@ -14,7 +14,7 @@ import {
 
 const Home = () => {
     const dispatch = useDispatch();
-    const { loadUser } = bindActionCreators(usersActionCreators, dispatch);
+    const { setUser } = bindActionCreators(usersActionCreators, dispatch);
     const { loadPlaces } = bindActionCreators(placesActionCreators, dispatch);
     const { loadColleagues } = bindActionCreators(colleaguesActionCreators, dispatch);
     const { setReservation } = bindActionCreators(placeReservationActionCreators, dispatch);
@@ -22,9 +22,18 @@ const Home = () => {
     const classes = useHomeStyle();
 
     useEffect(() => {
-        loadUser();
+        //get user from localStorage
+        const storedUser = localStorage.getItem('user');
+        if(storedUser){
+            const user = JSON.parse(storedUser);
+            setUser(user);
+        };
+        //request all available place
         loadPlaces();
+
+        //load colleagues for admin user
         loadColleagues();
+        
         //where user parked
         const findMyCar = async() => {
             const place = await places.find();
