@@ -14,29 +14,31 @@ const useSidebarStyle = makeStyles(theme => ({
         overflow : 'hidden',
         [theme.breakpoints.up('sm')] :{
             position :'static',
-            width : '42rem !important',
+            width : '30rem !important',
         },
     },
     drawer : {
         display : 'flex',
         flexDirection : 'column',
-        width : '20rem',
+        width : '19rem',
         height : '100%',
         listStyle : 'none',
-        background : '#fff',
+        background : 'rgb(34, 40, 64)',
         boxShadow :'0 0 .6rem rgba(0, 0, 0, .4)',
         overflowY : 'scroll',
         [theme.breakpoints.up('sm')] :{
             width : '100%',
         }
-       
     },
     list : {
         height : '100%',
         width : '100%',
         padding :'1rem .5rem',
+        display :'flex',
+        flexDirection :'column',
         [theme.breakpoints.up('sm')] : {
-            paddingTop : '7rem'
+            paddingTop : '7rem',
+            paddingLeft :'1rem'
         }
     }
    

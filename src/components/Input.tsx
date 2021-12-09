@@ -14,6 +14,7 @@ type InputProps = {
     value ?: string | number,
     helperText ?: string,
     underline ?: boolean,
+    layout ?: boolean
 };
 
 export const Input = (props : InputProps) => {
@@ -35,7 +36,7 @@ export const Input = (props : InputProps) => {
         
     return(
         <motion.div
-        layout 
+        // layout = { props.layout }
         tabIndex = { 0 }
         animate = { focused ? "focus" : "blur" }
         className = { classes.fieldContainer }
@@ -49,6 +50,7 @@ export const Input = (props : InputProps) => {
             > 
                 { props.label } 
             </motion.label>
+
             <input
             data-helpertext = { props.helperText }
             value = { props.value }
@@ -61,6 +63,7 @@ export const Input = (props : InputProps) => {
             onBlur = { handleBlur }  
             style = { props.inputStyle }
             />
+            
             {props.underline &&
                 <motion.span
                 transition = {{ease  : 'linear', duration : .2}}    

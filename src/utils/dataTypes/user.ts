@@ -23,7 +23,7 @@ export type User = {
 }
 
 export type UpdateUserTypes = LoginT & PersonalData & {
-    avatar : string
+    avatar : Blob
 };
 
 //*************************** Default values ****************************************** */
@@ -39,7 +39,7 @@ export const SIGN_DEFAULT_VALUE : SignDataTypes = {
 export const UPDATE_USER_DEFAULT_VALUES: UpdateUserTypes = {
     firstName : '',
     lastName :'',
-    avatar :'',
+    avatar : new Blob(),
     password :'',
     email :''
 }

@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { ReducerRootStateType } from '../state';
 import { Button } from './Button';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { UpdateUser } from './UpdateUser';
 import { AnimateSharedLayout, motion } from 'framer-motion';
 import { useToggle } from '../hooks';
@@ -24,20 +25,26 @@ export const UserCard = () => {
                         <Avatar
                         layout 
                         placeholder = { user?.firstName }
-                        src = { user?.avatar }
+                        src = { user?.avatar ? `data:image/png;base64,${user?.avatar}` : '' }
                         alt = { `${user?.firstName}-${user?.lastName}` }
                         />
-                        <motion.h2 layout className = { classes.userName }> 
+                        <motion.h2 className = { classes.userName }> 
                             { `${user?.firstName} ${ user?.lastName }` } 
                         </motion.h2>
                         <UpdateUser open = { openUpdates.isTrue }/>
                     </motion.div>
+
                     <Button 
                     layout 
                     className = { classes.btn }
-                    icon = {<KeyboardArrowDownIcon className = { classes.btnIcon }/>} 
                     onClick = { handleToggleOpen }
+                    icon = {
+                        openUpdates.isTrue ?
+                        <KeyboardArrowUpIcon className = { classes.btnIcon } />: 
+                        <KeyboardArrowDownIcon className = { classes.btnIcon }/> 
+                    } 
                     />
+
                 </motion.div>
             </motion.div>
         </AnimateSharedLayout>

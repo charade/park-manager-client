@@ -28,7 +28,8 @@ import useDetailsStyle from './Details.styles';
 import useFinderStyle from './Finder.styles';
 import useChartStyles from './Chart.styles';
 import useDefaultMsgStyle from './DefaultMsg.styles';
-import useUpdateUserStyle from './UpdateUser.styles';
+import useUpdateUserFieldStyle from './UpdateUserField.styles';
+import useUpdateAvatarFieldStyle from './UpdateAvatarField.styles';
 
 export {
     useLoginViewStyle,
@@ -61,5 +62,6 @@ export {
     useFinderStyle,
     useChartStyles,
     useDefaultMsgStyle,
-    useUpdateUserStyle
+    useUpdateUserFieldStyle,
+    useUpdateAvatarFieldStyle
 };

@@ -19,7 +19,7 @@ export const SidebarItem = ({ user, onClick } : SideBarItemProps) => {
         >
             <Avatar 
             placeholder = { user.firstName }
-            src = { user.avatar }
+            src = { user.avatar ? `data:image/png;base64,${user.avatar}` : '' }
             alt = { `${user.firstName}-${user.lastName}` }
             classes = {{
                 root : classes.avatarRoot,

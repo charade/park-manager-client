@@ -11,7 +11,7 @@ const useUserCardStyle = makeStyles(theme =>({
             margin :0,
             alignItems : 'flex-start',
             padding :'15rem .5rem',
-            width :'40%'
+            width :'47%'
         },
         [theme.breakpoints.up('md')] : {
             paddingTop : '10rem'
@@ -24,17 +24,15 @@ const useUserCardStyle = makeStyles(theme =>({
         flexDirection : 'column',
         alignItems : 'center',
         width : '100%',
-        overflow :'scroll',
-        boxShadow : '0 0 .3rem rgba(0, 0, 0, .6)',
-        background : theme.palette.primary.main,
+        background : theme.palette.secondary.light,
         maringTop: '2rem',
         paddingTop :'.7rem',
         [theme.breakpoints.up('sm')] :{
             borderRadius :'1rem',
         },
+
     },
     cardHeader : {
-        background : theme.palette.secondary.light,
         position : 'absolute',
         width : '100%',
         height : '5rem',
@@ -46,14 +44,21 @@ const useUserCardStyle = makeStyles(theme =>({
         flexDirection :'column',
         alignItems : 'center',
         minHeight : '80%',
+        width :'100%',
+        //target hidden form to update user
+        "& > *:nth-child(3)" : {
+            width : '100%',
+        }
+
     },
     userName : {
         fontSize : '2rem',
         fontFamily : theme.typography.fontFamily,
-        color : theme.palette.secondary.light
+        color : 'rgba(0, 0, 0, .7)',
+        alignSelf: 'center',
     },
     btn : {
-        color : theme.palette.secondary.light,
+        color : 'rgba(0, 0, 0, .7)',
         border :'none',
         background :'rgba(0, 0, 0, .12)',
         fontSize :'1.6rem',
@@ -69,6 +74,6 @@ const useUserCardStyle = makeStyles(theme =>({
         minWidth : '2.5rem',
         minHeight :'2.5rem',
     }
-}))
+}));
 
 export default useUserCardStyle;

@@ -5,14 +5,16 @@ const useAvarStyle = makeStyles(theme =>({
         display : 'flex',
         alignItems : 'center',
         justifyContent : 'center',
-        width  : '8.5rem',
-        height : '8.5rem',
+        width  : '8rem',
+        height : '8rem',
         borderRadius : '50%',
         border:'1px solid #fff',
-        background : 'lightgrey'
+        background : 'lightgrey',
+        overflow :'hidden'
     },
     img : {
-        objectFit : 'cover'
+        width :'100%',
+        height :'100%'
     },
     placehoder :{
         fontSize : '5rem',

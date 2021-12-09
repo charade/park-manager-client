@@ -52,8 +52,9 @@ export const LoginForm = () => {
                 notification.setOpen(true);
             })
             if(response && response.status === status.SUCCESS){
-                const auth = response.data;
-                localStorage.setItem('auth', JSON.stringify(auth));
+                const {auth, user} = response.data;
+                localStorage.setItem('auth', auth);
+                localStorage.setItem('user', JSON.stringify(user))
                 navigate(`/home`);
             };
         };
