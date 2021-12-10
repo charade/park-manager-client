@@ -7,7 +7,7 @@ const useRightSidebarItemStyle = makeStyles(theme => ({
         alignItems : 'center',
         borderRadius :'.5rem',
         padding: '.3rem',
-        marginTop :'1.5rem',
+        marginTop :'1rem',
         cursor : 'pointer',
         color :'#fff',
         '&:hover': {

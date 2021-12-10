@@ -32,7 +32,7 @@ export const placeForm : Variants = {
     },
     close : {
         opacity : 0,
-        y : 200
+        y : 100
     }
 };
 export const snackbar : Variants = {
@@ -165,3 +165,13 @@ export const role : Variants = {
     }),
     
 };
+export const createNewUser : Variants = {
+    open : {
+        x: 0,
+        opacity : 1
+    },
+    close : {
+        x: -100,
+        opacity: 0
+    }
+}

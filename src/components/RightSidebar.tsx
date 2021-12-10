@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { ReducerRootStateType } from '../state';
 import { motion } from 'framer-motion';
 import { useMediaQuery } from '@mui/material';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { useRightSidebarStyle, useToolbarStyle } from '../assets/styles/index.styles';
 import { variants } from '../assets/utils';
 import { sidebarActionCreators } from '../state/actions-creators';
@@ -12,13 +13,13 @@ import { device } from '../assets/utils/constants';
 import { User } from '../utils/dataTypes/user';
 import { RightSidebarItem } from './RightSidebarItem';
 import { DefaultMessage } from './DefaultMessage';
+import { Button } from './Button';
 
 export const RightSidebar = () => {
     const [ user, setUser ] = useState<User | null>(null);
     //used for upadeting user permissions
     const [ userIndex, setUserIndex ] = useState<number | undefined>(undefined);
     const [ detailsAnchorEl, setDetailsAnchorEl ] = useState<HTMLLIElement | null>(null);
-    // const [openDetails, setOpenDetails] = useState<boolean>(false);
     const [openDetails, setOpenDetails] = useState<boolean>(false);
     const classes = useRightSidebarStyle();
     const styledToolbar = useToolbarStyle();
@@ -58,6 +59,7 @@ export const RightSidebar = () => {
         variants = { variants.sidebar }
         initial = { false }
         >
+            {isScreenMobile && <Button className = { classes.closeBtn } icon = {<KeyboardArrowRightIcon />} />}
             <motion.div   /* drawer */
             ref = { ref }
             tabIndex = { 0 }

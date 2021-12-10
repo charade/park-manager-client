@@ -6,14 +6,13 @@ const useCheckboxStyle = makeStyles({
         display :'flex',
         alignItems : 'center',
         justifyContent :'center',
-        
     },
     box : {
         position : 'relative',
         width : '1.7rem',
         height : '1.7rem',
         borderRadius : '.4rem',
-        border : '1px solid lightgrey',
+        border : '1px solid rgba(0, 0, 0, .2)',
         cursor : 'pointer'
     },
     inputCheck : {
@@ -32,7 +31,7 @@ const useCheckboxStyle = makeStyles({
         height :'100%',
         background : 'rgb(123, 185, 115)',
         display : 'block',
-        
+        color: '#fff'
     }
    
 });

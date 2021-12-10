@@ -5,15 +5,11 @@ const usePlacesTableStyle = makeStyles(theme => ({
         display : 'flex',
         flexDirection : 'column',
         margin :'2rem 0',
-        border: '1px solid rgba(0, 0, 0, .3)',
         width :'100%',
         fontFamily : theme.typography.fontFamily,
-        color : '#fff',
-        background : theme.palette.primary.main,
+        color : 'rgba(0, 0, 0,)',
+        background : theme.palette.secondary.main,
         fontSize :'1.4rem',
-        [theme.breakpoints.up('sm')] : {
-            // width : '90%',
-        },
         height : '36%'
     },
     table : {
@@ -21,9 +17,11 @@ const usePlacesTableStyle = makeStyles(theme => ({
         tableLayout : 'fixed',
         width :'100%'
     },
-    bodyContainer: {
-        height : '100%',
-        overflow : 'scroll',
+    headRow : {
+        background : 'rgb(34, 40, 64)',
+        color :'#fff',
+        height :'4rem !important',
+        borderRadius :'0 0 4rem 0 4rem !important'
     },
     row: {
         height : '2.96rem',
@@ -32,20 +30,24 @@ const usePlacesTableStyle = makeStyles(theme => ({
         alignItems : 'center',
         justifyContent: 'space-evenly',
         '&:nth-child(even)' : {
-            background : 'rgba(0, 0, 0, .1)'
-        }
+            background : 'rgba(255, 255, 255, .8)'
+        },
+        borderRadius :'.4rem'
     },
-    headRow : {
-        background : 'rgba(0, 0, 0, .37)',
+    bodyContainer: {
+        height : '100%',
+        overflow : 'scroll',
     },
     cell : {
-        borderBottom : '1px solid rgba(255, 255, 255, .5)',
         width : '30%',
         flex : 1,
         height :'100%',
         display : 'flex',
         justifyContent :'center',
         alignItems :'center',
+        '&:nth-child(3n + 2)':{
+            background: 'rgba(0, 0, 0, .06)',
+        }
     }
 }));
 

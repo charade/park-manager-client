@@ -11,7 +11,8 @@ const users =  {
     login : (data: LoginT) => request.post('/users/login', data),
     getColleagues: () => request.get('/users/auth/colleagues'),
     updatePermissions :(data : ChangePermissions) => request.patch('/users/auth/permission', data),
-    updateUser : (data : FormData) => request.patch('/users/auth/update-user', data)
+    updateUser : (data : FormData) => request.patch('/users/auth/update-user', data),
+    createNewAdmin : (data : SignDataTypes) => request.post('/users/auth/create-admin-account', data)
 }
 
 export default users;
