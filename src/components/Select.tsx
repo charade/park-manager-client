@@ -1,22 +1,19 @@
-import React, { useRef, useEffect }  from 'react';
+import React, { useRef, useEffect, useState }  from 'react';
 import { useSelectStyle } from '../assets/styles/index.styles';
 import { motion } from 'framer-motion';
 import { variants } from '../assets/utils';
-import { useCloseOnBlur } from '../hooks';
 import { SelectFloor } from './SelectFloors';
+import { Button } from './Button';
+import SearchIcon from '@mui/icons-material/Search';
+import { useCloseOnBlur } from '../hooks';
 
-type SelectProps = {
-    open : boolean,
-    setOpen : (open : boolean) => void,
-    children : React.ReactNode
-};
-
-export const Select = ({ open, setOpen, children } : SelectProps) => {
+export const Select = () => {
+    const [ open, setOpen] = useState<boolean>(false);
     const classes = useSelectStyle();
-    const handleClose = useCloseOnBlur(setOpen);
-    const handlefocus = () => setOpen(true);
     const ref = useRef<HTMLDivElement>(null);
+    const handleClose = useCloseOnBlur(setOpen);
 
+    const handlefocus = () => setOpen(true);
     useEffect(() => {
         const icon = ref.current?.firstElementChild as HTMLButtonElement;        
         if(icon){
@@ -41,7 +38,7 @@ export const Select = ({ open, setOpen, children } : SelectProps) => {
         custom = { open } 
         className = { classes.container }
         >
-            { children }
+            <Button className = {classes.btn } icon = { <SearchIcon /> } />
             {open &&
             <>   
                 <SelectFloor />

@@ -38,8 +38,8 @@ export const UpdateUserField = ({onChangeField, label, name} : UpdateUserBlocPro
                     { user && (name in user) && 
                         <motion.span layout className = { classes.reminder }>
                              {  
-                                `${user[name as keyof User]!.slice(0, 10)} 
-                                ${((user[name as keyof User]!.length > 10) ? '...' : '')}`  
+                                `${user[name as keyof User]!.slice(0, 5)} 
+                                ${((user[name as keyof User]!.length > 5) ? '...' : '')}`  
                              } 
                         </motion.span>
                     }

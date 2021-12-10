@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core";
+import { UP_MEDIUM_SCREEN } from "../utils/constants";
 
 const useNavbarStyle = makeStyles(theme => ({
     root : {
@@ -6,55 +7,63 @@ const useNavbarStyle = makeStyles(theme => ({
         position :'fixed',
         height : '6rem',
         width :'100%',
-        boxShadow :'0 0 .3rem rgba(0, 0, 0, .4)'
     },
     paper : {
         position : 'relative',
         display : 'flex',
-        justifyContent : 'center',
+        justifyContent : 'space-between',
+        alignItems :'center',
         width : '100%',
         height :'100%',
-        background : theme.palette.secondary.light,
-        [theme.breakpoints.up('sm')] :{
-            justifyContent: 'center'
-        },
+        padding :'0 .9rem',
     },
-    box :{
-        display : 'flex',
-        justifyContent :'space-around',
-        flex: 2,
+    toolbar :{
+        display : 'inline-flex',
+        width : '20%',
+        justifyContent :'space-between',
         alignItems :'center',
-        '&:first-child' :{
-            justifyContent :'space-between',
-            paddingLeft: '1rem'
-        },
-        '&:last-child':{
-            flexDirection :'column',
-            alignItems :'flex-end',
-            paddingRight :'1rem',
-            flex: 1
+       
+    },
+    avatarRoot: {
+        maxWidth: '5rem',
+        maxHeight :'5rem',
+        margin: '2.8rem',
+        [theme.breakpoints.up(UP_MEDIUM_SCREEN)]:{
+            margin: '4.7rem'
         }
     },
-    logo : {
-        width : '4.8rem',
-        height :'4rem',
+    avatarPlaceHolder :{
+        fontSize :'1.4rem'
     },
-    //button
+    
+    logout : {
+        display: 'flex',
+        justifyContent: 'flex-end',
+        width :'75%',
+        [theme.breakpoints.up('sm')]: {
+            width :'85%'
+        },
+        [theme.breakpoints.up(UP_MEDIUM_SCREEN)]: {
+            width: '90%'
+        }
+    },
+    companyName : {
+        fontSize :'1.6rem',
+        color :theme.palette.primary.main,
+        fontFamily:  'Avenir Next',
+        fontWeight : 700,
+        marginRight: '1rem'
+    },
     navItem : {
-        width : '4rem',
-        height :'4rem',
         border : 'none',
-        background : theme.palette.secondary.light,
-        '&:first-child' : {
-            flex :2
-        },
-        //button icon
-        '& > *' : {
-            minWidth : '70%',
-            minHeight : '70%',
-            color : 'rgba(0, 0, 0, .6)',
-        },
+        color :theme.palette.primary.main,
+        background: 'transparent'
     },
+    icon: {
+        width : '3rem',
+        height :'3rem',
+        marginLeft :'.5rem'
+    }
 }));
 
 export default useNavbarStyle;

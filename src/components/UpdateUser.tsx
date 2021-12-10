@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { UpdateUserField } from './UpdateUserField';
 import { UpdateUserTypes, UPDATE_USER_DEFAULT_VALUES } from '../utils/dataTypes/user';
 import { UpdateUserFields } from '../utils/contants';
@@ -56,7 +56,13 @@ export const UpdateUser = ({open} : UpdateUserProps) => {
     return(
         <AnimatePresence>
             {open &&
-                <form onSubmit = { handleSubmit } encType = 'multipart/form-data'>
+                <motion.form 
+                animate = {{ opacity : [0, .2, 1]}}
+                exit = {{ opacity : 0 }}
+                initial = {{ opacity : 0 }}
+                onSubmit = { handleSubmit } 
+                encType = 'multipart/form-data'
+                >
                     { UpdateUserFields.map((field, i) => {
                         return(
                             <UpdateUserField
@@ -69,7 +75,7 @@ export const UpdateUser = ({open} : UpdateUserProps) => {
                     })}
                     <UpdateAvatarField onChange = { handleChange }/>
                     <Button type = 'submit'/>
-                </form>
+                </motion.form>
             }
             <Snackbar 
             open = { notification.open }
