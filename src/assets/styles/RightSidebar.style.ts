@@ -7,11 +7,12 @@ const useRightSidebarStyle = makeStyles(theme => ({
         position :'fixed',
         top : '5.4rem',
         right : 0,
+        display : 'flex',
+        justifyContent :'flex-end',
+        flexDirection: 'column',
         height :'100%',
         background :'rgba(0, 0, 0,.9)',
         backdropFilter : 'grayscale(50%) blur(.3rem)',
-        display : 'flex',
-        justifyContent :'flex-end',
         overflow : 'hidden',
         [theme.breakpoints.up('sm')] :{
             position :'static',
@@ -22,11 +23,19 @@ const useRightSidebarStyle = makeStyles(theme => ({
             maxWidth :'18rem'
         }
     },
+    closeBtn : {
+        width :'3rem',
+        height :'3rem',
+        alignSelf: 'flex-start',
+        color: '#fff',
+        margin :'1rem',
+        background :'inherit',
+        borderRadius:'50%',
+        border: '1px solid rgba(255, 255, 255, .7)'
+    },
     drawer : {
         height : '100%',
         width : '100% !important',
-        [theme.breakpoints.up('sm')] :{
-        }
     },
     list : {
         height : '100%',
@@ -34,10 +43,6 @@ const useRightSidebarStyle = makeStyles(theme => ({
         padding :'1rem .5rem',
         display :'flex',
         flexDirection :'column',
-        [theme.breakpoints.up('sm')] : {
-            // paddingTop : '7rem',
-            // paddingLeft :'1rem'
-        }
     }
    
 }));

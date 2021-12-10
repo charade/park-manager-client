@@ -8,24 +8,21 @@ const useUpdateUserFieldStyle = makeStyles(theme => ({
         fontSize :'1.5rem',
         margin :'1rem 0',
         width: '100%',
-        [theme.breakpoints.up('sm')] :{
-            margin :'3rem 0'
-        },
         '&:first-child > *:first-child > label' : {
             background : '#E0A507',
-            color :'white'
         },
         '&:nth-child(2) > *:first-child > label' : {
-            background : '#05B5ED',
-            color :'white'
+            // background : '#05B5ED',
+            background : '#5F946D',
         },
         '&:nth-child(3) > *:first-child > label' : {
-            background : '#5F946D',
-            color :'white'
+            background : theme.palette.primary.main
         },
         '&:nth-child(4) > *:first-child > label' : {
             background : '#8B5F94',
-            color :'white'
+        },
+        [theme.breakpoints.up('sm')] :{
+            margin :'3rem 0'
         },
     },
     box : {
@@ -42,7 +39,8 @@ const useUpdateUserFieldStyle = makeStyles(theme => ({
     btn :{
         display :'flex',
         alignItems :'center',
-        color : theme.palette.primary.main,
+        color :'#fff',
+
         margin : '0 .5rem',
         padding :'.4rem',
         borderRadius :'.5rem',

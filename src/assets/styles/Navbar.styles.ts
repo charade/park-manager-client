@@ -25,8 +25,8 @@ const useNavbarStyle = makeStyles(theme => ({
        
     },
     avatarRoot: {
-        maxWidth: '5rem',
-        maxHeight :'5rem',
+        maxWidth: '4rem',
+        maxHeight :'4rem',
         margin: '2.8rem',
         [theme.breakpoints.up(UP_MEDIUM_SCREEN)]:{
             margin: '4.7rem'

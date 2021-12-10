@@ -32,6 +32,7 @@ import useDefaultMsgStyle from './DefaultMsg.styles';
 import useUpdateUserFieldStyle from './UpdateUserField.styles';
 import useUpdateAvatarFieldStyle from './UpdateAvatarField.styles';
 import useToolbarStyle from './Toolbar.styles';
+import useCreateUserStyle from './CreateNewUser.styles';
 
 export {
     useLoginViewStyle,
@@ -68,4 +69,5 @@ export {
     useDefaultMsgStyle,
     useUpdateUserFieldStyle,
     useUpdateAvatarFieldStyle,
+    useCreateUserStyle
 };

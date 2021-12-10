@@ -13,7 +13,6 @@ import { Divider } from './Divider';
 import { Button } from './Button';
 import { PlacesForm } from './PlacesForm';
 import { Chart } from './Chart';
-import { motion } from 'framer-motion';
 
 export const MainContainer = () => {
     const openPlaceForm = useToggle();
@@ -23,7 +22,7 @@ export const MainContainer = () => {
     const isAdmin = useMemo(() => user?.role === userRole.ADMIN, [user]);
 
     return(
-        <motion.div  className = { classes.container }>
+        <div  className = { classes.container }>
             {isScreenMobile && <UserCard />}
             {!isScreenMobile && <Chart />}
             <Divider  label = 'places' className = { classes.divider }/>
@@ -39,6 +38,6 @@ export const MainContainer = () => {
 
             <PlacesForm open = { openPlaceForm.isTrue } setOpen = { openPlaceForm.toggle } />
             <PlacesTable/>
-        </motion.div>
+        </div>
     )
 }

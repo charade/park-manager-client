@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { bindActionCreators }  from 'redux';
 import { useDispatch } from 'react-redux';
 import { sidebarActionCreators } from '../state/actions-creators';
@@ -14,10 +14,13 @@ import ExploreIcon from '@mui/icons-material/Explore';
 import { userRole } from '../utils/contants';
 import { Finder } from './Finder';
 import { useToggle } from '../hooks';
+import { CreateUser } from './CreateUser';
 
 export const LeftSidebar = () => {
     const [ finderAnchorEl, setFinderAnchorEl ] = useState<HTMLButtonElement | null>(null);
     const openFinder = useToggle();
+    const openCreateNewUser = useToggle();
+    const [createNewuserAnchorEl, setCreateNewUserAnchorEl] = useState<HTMLButtonElement | null>(null)
     const styledToolbar = useToolbarStyle();
     const classes = useLeftSidebarStyle();
     const isScreenMobile = !useMediaQuery(device.sm);
@@ -29,6 +32,11 @@ export const LeftSidebar = () => {
 
     const handleToggleSidebar = () => toggleSidebar(true);
 
+    const handleOpenCreateNewUserPopover = (e: React.MouseEvent<HTMLButtonElement>) =>{
+        const target = e.target as HTMLButtonElement
+        setCreateNewUserAnchorEl(target);
+        openCreateNewUser.toggle();
+    };
     const handleOpenFinder = (e : React.MouseEvent<HTMLButtonElement>) => {
         const target = e.target as HTMLButtonElement;
         openFinder.toggle();
@@ -38,12 +46,15 @@ export const LeftSidebar = () => {
     return(
         <>
             <div className = { `${styledToolbar.container} ${ classes.drawer }` }>
-                <Button 
-                className = { classes.item }
-                icon = { <PersonAddIcon className = { classes.icon }/> }
-                label = {isScreenMobile ? '' : 'New account'}
-                iconPosition = 'before'
-                /> 
+                {isAdmin &&
+                    <Button 
+                    className = { classes.item }
+                    icon = { <PersonAddIcon className = { classes.icon }/> }
+                    label = {isScreenMobile ? '' : 'New account'}
+                    iconPosition = 'before'
+                    onClick = { handleOpenCreateNewUserPopover }
+                    />
+                } 
                 {isScreenMobile && isAdmin &&
                     <Button 
                     className = {classes.item } 
@@ -59,6 +70,11 @@ export const LeftSidebar = () => {
                 label = {isScreenMobile ? '' : 'My car'}
                 />
             </div>
+            <CreateUser 
+                open = { openCreateNewUser.isTrue }
+                setOpen = { openCreateNewUser.toggle }
+                anchorEl = { createNewuserAnchorEl }
+            />
             <Finder 
                 open = { openFinder.isTrue }
                 setOpen = { openFinder.toggle }

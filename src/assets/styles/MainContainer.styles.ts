@@ -10,8 +10,7 @@ const useMainContainerStyle = makeStyles(theme => ({
         overflow :'scoll',
         [theme.breakpoints.up('sm')] : {
             minWidth: '40%',
-            // border:'1px solid red'
-        },
+        }
     },
     divider : {
         width : '100%',
@@ -23,22 +22,26 @@ const useMainContainerStyle = makeStyles(theme => ({
     },
     btn : {
         alignSelf: 'flex-start',
-        maxWidth : '7rem',
-        justifyContent: 'space-around',
-        color : theme.palette.primary.main,
+        width : '10rem',
+        height :'2.6rem',
+        justifyContent: 'flex-start',
+        color : 'rgba(255, 255, 255, .7)',
         border :'none',
-        borderRadius : '.4rem',
-        // margin : '.5rem 3rem',
-        fontSize :'1.7rem',
+        padding: '.8rem',
+        borderRadius : '4rem 2rem 6rem',
+        clipPath : 'polygon(0 0, 80% 0, 100% 100%, 0 100%)',
+        marginBottom : '-2.8rem',
+        background : 'rgb(34, 40, 64)',
+        borderadius :'0 4rem 1rem 0 0',
+        fontSize :'1.3rem',
         cursor : 'pointer',
-        '&:hover' : {
-            background : theme.palette.primary.light
-        },
+        
         //icon
         '& > *' : {
-            minWidth : '2rem',
-            minHeight :'2rem'
-            },
+            minWidth : '1rem',
+            minHeight :'1rem',
+            margin :'.5rem'
+        },
     },
 }));
 
