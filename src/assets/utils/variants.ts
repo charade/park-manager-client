@@ -35,16 +35,6 @@ export const placeForm : Variants = {
         y : 200
     }
 };
-export const select : Variants = {
-    animate : open => ({
-        width : open ? '12rem' : '4.8rem',
-        border : open ? '1px solid rgba(0, 0, 0, .3)' : 'none',
-        transition : {
-            ease : "linear",
-            duration : .1
-        }
-    })
-}
 export const snackbar : Variants = {
     open : {
         x : 0,
@@ -98,6 +88,16 @@ export const popper : Variants = {
         opacity : 0
     }
 };
+export const select : Variants = {
+    animate : open => ({
+        width : open ? '12rem' : '4.8rem',
+        border : open ? '1px solid rgba(0, 0, 0, .3)' : 'none',
+        transition : {
+            ease : "linear",
+            duration : .1
+        }
+    })
+}
 export const selectFloors : Variants = {
     open : {
         opacity : 1

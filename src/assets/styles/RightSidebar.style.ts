@@ -1,33 +1,31 @@
 import { makeStyles } from "@material-ui/core";
+import { UP_MEDIUM_SCREEN } from "../utils/constants";
 
-const useSidebarStyle = makeStyles(theme => ({
+const useRightSidebarStyle = makeStyles(theme => ({
     backdrop: {
         zIndex : 4,
         position :'fixed',
         top : '5.4rem',
         right : 0,
         height :'100%',
-        background :'rgba(0, 0, 0,.6)',
+        background :'rgba(0, 0, 0,.9)',
         backdropFilter : 'grayscale(50%) blur(.3rem)',
         display : 'flex',
         justifyContent :'flex-end',
         overflow : 'hidden',
         [theme.breakpoints.up('sm')] :{
             position :'static',
-            width : '30rem !important',
+            maxWidth : '16rem',
+            background :'transparent',
         },
+        [theme.breakpoints.up(UP_MEDIUM_SCREEN)]:{
+            maxWidth :'18rem'
+        }
     },
     drawer : {
-        display : 'flex',
-        flexDirection : 'column',
-        width : '19rem',
         height : '100%',
-        listStyle : 'none',
-        background : 'rgb(34, 40, 64)',
-        boxShadow :'0 0 .6rem rgba(0, 0, 0, .4)',
-        overflowY : 'scroll',
+        width : '100% !important',
         [theme.breakpoints.up('sm')] :{
-            width : '100%',
         }
     },
     list : {
@@ -37,11 +35,11 @@ const useSidebarStyle = makeStyles(theme => ({
         display :'flex',
         flexDirection :'column',
         [theme.breakpoints.up('sm')] : {
-            paddingTop : '7rem',
-            paddingLeft :'1rem'
+            // paddingTop : '7rem',
+            // paddingLeft :'1rem'
         }
     }
    
 }));
 
-export default useSidebarStyle;
+export default useRightSidebarStyle;

@@ -22,14 +22,16 @@ import useCheckboxStyle from './Checkbox.styles';
 import useAppsMenu from './AppsMenu.style';
 import usePopperStyle from './Popper.styles';
 import useSelectFloorsStyle from './SelectFloors.styles';
-import useSidebarItemStyle from './SidebarItem.styles';
-import useSidebarStyle from './Sidebar.style';
+import useRightSidebarItemStyle from './RightSidebarItem.styles';
+import useRightSidebarStyle from './RightSidebar.style';
+import useLeftSidebarStyle from './LeftSidebar.styles';
 import useDetailsStyle from './Details.styles';
 import useFinderStyle from './Finder.styles';
 import useChartStyles from './Chart.styles';
 import useDefaultMsgStyle from './DefaultMsg.styles';
 import useUpdateUserFieldStyle from './UpdateUserField.styles';
 import useUpdateAvatarFieldStyle from './UpdateAvatarField.styles';
+import useToolbarStyle from './Toolbar.styles';
 
 export {
     useLoginViewStyle,
@@ -43,6 +45,7 @@ export {
     useMainStyle,
     useLogoStyle,
     useNavbarStyle,
+    useToolbarStyle,
     useMainContainerStyle,
     useSelectStyle,
     useUserCardStyle,
@@ -56,12 +59,13 @@ export {
     useAppsMenu,
     usePopperStyle,
     useSelectFloorsStyle,
-    useSidebarStyle,
+    useRightSidebarItemStyle,
+    useRightSidebarStyle,
+    useLeftSidebarStyle,
     useDetailsStyle,
-    useSidebarItemStyle,
     useFinderStyle,
     useChartStyles,
     useDefaultMsgStyle,
     useUpdateUserFieldStyle,
-    useUpdateAvatarFieldStyle
+    useUpdateAvatarFieldStyle,
 };

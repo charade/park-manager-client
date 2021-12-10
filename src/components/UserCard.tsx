@@ -20,15 +20,15 @@ export const UserCard = () => {
         <AnimateSharedLayout>
             <motion.div className = { classes.container }>
                 <motion.div layout className = { classes.card }>
-                    <motion.div layout className = { classes.cardHeader }></motion.div>
                     <motion.div layout className = { classes.cardContent }>
                         <Avatar
+                        classes = {{root : classes.avatarRoot}}
                         layout 
                         placeholder = { user?.firstName }
                         src = { user?.avatar ? `data:image/png;base64,${user?.avatar}` : '' }
                         alt = { `${user?.firstName}-${user?.lastName}` }
                         />
-                        <motion.h2 className = { classes.userName }> 
+                        <motion.h2 layout className = { classes.userName }> 
                             { `${user?.firstName} ${ user?.lastName }` } 
                         </motion.h2>
                         <UpdateUser open = { openUpdates.isTrue }/>

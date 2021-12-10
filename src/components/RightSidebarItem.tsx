@@ -2,14 +2,14 @@ import { motion } from 'framer-motion';
 import { variants } from '../assets/utils';
 import { Avatar } from './Avatar';
 import { User } from '../utils/dataTypes/user';
-import { useSidebarItemStyle } from '../assets/styles/index.styles';
+import { useRightSidebarItemStyle } from '../assets/styles/index.styles';
 
 type SideBarItemProps = {
     user : User
     onClick : (e : React.MouseEvent<HTMLLIElement>) => void
 };
-export const SidebarItem = ({ user, onClick } : SideBarItemProps) => {
-    const classes = useSidebarItemStyle();
+export const RightSidebarItem = ({ user, onClick } : SideBarItemProps) => {
+    const classes = useRightSidebarItemStyle();
 
     return(
         <motion.li 

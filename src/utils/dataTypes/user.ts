@@ -20,6 +20,7 @@ export type User = {
     id ?: string
     role : string,
     email : string
+    companyName ?: string
 }
 
 export type UpdateUserTypes = LoginT & PersonalData & {

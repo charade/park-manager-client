@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 
-const useSidebarItemStyle = makeStyles(theme => ({
+const useRightSidebarItemStyle = makeStyles(theme => ({
     box : {
         width : '100%',
         display : 'flex',
@@ -9,10 +9,13 @@ const useSidebarItemStyle = makeStyles(theme => ({
         padding: '.3rem',
         marginTop :'1.5rem',
         cursor : 'pointer',
+        color :'#fff',
         '&:hover': {
             background : 'rgba(157, 203, 234, .4)'
         },
-        color :'#fff'
+        [theme.breakpoints.up('sm')] : {
+            color: 'rgba(0, 0, 0, .7)'
+        }
     },
     avatarRoot : {
         width : '4.5rem !important',
@@ -32,4 +35,4 @@ const useSidebarItemStyle = makeStyles(theme => ({
     }
 }));
 
-export default useSidebarItemStyle;
+export default useRightSidebarItemStyle;

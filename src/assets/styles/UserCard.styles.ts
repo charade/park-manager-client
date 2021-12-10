@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core';
+import { UP_MEDIUM_SCREEN } from '../utils/constants';
 
 const useUserCardStyle = makeStyles(theme =>({
     container : {
@@ -6,15 +7,16 @@ const useUserCardStyle = makeStyles(theme =>({
         alignItems : 'center',
         justifyContent :'center',
         width : '100%',
-        margin : '6rem 0',
         [theme.breakpoints.up('sm')] :{
-            margin :0,
             alignItems : 'flex-start',
-            padding :'15rem .5rem',
-            width :'47%'
+            padding :'0 .5rem',
+            width :'34rem'
         },
-        [theme.breakpoints.up('md')] : {
-            paddingTop : '10rem'
+        [theme.breakpoints.up('md')]:{
+            width :'19rem'
+        },
+        [theme.breakpoints.up(UP_MEDIUM_SCREEN)]: {
+            width :'15%'
         }
     },
     card : {
@@ -27,16 +29,6 @@ const useUserCardStyle = makeStyles(theme =>({
         background : theme.palette.secondary.light,
         maringTop: '2rem',
         paddingTop :'.7rem',
-        [theme.breakpoints.up('sm')] :{
-            borderRadius :'1rem',
-        },
-
-    },
-    cardHeader : {
-        position : 'absolute',
-        width : '100%',
-        height : '5rem',
-        top : '0',
     },
     cardContent  : {
         zIndex : 2,
@@ -46,16 +38,24 @@ const useUserCardStyle = makeStyles(theme =>({
         minHeight : '80%',
         width :'100%',
         //target hidden form to update user
-        "& > *:nth-child(3)" : {
+        '& > *:nth-child(3)' : {
             width : '100%',
         }
-
+    },
+    avatarRoot :{
+        [theme.breakpoints.up('sm')]:{
+            width: '5rem',
+            height :'5rem'
+        }
     },
     userName : {
         fontSize : '2rem',
         fontFamily : theme.typography.fontFamily,
         color : 'rgba(0, 0, 0, .7)',
         alignSelf: 'center',
+        [theme.breakpoints.up('sm')]:{
+            fontSize :'1.3rem'
+        }
     },
     btn : {
         color : 'rgba(0, 0, 0, .7)',

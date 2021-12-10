@@ -5,9 +5,13 @@ const useMainContainerStyle = makeStyles(theme => ({
         position :'relative',
         display : 'flex',
         flexDirection : 'column',
-        width : '100%',
+        flex:1,
         alignItems: 'center',
-        overflow :'scoll'
+        overflow :'scoll',
+        [theme.breakpoints.up('sm')] : {
+            minWidth: '40%',
+            // border:'1px solid red'
+        },
     },
     divider : {
         width : '100%',
@@ -24,7 +28,7 @@ const useMainContainerStyle = makeStyles(theme => ({
         color : theme.palette.primary.main,
         border :'none',
         borderRadius : '.4rem',
-        margin : '1rem 4rem',
+        // margin : '.5rem 3rem',
         fontSize :'1.7rem',
         cursor : 'pointer',
         '&:hover' : {

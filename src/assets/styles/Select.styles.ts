@@ -4,10 +4,9 @@ const useSelectStyle = makeStyles(theme =>({
     container : {
         position : 'relative',
         display : 'flex',
-        height : '4.7rem',
+        height : '3rem',
         alignItems: 'center',
         borderRadius  : '.5rem',
-        padding :'0',
         justifyContent : 'flex-start'
     },
     fieldLabel : {
@@ -17,11 +16,21 @@ const useSelectStyle = makeStyles(theme =>({
         border : 'none'
     },
     caption : {
-        fontSize :'1.7rem',
+        fontSize :'1.2rem',
         width :'100%',
         position :'absolute',
         paddingLeft: '1rem',
         color :'rgba(0, 0, 0, .6)'
+    },
+    btn: {
+        border : 'none',
+        color :theme.palette.primary.main,
+        background: 'transparent'
+    },
+    icon: {
+        border : 'none',
+        color :theme.palette.primary.main,
+        background: 'transparent'
     }
 }));
 

@@ -36,7 +36,8 @@ const useUpdateUserFieldStyle = makeStyles(theme => ({
     },
     reminder : {
         color : 'rgba(0, 0, 0, .5)',
-        margin :'1rem'
+        margin :'1rem',
+        fontSize :'1.2rem'
     },
     btn :{
         display :'flex',
@@ -49,6 +50,7 @@ const useUpdateUserFieldStyle = makeStyles(theme => ({
             margin :'0 .5rem',
         },
         cursor :"pointer",
+        fontSize :'1rem'
     }
 }));
 
