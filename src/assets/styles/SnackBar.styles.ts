@@ -10,7 +10,6 @@ const useSnackbarStyle = makeStyles(theme => ({
         justifyContent : 'space-around',
         alignItems : 'center',
         minWidth : '25rem',
-        fontFamily : theme.typography.fontFamily,
         fontSize : '1.4rem',
         background : 'rgba(0, 0, 0, .8)',
         borderRadius : '.5rem',

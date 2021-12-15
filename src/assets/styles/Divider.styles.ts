@@ -12,7 +12,6 @@ const useDividerStyle = makeStyles(theme =>({
     },
     label : {
         fontSize : '1.3rem',
-        fontFamily : theme.typography.fontFamily,
         background : theme.palette.secondary.main,
         padding : '.2rem .8rem',
         color :theme.palette.primary.main

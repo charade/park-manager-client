@@ -5,7 +5,6 @@ const useInputStyle = makeStyles(theme => ({
         position : 'relative',
         width : '85%',
         height : '3.5rem',
-        fontFamily : theme.typography.fontFamily,
         background  : 'inherit',
     },
     label : {

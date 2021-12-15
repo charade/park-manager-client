@@ -16,7 +16,7 @@ const useMainStyle = makeStyles(theme => ({
         height :'100%',
         justifyContent : 'space-between',
         [theme.breakpoints.up('md')] : {
-            paddingTop : '7rem',
+            paddingTop : '10rem',
         }
     }
 }));

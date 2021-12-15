@@ -19,7 +19,6 @@ import useModalStyle from './Modal.styles';
 import useSubmitBtnStyle from './SubmitBtn.styles';
 import useSnackbarStyle from './SnackBar.styles';
 import useCheckboxStyle from './Checkbox.styles';
-import useAppsMenu from './AppsMenu.style';
 import usePopperStyle from './Popper.styles';
 import useSelectFloorsStyle from './SelectFloors.styles';
 import useRightSidebarItemStyle from './RightSidebarItem.styles';
@@ -59,7 +58,6 @@ export {
     useSubmitBtnStyle,
     useSnackbarStyle,
     useCheckboxStyle,
-    useAppsMenu,
     usePopperStyle,
     useSelectFloorsStyle,
     useRightSidebarItemStyle,
@@ -73,5 +71,5 @@ export {
     useUpdateAvatarFieldStyle,
     useCreateUserStyle,
     useNewAccountReminderStyle,
-    useAuthFailedStyle
+    useAuthFailedStyle,
 };

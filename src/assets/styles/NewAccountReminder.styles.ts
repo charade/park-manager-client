@@ -37,7 +37,6 @@ const useNewAccountReminderStyle = makeStyles(theme => ({
         display :'flex',
         alignItems: 'center',
         margin :'3rem 0',
-        // color : '#E0A507',
         alignSelf: 'center',
         color :theme.palette.primary.main
     },
