@@ -7,7 +7,7 @@ const useDetailsStyle = makeStyles(theme =>({
         width :'100%',
         height :'100%',
         color :'#fff',
-        background :'#4A4A4A',
+        background :theme.palette.primary.main,
     },
     block : {
         display :'flex',
@@ -50,7 +50,7 @@ const useDetailsStyle = makeStyles(theme =>({
     editBtn :{
         margin :'5rem 1rem',
         border : 'none',
-        color : '#fff',
+        color : '#E0A507',
         background: 'inherit',
         cursor : 'pointer',
         display : 'iniline-flex',

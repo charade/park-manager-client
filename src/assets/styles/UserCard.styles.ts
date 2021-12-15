@@ -55,7 +55,6 @@ const useUserCardStyle = makeStyles(theme =>({
     },
     userName : {
         fontSize : '2rem',
-        fontFamily : theme.typography.fontFamily,
         color : 'rgba(0, 0, 0, .7)',
         alignSelf: 'center',
         [theme.breakpoints.up('sm')]:{
@@ -63,9 +62,9 @@ const useUserCardStyle = makeStyles(theme =>({
         }
     },
     btn : {
-        color : 'rgba(0, 0, 0, .7)',
+        color : '#fff',
         border :'none',
-        background :'rgba(0, 0, 0, .12)',
+        background :theme.palette.primary.main,
         fontSize :'1.6rem',
         marginTop :'1.5rem',
         fontWeight : 300,

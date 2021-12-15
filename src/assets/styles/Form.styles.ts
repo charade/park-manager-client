@@ -11,7 +11,6 @@ const useFormStyle = makeStyles(theme =>({
         padding : '1.5rem 0',
         boxShadow : '0 0 .4rem rgba(0, 0, 0, .8)',
         '& > *' : {
-            fontFamily : theme.typography.fontFamily,
             margin : '1rem',
             color  : theme.palette.secondary.light
         },

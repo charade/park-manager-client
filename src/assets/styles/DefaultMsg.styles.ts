@@ -8,7 +8,6 @@ const useDefaultMsgStyle = makeStyles(theme => ({
         background :'#4A4A4A',
         alignItems :'center',
     },
-    
     message : {
         color: '#fff',
         fontSize :'1.4rem',

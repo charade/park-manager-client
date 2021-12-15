@@ -1,21 +1,16 @@
 import { makeStyles } from "@material-ui/core";
-import { UP_MEDIUM_SCREEN } from "../utils/constants";
 
 const usePlacesTableStyle = makeStyles(theme => ({
     container : {
         display : 'flex',
         flexDirection : 'column',
         width :'100%',
-        height : '36%',
+        height : '55%',
         margin :'2rem 0',
         color : 'rgba(0, 0, 0, .7)',
-        background : theme.palette.secondary.main,
         fontSize :'1.4rem',
-        fontFamily : theme.typography.fontFamily,
+        background : theme.palette.secondary.main,
         [theme.breakpoints.up('sm')] :{
-            height : '46%',
-        },
-        [theme.breakpoints.up(UP_MEDIUM_SCREEN)] :{
             height : '46%',
         },
     },
