@@ -14,6 +14,10 @@ const useMainStyle = makeStyles(theme => ({
         display : 'flex',
         paddingTop: '6.1rem',
         height :'100%',
+        justifyContent : 'space-between',
+        [theme.breakpoints.up('md')] : {
+            paddingTop : '7rem',
+        }
     }
 }));
 

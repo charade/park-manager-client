@@ -6,7 +6,6 @@ import { ReducerRootStateType } from '../state';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import { Select } from './Select';
 import { motion } from 'framer-motion';
-import { Avatar } from './Avatar';
 
 export const Navbar = () => {
     const user = useSelector((store: ReducerRootStateType) => store.user);
@@ -19,15 +18,10 @@ export const Navbar = () => {
         <div className = { classes.root }>
             <motion.nav layout className = { classes.paper }>
                 <h1 className = { classes.companyName } >{ user?.companyName }</h1>
+                       
                 <Select  />
 
-                <div className = { classes.logout }>
-                        <Avatar
-                        classes = {{ root: classes.avatarRoot, placeholder: classes.avatarPlaceHolder }} 
-                        src = { user?.avatar ? `data:image/png;base64,${user.avatar}`: '' }
-                        placeholder = { user?.firstName.charAt(0) }
-                        alt= 'avatar'
-                        />
+                <div className = { classes.toolbar }>
                     <Button
                     className = { classes.navItem } 
                     layout = { false }

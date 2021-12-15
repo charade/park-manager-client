@@ -67,7 +67,7 @@ export const Input = (props : InputProps) => {
             {props.underline &&
                 <motion.span
                 transition = {{ease  : 'linear', duration : .2}}    
-                variants = { variants.inputUnderLine } 
+                variants = { variants.underLine } 
                 className = { classes.underline }
                 >
                 </motion.span>

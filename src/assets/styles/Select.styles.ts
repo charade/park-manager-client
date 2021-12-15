@@ -28,9 +28,13 @@ const useSelectStyle = makeStyles(theme =>({
         background: 'transparent'
     },
     icon: {
-        border : 'none',
         color :theme.palette.primary.main,
-        background: 'transparent'
+        background: 'transparent',
+        minWidth : '2.5rem',
+        minHeight :'2.5rem',
+        border : `1px solid ${theme.palette.primary.main}`,
+        borderRadius: '50%',
+        padding: '.3rem'
     }
 }));
 

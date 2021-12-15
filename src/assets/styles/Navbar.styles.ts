@@ -17,13 +17,7 @@ const useNavbarStyle = makeStyles(theme => ({
         height :'100%',
         padding :'0 .9rem',
     },
-    toolbar :{
-        display : 'inline-flex',
-        width : '20%',
-        justifyContent :'space-between',
-        alignItems :'center',
-       
-    },
+    
     avatarRoot: {
         maxWidth: '4rem',
         maxHeight :'4rem',
@@ -35,17 +29,18 @@ const useNavbarStyle = makeStyles(theme => ({
     avatarPlaceHolder :{
         fontSize :'1.4rem'
     },
-    
-    logout : {
+    toolbar : {
         display: 'flex',
         justifyContent: 'flex-end',
+        alignItems : 'center',
         width :'75%',
+        height : '100%',
         [theme.breakpoints.up('sm')]: {
             width :'85%'
         },
         [theme.breakpoints.up(UP_MEDIUM_SCREEN)]: {
             width: '90%'
-        }
+        },
     },
     companyName : {
         fontSize :'1.6rem',

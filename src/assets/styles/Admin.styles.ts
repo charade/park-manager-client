@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 
-const useLoginViewStyle = makeStyles(theme => ({
+const useAdminStyle = makeStyles(theme => ({
     root : {
         position : 'relative',
         height : '100%',
@@ -22,4 +22,4 @@ const useLoginViewStyle = makeStyles(theme => ({
     }
 }));
 
-export default useLoginViewStyle;
+export default useAdminStyle;

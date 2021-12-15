@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useLoginViewStyle } from '../assets/styles/index.styles';
+import { useAdminStyle } from '../assets/styles/index.styles';
 import { LoginForm } from '../components/LoginForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -7,8 +7,8 @@ import { formActionCreators } from '../state/actions-creators';  
 import { ReducerRootStateType } from '../state';
 import { formStep } from '../utils/contants';
 
-const LoginView = () => {
-    const classes = useLoginViewStyle();
+const Admin = () => {
+    const classes = useAdminStyle();
     const dispatch = useDispatch();
     const step = useSelector((store : ReducerRootStateType) => store.form);
     const { setFormStep } = bindActionCreators(formActionCreators, dispatch);
@@ -35,4 +35,4 @@ const LoginView = () => {
         </div>
     )
 };
-export default LoginView;
+export default Admin;

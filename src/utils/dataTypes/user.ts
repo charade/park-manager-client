@@ -4,7 +4,7 @@ export type LoginT = {
     email: string,
     password : string
 };
-interface PersonalData{
+export interface PersonalData{
     firstName : string,
     lastName :string
 };
@@ -21,12 +21,10 @@ export type User = {
     email : string
     companyName : string
     companyId : string
-}
-export type UpdateUserTypes = LoginT & PersonalData & {
-    avatar : Blob
 };
-
-
+export type UpdateUserTypes = LoginT & PersonalData & {
+    avatar : Blob | string // is a string to falsy case if user try to submit no field filled
+};
 //*************************** Default values ******************** */
 export const SIGN_DEFAULT_VALUE : SignDataTypes = {
     firstName : '',
@@ -39,7 +37,7 @@ export const SIGN_DEFAULT_VALUE : SignDataTypes = {
 export const UPDATE_USER_DEFAULT_VALUES: UpdateUserTypes = {
     firstName : '',
     lastName :'',
-    avatar : new Blob(),
+    avatar : '',
     password :'',
     email :''
 };

@@ -50,7 +50,7 @@ export const LeftSidebar = () => {
                     <Button 
                     className = { classes.item }
                     icon = { <PersonAddIcon className = { classes.icon }/> }
-                    label = {isScreenMobile ? '' : 'New account'}
+                    label = {isScreenMobile ? '' : 'New user'}
                     iconPosition = 'before'
                     onClick = { handleOpenCreateNewUserPopover }
                     />

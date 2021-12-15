@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
+import { UP_MEDIUM_SCREEN } from "../utils/constants";
 
 const useLeftSidebarStyle = makeStyles(theme => ({
     drawer : {
@@ -10,12 +11,15 @@ const useLeftSidebarStyle = makeStyles(theme => ({
         margin: '1rem',
         [theme.breakpoints.up('sm')]: {
             position :'static',
-            width: '17rem',
+            width: '9rem',
             alignItems: 'flex-start',
             margin :0
         },
         [theme.breakpoints.up('md')] : {
-            width: '12rem',
+            width: '9rem',
+        },
+        [theme.breakpoints.up(UP_MEDIUM_SCREEN)]:{
+            width : '13rem'
         }
     },
     item : {
@@ -28,6 +32,7 @@ const useLeftSidebarStyle = makeStyles(theme => ({
         justifyContent :'center',
         cursor : 'pointer',
         margin: '.7rem',
+        padding: 0,
         '&:hover':{
             background: 'rgba(157, 203, 234, .3)'
         },
@@ -38,15 +43,19 @@ const useLeftSidebarStyle = makeStyles(theme => ({
             heigh : '3rem',
             fontSize :'1rem',
         },
-        padding: 0,
+        [theme.breakpoints.up(UP_MEDIUM_SCREEN)]:{
+            fontSize :'1.5rem',
+        }
     },
     icon: {
         minWidth : '100%',
         minHeight :'100%',
-        // margin :'.5rem'
         [theme.breakpoints.up('sm')]:{
             minWidth: '10%',
             margin: '.8rem'
+        },
+        [theme.breakpoints.up(UP_MEDIUM_SCREEN)]:{
+            minWidth: '18%',
         }
     }
 }));

@@ -3,7 +3,7 @@ import { Place } from "../../utils/dataTypes/places";
 
 type FindReservationAction = {
     type : string,
-    payload : Place 
+    payload : Place | null
 }
 export type ReservationActionType = {type: string } | FindReservationAction ;
     

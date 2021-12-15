@@ -1,9 +1,8 @@
-import { useUpdateUserFieldStyle } from '../assets/styles/index.styles';
+import { useUpdateUserStyle } from '../assets/styles/index.styles';
 import { AnimateSharedLayout, motion } from 'framer-motion';
 import { Input } from './Input';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { Button } from './Button';
 import { useSelector } from 'react-redux';
 import { ReducerRootStateType } from '../state';
 import { User } from '../utils/dataTypes/user';
@@ -17,17 +16,17 @@ type UpdateUserBlocProps = {
 };
 
 export const UpdateUserField = ({onChangeField, label, name} : UpdateUserBlocProps) => {
-    const classes = useUpdateUserFieldStyle();
+    const classes = useUpdateUserStyle();
     const user = useSelector((store :ReducerRootStateType) => store.user);
     const openField = useToggle();
 
     return(
         <AnimateSharedLayout>
-            <motion.div layout className = { classes.block }>
+            <motion.div layout className = { classes.field }>
                 <motion.div layout className = { classes.box }>
                     <motion.label
                     layout 
-                    className ={ classes.btn } 
+                    className ={ classes.fieldOpener } 
                     onClick = { openField.toggle } 
                     role = 'button'
                     >
@@ -36,15 +35,14 @@ export const UpdateUserField = ({onChangeField, label, name} : UpdateUserBlocPro
                     </motion.label>
                     
                     { user && (name in user) && 
-                        <motion.span layout className = { classes.reminder }>
-                             {  
-                                `${user[name as keyof User]!.slice(0, 5)} 
-                                ${((user[name as keyof User]!.length > 5) ? '...' : '')}`  
-                             } 
+                        <motion.span layout className = { classes.overview }>
+                            {  
+                               `${user[name as keyof User]!.slice(0, 5)} 
+                               ${((user[name as keyof User]!.length > 5) ? '...' : '')}`  
+                            } 
                         </motion.span>
                     }
                 </motion.div>
-
                 { openField.isTrue && 
                     <Input 
                     layout 
@@ -54,7 +52,6 @@ export const UpdateUserField = ({onChangeField, label, name} : UpdateUserBlocPro
                     inputStyle = {{ color: 'rgba(0, 0, 0, .7)' }} 
                     />
                 }
-
             </motion.div>
         </AnimateSharedLayout>
     )

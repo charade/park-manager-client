@@ -11,7 +11,7 @@ export const inputLabel : Variants = {
         opacity : 1
     }
 };
-export const inputUnderLine : Variants = {
+export const underLine : Variants = {
     focus : {
         width : '100%',
         opacity : 1
@@ -97,7 +97,7 @@ export const select : Variants = {
             duration : .1
         }
     })
-}
+};
 export const selectFloors : Variants = {
     open : {
         opacity : 1

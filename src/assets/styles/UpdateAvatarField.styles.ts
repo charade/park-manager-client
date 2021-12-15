@@ -6,7 +6,7 @@ const useUpdateAvatarFieldStyle = makeStyles(theme =>({
         display :'inline-flex',
         alignItems :'center',
         fontSize: '1.4rem',
-        margin :'1.5rem .5rem',
+        margin :'1.7rem .5rem',
         color :theme.palette.primary.main,
     },
     icon : {

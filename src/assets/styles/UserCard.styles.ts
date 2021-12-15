@@ -10,13 +10,14 @@ const useUserCardStyle = makeStyles(theme =>({
         [theme.breakpoints.up('sm')] :{
             alignItems : 'flex-start',
             padding :'0 .5rem',
-            width :'34rem'
+            width :'20rem'
         },
         [theme.breakpoints.up('md')]:{
             width :'19rem'
         },
         [theme.breakpoints.up(UP_MEDIUM_SCREEN)]: {
-            width :'15%'
+            width :'20%',
+            padding :'0 1.5rem',
         }
     },
     card : {
@@ -46,6 +47,10 @@ const useUserCardStyle = makeStyles(theme =>({
         [theme.breakpoints.up('sm')]:{
             width: '5rem',
             height :'5rem'
+        },
+        [theme.breakpoints.up(UP_MEDIUM_SCREEN)]: {
+            width: '8rem',
+            height :'8rem'
         }
     },
     userName : {

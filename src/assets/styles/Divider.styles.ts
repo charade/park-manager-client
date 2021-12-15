@@ -3,18 +3,19 @@ import { makeStyles } from "@material-ui/core";
 const useDividerStyle = makeStyles(theme =>({
     line : {
         height : '1px',
-        borderBottom : '1px solid rgba(0, 0, 0, .4)',
+        borderBottom : '1px solid rgba(0, 0, 0, .1)',
         alignSelf : 'center',
         display : 'flex',
         justifyContent : 'center',
-        alignItems :'center'
+        alignItems :'center',
+        width : '80%'
     },
     label : {
-        fontSize : '1.7rem',
-        color: 'rgba(0, 0, 0, .6)',
+        fontSize : '1.3rem',
         fontFamily : theme.typography.fontFamily,
         background : theme.palette.secondary.main,
         padding : '.2rem .8rem',
+        color :theme.palette.primary.main
     }
 }));
 
