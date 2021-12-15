@@ -15,10 +15,10 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 ### Desktop
-![desktop-screen-shot](./public/screen-shots/desktop.png)
+![desktop-screen-shot](./screen-shots/desktop.png)
 
 ### Mobile
-![mobile-screen-shot](./public/screen-shots/mobile.png)
+![mobile-screen-shot](./screen-shots/mobile.png)
 
 
 
