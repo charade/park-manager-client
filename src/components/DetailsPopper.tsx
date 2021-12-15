@@ -3,15 +3,13 @@ import { bindActionCreators } from 'redux';
 import { useDispatch } from 'react-redux';
 import { useNotification } from "../hooks";
 import { colleaguesActionCreators } from '../state/actions-creators';
-import ChangeCircleIcon from '@mui/icons-material/ChangeCircle';
+
 import { Popper } from './Popper';
-import { Button } from './Button';
 import { switchPermissions } from '../utils/functions';
 import { users } from '../services';
 import { Snackbar } from './Snackbar';
 import { User } from '../utils/dataTypes/user';
 import { DetailsContainer } from './DetailsContainer';
-import { useDetailsStyle } from '../assets/styles/index.styles';
 
 type DetailsProps = {
     user : User | null,
@@ -26,7 +24,6 @@ export const DetailsPopper = ({ user, anchorEl, open, setOpen, userIndex} : Deta
     const notification = useNotification();
     const dispatch = useDispatch();
     const { changePermissions } = bindActionCreators(colleaguesActionCreators, dispatch);
-    const classes = useDetailsStyle();
     
     useEffect(() => { user && setRole(user.role) },[user]);
 
@@ -54,15 +51,7 @@ export const DetailsPopper = ({ user, anchorEl, open, setOpen, userIndex} : Deta
             transform : { horizontal : 'right', vertical :'top' } 
         }}
         >
-            <DetailsContainer user = { user } role = {role}>
-                    <Button 
-                    onClick = { handleSwitchRole }
-                    className = { classes.editBtn } 
-                    label = {`Change permissions...` }
-                    iconPosition = 'before' 
-                    icon = { <ChangeCircleIcon /> }
-                    />
-            </DetailsContainer>
+            <DetailsContainer user = { user } role = {role} action = { handleSwitchRole } />
             <Snackbar 
             message = { notification.value?.message }
             severity = { notification.value?.severity }

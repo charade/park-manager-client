@@ -6,8 +6,8 @@ const useFormStyle = makeStyles(theme =>({
         flexDirection :'column',
         alignItems : 'center',
         width : '25rem',
-        borderRadius : '.8rem',
         minHeight : '20rem',
+        borderRadius : '.8rem',
         padding : '1.5rem 0',
         boxShadow : '0 0 .4rem rgba(0, 0, 0, .8)',
         '& > *' : {

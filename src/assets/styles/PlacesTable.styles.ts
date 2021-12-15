@@ -1,50 +1,58 @@
 import { makeStyles } from "@material-ui/core";
+import { UP_MEDIUM_SCREEN } from "../utils/constants";
 
 const usePlacesTableStyle = makeStyles(theme => ({
     container : {
         display : 'flex',
         flexDirection : 'column',
-        margin :'2rem 0',
         width :'100%',
-        fontFamily : theme.typography.fontFamily,
-        color : 'rgba(0, 0, 0,)',
+        height : '36%',
+        margin :'2rem 0',
+        color : 'rgba(0, 0, 0, .7)',
         background : theme.palette.secondary.main,
         fontSize :'1.4rem',
-        height : '36%'
+        fontFamily : theme.typography.fontFamily,
+        [theme.breakpoints.up('sm')] :{
+            height : '46%',
+        },
+        [theme.breakpoints.up(UP_MEDIUM_SCREEN)] :{
+            height : '46%',
+        },
     },
     table : {
+        width :'100%',
         borderCollapse : 'collapse',
         tableLayout : 'fixed',
-        width :'100%'
     },
     headRow : {
+        height :'4rem !important',
         background : 'rgb(34, 40, 64)',
         color :'#fff',
-        height :'4rem !important',
-        borderRadius :'0 0 4rem 0 4rem !important'
+        borderBottomLeftRadius: '0 !important',
+        borderBottomRightRadius : '0 !important'
     },
     row: {
-        height : '2.96rem',
-        width : '100%',
         display :'flex',
         alignItems : 'center',
         justifyContent: 'space-evenly',
+        height : '2.96rem',
+        width : '100%',
+        borderRadius :'.4rem',
         '&:nth-child(even)' : {
             background : 'rgba(255, 255, 255, .8)'
         },
-        borderRadius :'.4rem'
     },
     bodyContainer: {
         height : '100%',
         overflow : 'scroll',
     },
     cell : {
-        width : '30%',
-        flex : 1,
-        height :'100%',
         display : 'flex',
         justifyContent :'center',
         alignItems :'center',
+        flex : 1,
+        width : '30%',
+        height :'100%',
         '&:nth-child(3n + 2)':{
             background: 'rgba(0, 0, 0, .06)',
         }

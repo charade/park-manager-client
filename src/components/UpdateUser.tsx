@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { UpdateUserField } from './UpdateUserField';
+import {  useUpdateUserStyle } from '../assets/styles/index.styles';
 import { UpdateUserTypes, UPDATE_USER_DEFAULT_VALUES } from '../utils/dataTypes/user';
 import { UpdateUserFields } from '../utils/contants';
 import { UpdateAvatarField } from './UpdateAvatarField';
@@ -19,6 +20,7 @@ export const UpdateUser = ({open} : UpdateUserProps) => {
     const dispatch = useDispatch();
     const { setUser } = bindActionCreators(usersActionCreators, dispatch);
     const notification = useNotification();
+    const classes  = useUpdateUserStyle();
 
     const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => { 
         const target =  e.target as HTMLInputElement;
@@ -38,7 +40,7 @@ export const UpdateUser = ({open} : UpdateUserProps) => {
             const filteredKeys = Object.keys(data).filter(key => data[key as keyof UpdateUserTypes]);
             const formData = new FormData();
             filteredKeys.forEach(key => {
-                formData.append(key, data[key as keyof UpdateUserTypes])
+                formData.append(key, data[key as (keyof UpdateUserTypes)])
             });
             users.updateUser(formData).then(response => {
                 setUser(response.data);
@@ -49,14 +51,20 @@ export const UpdateUser = ({open} : UpdateUserProps) => {
                 const message = err.response.data.description;
                 notification.set({message , severity: 'error'})
             });
+
             notification.setOpen(true);
-        }
+            return
+        };
+        notification.set({message : "You haven't provided any field", severity: 'info'});
+        notification.setOpen(true);
     };
 
     return(
         <AnimatePresence>
             {open &&
                 <motion.form 
+                className = { classes.container }
+                key = "update-user-data-form"
                 animate = {{ opacity : [0, .2, 1]}}
                 exit = {{ opacity : 0 }}
                 initial = {{ opacity : 0 }}
@@ -74,7 +82,7 @@ export const UpdateUser = ({open} : UpdateUserProps) => {
                         )
                     })}
                     <UpdateAvatarField onChange = { handleChange }/>
-                    <Button type = 'submit'/>
+                    <Button type = 'submit' className = { classes.submitButton } label = 'ok'/>
                 </motion.form>
             }
             <Snackbar 

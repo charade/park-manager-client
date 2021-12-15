@@ -1,4 +1,5 @@
-import LoginView  from './LoginView';
+import Admin  from './Admin';
 import Home from './Home';
+import AuthFailed from './AuthFailed';
 
-export { LoginView , Home}
+export { Admin , Home, AuthFailed }

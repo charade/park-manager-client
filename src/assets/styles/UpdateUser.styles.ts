@@ -1,13 +1,18 @@
 import { makeStyles } from "@material-ui/core";
 
-const useUpdateUserFieldStyle = makeStyles(theme => ({
-    
-    block : {
+const useUpdateUserStyle = makeStyles(theme => ({
+    container : {
+        display : 'flex',
+        flexDirection :'column'
+    },
+    field : {
         display :'flex',
         flexDirection : 'column',
         fontSize :'1.5rem',
         margin :'1rem 0',
         width: '100%',
+        padding: '0 .5rem',
+        //buttons
         '&:first-child > *:first-child > label' : {
             background : '#E0A507',
         },
@@ -22,7 +27,7 @@ const useUpdateUserFieldStyle = makeStyles(theme => ({
             background : '#8B5F94',
         },
         [theme.breakpoints.up('sm')] :{
-            margin :'3rem 0'
+            margin :'1.3rem 0'
         },
     },
     box : {
@@ -31,17 +36,15 @@ const useUpdateUserFieldStyle = makeStyles(theme => ({
         justifyContent: 'space-between',
         alignItems: 'center',
     },
-    reminder : {
+    overview : {
         color : 'rgba(0, 0, 0, .5)',
         margin :'1rem',
         fontSize :'1.2rem'
     },
-    btn :{
+    fieldOpener :{
         display :'flex',
         alignItems :'center',
         color :'#fff',
-
-        margin : '0 .5rem',
         padding :'.4rem',
         borderRadius :'.5rem',
         '& > *' : {
@@ -49,7 +52,17 @@ const useUpdateUserFieldStyle = makeStyles(theme => ({
         },
         cursor :"pointer",
         fontSize :'1rem'
+    },
+    submitButton : {
+        border :'1px solid rgba(20, 40, 50, .4)',
+        borderRadius :'50%',
+        color : theme.palette.primary.main,
+        margin : '.5rem 1rem',
+        width : '4rem',
+        height : '4rem',
+        justifyContent : 'center',
+        alignSelf : 'center'
     }
 }));
 
-export default useUpdateUserFieldStyle;
+export default useUpdateUserStyle;

@@ -1,4 +1,4 @@
-import useLoginViewStyle from './LoginView.styles';
+import useAdminStyle from './Admin.styles';
 import useFormStyle from './Form.styles';
 import useStepSwitchFormStyle from './FormStepSwitch.styles';
 import useInputStyle from './Input.styles';
@@ -29,13 +29,15 @@ import useDetailsStyle from './Details.styles';
 import useFinderStyle from './Finder.styles';
 import useChartStyles from './Chart.styles';
 import useDefaultMsgStyle from './DefaultMsg.styles';
-import useUpdateUserFieldStyle from './UpdateUserField.styles';
+import useUpdateUserStyle from './UpdateUser.styles';
 import useUpdateAvatarFieldStyle from './UpdateAvatarField.styles';
 import useToolbarStyle from './Toolbar.styles';
 import useCreateUserStyle from './CreateNewUser.styles';
+import useNewAccountReminderStyle from './NewAccountReminder.styles';
+import useAuthFailedStyle from './AuthFailed.styles';
 
 export {
-    useLoginViewStyle,
+    useAdminStyle,
     useFormStyle,
     useStepSwitchFormStyle,
     useInputStyle,
@@ -67,7 +69,9 @@ export {
     useFinderStyle,
     useChartStyles,
     useDefaultMsgStyle,
-    useUpdateUserFieldStyle,
+    useUpdateUserStyle,
     useUpdateAvatarFieldStyle,
-    useCreateUserStyle
+    useCreateUserStyle,
+    useNewAccountReminderStyle,
+    useAuthFailedStyle
 };

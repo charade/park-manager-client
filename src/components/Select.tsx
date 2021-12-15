@@ -14,6 +14,7 @@ export const Select = () => {
     const handleClose = useCloseOnBlur(setOpen);
 
     const handlefocus = () => setOpen(true);
+
     useEffect(() => {
         const icon = ref.current?.firstElementChild as HTMLButtonElement;        
         if(icon){
@@ -38,11 +39,11 @@ export const Select = () => {
         custom = { open } 
         className = { classes.container }
         >
-            <Button className = {classes.btn } icon = { <SearchIcon /> } />
+            <Button className = {classes.btn } icon = { <SearchIcon className = { classes.icon }/> } />
             {open &&
             <>   
-                <SelectFloor />
                 <label className = { classes.caption }>Select a floor</label>
+                <SelectFloor />
             </> 
             }   
         </motion.div>

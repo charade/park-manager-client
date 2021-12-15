@@ -36,8 +36,10 @@ const Home = () => {
         
         //where user parked
         const findMyCar = async() => {
-            const place = await places.find();
-            setReservation(place.data);
+            await places.find().then(place =>{
+                console.log(place)
+                setReservation(place.data);
+            }).catch(() => null);
         }
         findMyCar();
     },[]);

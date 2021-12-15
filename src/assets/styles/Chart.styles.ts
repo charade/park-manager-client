@@ -2,10 +2,11 @@ import { makeStyles } from '@material-ui/core';
 
 const useChartStyles = makeStyles(theme => ({
     container : {
-        height :'50%',
-        background: '#fff',
+        height :'40%',
+        // background: theme.palette.secondary.light,
         width :'100%',
-        // margin : '3rem'
+        display: 'flex',
+        justifyContent: 'center',
     }
 }));
 

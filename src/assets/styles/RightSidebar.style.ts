@@ -16,12 +16,16 @@ const useRightSidebarStyle = makeStyles(theme => ({
         overflow : 'hidden',
         [theme.breakpoints.up('sm')] :{
             position :'static',
-            maxWidth : '16rem',
+            maxWidth : '15rem',
             background :'transparent',
         },
+        [theme.breakpoints.up('md')]:{
+            maxWidth : '17rem',
+        },
         [theme.breakpoints.up(UP_MEDIUM_SCREEN)]:{
-            maxWidth :'18rem'
-        }
+            maxWidth :'23rem',
+            paddingLeft : '1.5rem',
+        },
     },
     closeBtn : {
         width :'3rem',
@@ -40,9 +44,10 @@ const useRightSidebarStyle = makeStyles(theme => ({
     list : {
         height : '100%',
         width : '100%',
-        padding :'1rem .5rem',
+        // padding :'1rem 0',
         display :'flex',
         flexDirection :'column',
+        padding : 0
     }
    
 }));
